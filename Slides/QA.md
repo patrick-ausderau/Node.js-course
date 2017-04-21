@@ -1,4 +1,4 @@
-# Mulitple local environments
+# Multiple local environments
 
 E.g. flipping between 2 local databases. Note that it is [NOT](https://www.npmjs.com/package/dotenv#should-i-have-multiple-env-files) recommended!
 
@@ -94,4 +94,4 @@ winston.configure({
 # Authentication and Authorization
 
 * Authorization for you app, check [acl](https://www.npmjs.com/package/acl)
-* Ahtentication for an API, I would go for [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken). First search result gives this [example](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens).
+* Authentication for an API, I would go for [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken). First search result gives this [example](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens).
