@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Server Side Scripting Frameworks : Ile, Pate ja Olli">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784">
+
+    <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Multiple local environments | Server Side Scripting Frameworks</title>
+<meta property="og:title" content="Multiple local environments" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ile, Pate ja Olli" />
+<meta property="og:description" content="Ile, Pate ja Olli" />
+<link rel="canonical" href="http://localhost:4000/Slides/QA.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/QA.html" />
+<meta property="og:site_name" content="Server Side Scripting Frameworks" />
+<script type="application/ld+json">
+{"name":null,"description":"Ile, Pate ja Olli","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/QA.html","publisher":null,"image":null,"headline":"Multiple local environments","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="http://github.com/ilkkamtk/SSSF-course">View on GitHub</a>
+
+        <h1 id="project_title">Server Side Scripting Frameworks</h1>
+        <h2 id="project_tagline">Ile, Pate ja Olli</h2>
+
+        
+    </header>
+</div>
+
+<!-- NAVI -->
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+
+    <nav>
+    <ul>
+        
+        <li>
+            <a href="/assets/css/style.css"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/QA.html">Multiple local environments</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-1-Toolchain.html">Server-side scripting frameworks Toolchain</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-2-ECMAScript6-const-let-arrow_function.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-4-ES6-promise-fetch.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-1-express.html">Express.js</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-1-npm.html">NPM</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-2-osx-install.html">MongoDB installation on OS X</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-4-Deploy_on_jelastic.html">express and mongoose on jelasitc</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-1-NoSQL-MongoDB-mongoose-continued.html">NoSQL MongoDB database and mongoose continued</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-2-Pug.html">PUG</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-4-https-passport.html">First steps into security</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week4/W4-2-WebRTC.html">WebRTC</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week4/W4-4-Helmet-CORS.html">Security continued</a>
+        </li>
+        
+        <li>
+            <a href="/">Server-Side Scripting Frameworks</a>
+        </li>
+        
+    </ul>
+</nav>
+    <section id="main_content" class="inner">
+        <h1 id="multiple-local-environments">Multiple local environments</h1>
+
+<p>E.g. flipping between 2 local databases. Note that it is <a href="https://www.npmjs.com/package/dotenv#should-i-have-multiple-env-files">NOT</a> recommended!</p>
+
+<ul>
+  <li>.env
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">APP_PORT</span><span class="o">=</span><span class="mi">3000</span>
+</code></pre></div>    </div>
+  </li>
+  <li>.env.test
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">APP_PORT</span><span class="o">=</span><span class="mi">3002</span>
+</code></pre></div>    </div>
+  </li>
+  <li>index.js
+```javascript
+‘use strict’;
+const express = require(‘express’);
+const app = express();</li>
+</ul>
+
+<p>app.listen(process.env.APP_PORT);</p>
+
+<p>app.get(‘/’, (req, res) =&gt; {
+  res.send(‘Hello World!’);
+});</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* run .env
+```shell
+$  node -r dotenv/config index.js 
+</code></pre></div></div>
+
+<ul>
+  <li>run .env.test
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span> node <span class="nt">-r</span> dotenv/config index.js <span class="nv">dotenv_config_path</span><span class="o">=</span>.env.test
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="logging-to-file">Logging to file</h1>
+
+<ul>
+  <li><code class="highlighter-rouge">console.log</code> limitations:
+    <ul>
+      <li>outputs only to single place: stdout</li>
+      <li>No possibility to set logging level (debug, info, warning, etc.)</li>
+      <li>No support for metadata</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="morgan-access-logs">morgan (access logs)</h2>
+
+<p><a href="https://www.npmjs.com/package/morgan">morgan</a> is an HTTP request logger middleware for node.js</p>
+
+<ul>
+  <li>index.js
+```javascript
+‘use strict’;
+const express = require(‘express’)
+const fs = require(‘fs’)
+const morgan = require(‘morgan’)
+const path = require(‘path’)</li>
+</ul>
+
+<p>const app = express()</p>
+
+<p>// create a write stream (in append mode) 
+const accessLogStream = fs.createWriteStream(path.join(__dirname, ‘access.log’), {flags: ‘a’})</p>
+
+<p>// setup the logger 
+app.use(morgan(‘combined’, {stream: accessLogStream}))</p>
+
+<p>app.get(‘/’, (req, res) =&gt; {
+  res.send(‘hello, world!’)
+})</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## Winston (application logs)
+
+[Winston](https://www.npmjs.com/package/winston) is designed to be a simple and universal logging library.
+* Available loggers: console, file, http and memory. Custom ones allowed too.
+
+* Usage:
+```javascript
+const winston = require('winston');
+winston.log('info', 'Hello distributed log files!');
+winston.info('Hello again distributed logs');
+
+winston.level = 'debug';
+winston.log('debug', 'Now my debug messages are written to console!');
+</code></pre></div></div>
+
+<ul>
+  <li>Default logger is console, to change for file use winston.configure:
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">winston</span><span class="p">.</span><span class="nx">configure</span><span class="p">({</span>
+  <span class="na">transports</span><span class="p">:</span> <span class="p">[</span>
+      <span class="k">new</span> <span class="p">(</span><span class="nx">winston</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">File</span><span class="p">)({</span> <span class="na">filename</span><span class="p">:</span> <span class="s1">'somefile.log'</span> <span class="p">})</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="authentication-and-authorization">Authentication and Authorization</h1>
+
+<ul>
+  <li>Authorization for you app, check <a href="https://www.npmjs.com/package/acl">acl</a></li>
+  <li>Authentication for an API, I would go for <a href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken</a>. First search result gives this <a href="https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens">example</a>.</li>
+</ul>
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        
+        <p class="copyright">Server Side Scripting Frameworks maintained by <a href="http://github.com/ilkkamtk">ilkkamtk</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+
+</body>
+</html>

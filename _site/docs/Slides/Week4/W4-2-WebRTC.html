@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>WebRTC | SSSF-course</title>
+<meta property="og:title" content="WebRTC" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Server-Side Scripting Frameworks" />
+<meta property="og:description" content="Server-Side Scripting Frameworks" />
+<link rel="canonical" href="http://localhost:4000/docs/Slides/Week4/W4-2-WebRTC.html" />
+<meta property="og:url" content="http://localhost:4000/docs/Slides/Week4/W4-2-WebRTC.html" />
+<meta property="og:site_name" content="SSSF-course" />
+<script type="application/ld+json">
+{"name":null,"description":"Server-Side Scripting Frameworks","author":null,"@type":"WebPage","url":"http://localhost:4000/docs/Slides/Week4/W4-2-WebRTC.html","publisher":null,"image":null,"headline":"WebRTC","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+        <h1><a href="http://localhost:4000/">SSSF-course</a></h1>
+      
+
+      <h1 id="webrtc">WebRTC</h1>
+<ul>
+  <li>RTC = Real Time Communications</li>
+  <li><a href="https://www.html5rocks.com/en/tutorials/webrtc/basics/">Getting started</a></li>
+  <li><a href="https://www.html5rocks.com/en/tutorials/webrtc/basics/">Some server related stuff</a></li>
+  <li><a href="https://codelabs.developers.google.com/codelabs/webrtc-web/#0">WebRTC tutorial</a></li>
+  <li><a href="http://iswebrtcreadyyet.com/">Browser support</a></li>
+</ul>
+
+<h2 id="simplewebrtc">SimpleWebRTC</h2>
+<ul>
+  <li><a href="https://simplewebrtc.com/">Home page</a></li>
+  <li><a href="https://github.com/andyet/SimpleWebRTC">On GitHub</a></li>
+</ul>
+
+<h2 id="signalmaster">Signalmaster</h2>
+<ul>
+  <li><a href="https://github.com/andyet/signalmaster">On GitHub</a></li>
+</ul>
+
+<h4 id="excercise-create-a-simple-videochat-on-localhost">Excercise: Create a simple videochat on localhost</h4>
+<p>(note: Since we dont have TURN server(s) video chat does not usually work unless chatters are in the same network. <a href="https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/#after-signaling-using-ice-to-cope-with-nats-and-firewalls">More info</a>)</p>
+<ol>
+  <li>Write a simple express.js server to serve ‘public’ folder over <a href="https://github.com/ilkkamtk/SSSF-course/blob/master/Slides/Week3/W3-4-https-passport.md">https</a>
+    <ul>
+      <li>create following folder structure
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-server.js
+public
+-videochat.html
+js
+  -rtc.js
+</code></pre></div>        </div>
+      </li>
+    </ul>
+
+    <p>videochat.html:</p>
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="cp">&lt;!DOCTYPE html&gt;</span>
+   <span class="nt">&lt;html&gt;</span>
+   <span class="nt">&lt;head&gt;</span>
+       <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://simplewebrtc.com/latest-v2.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+       <span class="nt">&lt;style&gt;</span>
+           <span class="nf">#remoteVideos</span> <span class="nt">video</span> <span class="p">{</span>
+               <span class="nl">height</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nf">#localVideo</span> <span class="p">{</span>
+               <span class="nl">height</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+           <span class="p">}</span>
+       <span class="nt">&lt;/style&gt;</span>
+   <span class="nt">&lt;/head&gt;</span>
+   <span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;video</span> <span class="na">id=</span><span class="s">"localVideo"</span><span class="nt">&gt;&lt;/video&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"remoteVideos"</span><span class="nt">&gt;&lt;/div&gt;</span>
+   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/rtc.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+   <span class="nt">&lt;/body&gt;</span>
+   <span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+    <p>rtc.js:</p>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kd">const</span> <span class="nx">webrtc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleWebRTC</span><span class="p">({</span>
+       <span class="c1">// the id/element dom element that will hold "our" video</span>
+       <span class="na">localVideoEl</span><span class="p">:</span> <span class="s1">'localVideo'</span><span class="p">,</span>
+       <span class="c1">// the id/element dom element that will hold remote videos</span>
+       <span class="na">remoteVideosEl</span><span class="p">:</span> <span class="s1">'remoteVideos'</span><span class="p">,</span>
+       <span class="c1">// immediately ask for camera access</span>
+       <span class="na">autoRequestMedia</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="p">});</span>
+        
+   <span class="c1">// we have to wait until it's ready</span>
+   <span class="nx">webrtc</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'readyToCall'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+       <span class="c1">// you can name it anything</span>
+       <span class="nx">webrtc</span><span class="p">.</span><span class="nx">joinRoom</span><span class="p">(</span><span class="s1">'your room name'</span><span class="p">);</span>
+   <span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Start server, open <code class="highlighter-rouge">https://localhost:3000/videochat.html</code>
+    <ul>
+      <li>If you open the same address in another browser window you should see two videos</li>
+    </ul>
+  </li>
+  <li>To chat with your classmates, you need to move ‘public’ folder to users.metropolia.fi (use https) or deploy project to Jelastic</li>
+  <li>Previous example uses simpleWebRTC:s server to handle the signaling. Create your own signalling server:
+    <ul>
+      <li>Start another project and write a simple express.js <a href="https://github.com/ilkkamtk/SSSF-course/blob/master/Slides/Week3/W3-4-https-passport.md">https</a> server <strong><em>without</em></strong> force redirection
+        <ul>
+          <li>use port 8888 instead of 3000 because you will have two server instances running on localhost</li>
+        </ul>
+      </li>
+      <li>
+        <p>Add <a href="https://github.com/andyet/signalmaster">Signalmaster</a> and <a href="https://github.com/HenrikJoreteg/getconfig">getconfig</a> to the project:</p>
+
+        <p><code class="highlighter-rouge">npm install signal-master getconfig --save</code></p>
+      </li>
+      <li>add/modify followind to server.js
+```javascript
+ // add this with other requires:
+ const config = require(‘getconfig’);
+ const sockets = require(‘signal-master/sockets’);
+ // modify this line:
+ const server = https.createServer(options, app).listen(8888);
+ // add this to the end of file
+ sockets(server, config);</li>
+    </ul>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* create folder 'config' and add development.json
+development.json:
+```json
+   {
+     "isDev": true,
+     "rooms": {
+       "/* maxClients */": "/* maximum number of clients per room. 0 = no limit */",
+       "maxClients": 0
+     },
+     "stunservers": [
+       {
+         "url": "stun:stun.l.google.com:19302"
+       }
+     ],
+     "turnservers": [
+       {
+         "urls": ["turn:your.turn.servers.here"],
+         "secret": "turnserversharedsecret",
+         "expiry": 86400
+       }
+     ]
+   }
+</code></pre></div>    </div>
+  </li>
+  <li>Start your server, open https://localhost:8888 and accept secirity execption</li>
+  <li>Modify rtc.js:
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">webrtc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleWebRTC</span><span class="p">({</span>
+    <span class="p">...</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://localhost:8888'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Open <code class="highlighter-rouge">https://localhost:3000/videochat.html</code> in two broser windows (or on Chrome and Firefox) to test the application. Use developer tools-&gt;network tab to troubleshoot.</li>
+  <li>If you would deploy signalling server to Jelastic, change the port number to 3000</li>
+  <li><em>FYI: Public signalling server is at https://signaler.jelastic.metropolia.fi (edit url in rtc.js if you want to test this)</em></li>
+</ol>
+
+<h4 id="excercise-2-stylise-video-chat">Excercise 2: Stylise video chat</h4>
+<ul>
+  <li><a href="https://simplewebrtc.com/notsosimple.html">Instructions</a></li>
+  <li>You can follow the instructions but try to do your own version. Like picture in picture, add nicknames etc.</li>
+</ul>
+
+<h3 id="extra-links">Extra links</h3>
+<ul>
+  <li><a href="https://github.com/alongubkin/phonertc/wiki/Installation">TURN server installation</a></li>
+</ul>
+
+
+      
+    </div>
+    <script src="/assets/javascript/anchor-js/anchor.min.js"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

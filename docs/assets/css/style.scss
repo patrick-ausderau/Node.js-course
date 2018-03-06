@@ -1,0 +1,16 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+#main_content_wrap {
+  display: flex;
+  flex-wrap: wrap;
+
+  nav {
+    padding: 1rem;
+    ul {
+      list-style-type: none;
+    }
+  }
+}

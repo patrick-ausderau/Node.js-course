@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Security continued | SSSF-course</title>
+<meta property="og:title" content="Security continued" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Server-Side Scripting Frameworks" />
+<meta property="og:description" content="Server-Side Scripting Frameworks" />
+<link rel="canonical" href="http://localhost:4000/Slides/Week4/W4-4-Helmet-CORS.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/Week4/W4-4-Helmet-CORS.html" />
+<meta property="og:site_name" content="SSSF-course" />
+<script type="application/ld+json">
+{"name":null,"description":"Server-Side Scripting Frameworks","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/Week4/W4-4-Helmet-CORS.html","publisher":null,"image":null,"headline":"Security continued","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+        <h1><a href="http://localhost:4000/">SSSF-course</a></h1>
+      
+
+      <h1 id="security-continued">Security continued</h1>
+
+<h2 id="helmet">Helmet</h2>
+
+<ul>
+  <li><a href="https://www.npmjs.com/package/helmet">Helmet</a> secures Express.js application by modifying multiple headers.</li>
+  <li>
+    <p>“It’s not a silver bullet, but it can help!”</p>
+  </li>
+  <li>Installation:</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install helmet <span class="nt">--save</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Basic usage:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">helmet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'helmet'</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">helmet()</code> applies all default measures. To use only some, enable only those:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noCache</span><span class="p">())</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">())</span>
+</code></pre></div></div>
+
+<ul>
+  <li>or disable some:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">({</span>
+  <span class="na">frameguard</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="exercise">Exercise</h3>
+
+<p>Enable every default module of Helmet but the <code class="highlighter-rouge">X-Download-Options</code> header setting (<code class="highlighter-rouge">ieNoOpen</code>)</p>
+
+<hr />
+
+<h2 id="cors">CORS</h2>
+
+<ul>
+  <li>AJAX calls to other domains are forbidden by default by the <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same-origin security policy</a></li>
+  <li>Implemented by basically all browsers</li>
+  <li>
+    <p>Can be relaxed by enabling <code class="highlighter-rouge">Access-Control-*</code> headers</p>
+  </li>
+  <li><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/2000px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png">Flow</a></li>
+</ul>
+
+<h3 id="cors-with-expressjs">CORS with Express.js</h3>
+
+<ul>
+  <li>To enable Cross-Origin Resource Sharing (CORS), <a href="https://www.npmjs.com/package/cors">cors package</a> can be used</li>
+  <li>
+    <p>It supports enabling CORS for all routes, for single routes, and for pre-flight requests</p>
+  </li>
+  <li>Installation:</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--save</span> cors
+</code></pre></div></div>
+
+<ul>
+  <li>Enable for all requests:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'cors'</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">());</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="exercise-1">Exercise</h3>
+
+<p>Implement CORS so that your application only allows CORS for POST on path <code class="highlighter-rouge">/cors-enabled</code>.</p>
+
+<hr />
+
+<h2 id="dependency-security">Dependency security</h2>
+
+<ul>
+  <li>“Security of your app is only as strong as the “weakest link” in your dependencies.”</li>
+  <li>To check your dependencies for known vulnerabilities, <a href="https://www.npmjs.com/package/nsp">nsp</a> can be used</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i nsp <span class="nt">-g</span>
+nsp check
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="exercise-2">Exercise</h3>
+<p>Check your project for known vulnerabilities</p>
+
+<hr />
+
+<h1 id="use-tls">Use TLS</h1>
+
+<ul>
+  <li>TLS is the new progression of SSL</li>
+  <li>Express.js can handle HTTPS <a href="/Slides/Week3/W3-4-https-passport.html">relatively simply</a></li>
+  <li>Generally better to implement TLS in reverse-proxy such as Nginx (as implemented in jelastic)</li>
+</ul>
+
+
+
+      
+    </div>
+    <script src="/assets/javascript/anchor-js/anchor.min.js"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

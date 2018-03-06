@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>MongoDB installation on OS X | SSSF-course</title>
+<meta property="og:title" content="MongoDB installation on OS X" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Server-Side Scripting Frameworks" />
+<meta property="og:description" content="Server-Side Scripting Frameworks" />
+<link rel="canonical" href="http://localhost:4000/docs/Slides/Week2/W2-2-osx-install.html" />
+<meta property="og:url" content="http://localhost:4000/docs/Slides/Week2/W2-2-osx-install.html" />
+<meta property="og:site_name" content="SSSF-course" />
+<script type="application/ld+json">
+{"name":null,"description":"Server-Side Scripting Frameworks","author":null,"@type":"WebPage","url":"http://localhost:4000/docs/Slides/Week2/W2-2-osx-install.html","publisher":null,"image":null,"headline":"MongoDB installation on OS X","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+        <h1><a href="http://localhost:4000/">SSSF-course</a></h1>
+      
+
+      <h1 id="mongodb-installation-on-os-x">MongoDB installation on OS X</h1>
+<ul>
+  <li>
+    <p>Go to the MongoDB website’s download section and <a href="https://www.mongodb.com/download-center#community">download</a> the community version of MongoDB.</p>
+
+    <p>After downloading Mongo move the gzipped tar file (the file with the extension .tgz that you downloaded) to the folder where you want Mongo installed. In this case, we’ll say that we want Mongo to live in our home folder, and so the commands might look something like this:</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   cd Downloads
+   mv mongodb-osx-[version].tgz ~/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Extract MongoDB from the the downloaded archive, and change the name of the directory to something more palatable:</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cd ~/
+  tar -zxvf mongodb-osx-[version].tgz
+  mv mongodb-osx-[version] mongodb
+</code></pre></div></div>
+<ul>
+  <li>Create the directory where Mongo will store data, create the “db” directory. You can create the directory in the default location by running</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  mkdir -p /data/db
+</code></pre></div></div>
+
+<ul>
+  <li>Make sure that the /data/db directory has the right permissions by running</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo chown -R `id -un` /data/db
+   # Enter your password
+</code></pre></div></div>
+
+<ul>
+  <li>after installing set PATH variable:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  vim ~/.bashrc
+</code></pre></div></div>
+
+<ul>
+  <li>add following line:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export PATH=${HOME}/mongodb/bin:$PATH
+</code></pre></div></div>
+
+<ul>
+  <li>run <code class="highlighter-rouge">source ~/.bashrc</code> or restart terminal to update settings</li>
+  <li>run the Mongo daemon, in one terminal window run <code class="highlighter-rouge">mongod</code>. This will start the Mongo server.</li>
+  <li>run the Mongo shell, with the Mongo daemon running in one terminal, type <code class="highlighter-rouge">mongo</code> in another terminal window. This will run the Mongo shell which is an application to access data in MongoDB.</li>
+  <li>to exit the Mongo shell run <code class="highlighter-rouge">quit()</code></li>
+  <li>yo stop the Mongo daemon hit <code class="highlighter-rouge">ctrl-c</code></li>
+</ul>
+
+
+      
+    </div>
+    <script src="/assets/javascript/anchor-js/anchor.min.js"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

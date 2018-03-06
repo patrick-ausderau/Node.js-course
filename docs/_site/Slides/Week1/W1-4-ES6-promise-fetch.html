@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Server Side Scripting Frameworks : Ile, Pate ja Olli">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784">
+
+    <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Server Side Scripting Frameworks | Ile, Pate ja Olli</title>
+<meta property="og:title" content="Server Side Scripting Frameworks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ile, Pate ja Olli" />
+<meta property="og:description" content="Ile, Pate ja Olli" />
+<link rel="canonical" href="http://localhost:4000/Slides/Week1/W1-4-ES6-promise-fetch.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/Week1/W1-4-ES6-promise-fetch.html" />
+<meta property="og:site_name" content="Server Side Scripting Frameworks" />
+<script type="application/ld+json">
+{"name":null,"description":"Ile, Pate ja Olli","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/Week1/W1-4-ES6-promise-fetch.html","publisher":null,"image":null,"headline":"Server Side Scripting Frameworks","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="http://github.com/ilkkamtk/SSSF-course">View on GitHub</a>
+
+        <h1 id="project_title">Server Side Scripting Frameworks</h1>
+        <h2 id="project_tagline">Ile, Pate ja Olli</h2>
+
+        
+    </header>
+</div>
+
+<!-- NAVI -->
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+
+    <nav>
+    <ul>
+        
+        <li>
+            <a href="/assets/css/style.css"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/QA.html">Multiple local environments</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-1-Toolchain.html">Server-side scripting frameworks Toolchain</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-2-ECMAScript6-const-let-arrow_function.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-4-ES6-promise-fetch.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-1-express.html">Express.js</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-1-npm.html">NPM</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-2-osx-install.html">MongoDB installation on OS X</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-4-Deploy_on_jelastic.html">express and mongoose on jelasitc</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-1-NoSQL-MongoDB-mongoose-continued.html">NoSQL MongoDB database and mongoose continued</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-2-Pug.html">PUG</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-4-https-passport.html">First steps into security</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week4/W4-2-WebRTC.html">WebRTC</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week4/W4-4-Helmet-CORS.html">Security continued</a>
+        </li>
+        
+        <li>
+            <a href="/">Server-Side Scripting Frameworks</a>
+        </li>
+        
+    </ul>
+</nav>
+    <section id="main_content" class="inner">
+        <p>class: center, middle</p>
+
+<h2 id="ecmascript-2015-6th-edition">ECMAScript 2015 (6th edition)</h2>
+<h5 id="promise--fetch">Promise &amp; fetch</h5>
+<h4 id="tx00cr77-3001--spring-2017">TX00CR77-3001 / Spring 2017</h4>
+<h4 id="patrick-ausderau">Patrick Ausderau</h4>
+
+<hr />
+
+<h1 id="contents">Contents</h1>
+
+<ol>
+  <li><code class="highlighter-rouge">Promise</code></li>
+  <li><code class="highlighter-rouge">fetch()</code></li>
+</ol>
+
+<hr />
+
+<h1 id="promise">Promise</h1>
+
+<ul>
+  <li>A <code class="highlighter-rouge">Promise</code> object is use for asynchronous task</li>
+  <li>A <code class="highlighter-rouge">Promise</code> represents a value which may be available now, or in the future, or never</li>
+  <li>When creating a Promise, a function is given as parameter that will be called immediately
+    <ul>
+      <li>that function takes <code class="highlighter-rouge">resolve</code> and <code class="highlighter-rouge">reject</code> parameters</li>
+      <li>once that function completes, either calls the <code class="highlighter-rouge">resolve</code> function to resolve the promise or <code class="highlighter-rouge">rejects</code> it if an error occurred</li>
+      <li>If an exception is thrown in the function, the promise is rejected (the return value of the function is ignored)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myPromise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="cm">/* ...usually some asynchronous task... */</span>
+  <span class="c1">//on succes...</span>
+  <span class="nx">resolve</span><span class="p">(</span><span class="s1">'Yes :)'</span><span class="p">);</span>
+  <span class="c1">//on failure...</span>
+  <span class="nx">reject</span><span class="p">(</span><span class="s1">'NO NO NO!'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="promise-then-and-catch">Promise then() and catch()</h1>
+
+<ul>
+  <li>A pending promise can either be fulfilled with a value, or rejected with a reason (error)
+    <ul>
+      <li>When any of these happen, the associated handlers queued up by a promise’s <code class="highlighter-rouge">then</code> method are called</li>
+      <li>the Promise <code class="highlighter-rouge">then()</code> and <code class="highlighter-rouge">catch()</code> methods return promises so they can be chained</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/Slides/Week1/img/promises.png" alt="chaining promise" />
+<span style="font-size: small;">Mozilla Contributors CC-BY-SA 2.5</span></p>
+
+<hr />
+
+<h1 id="promise-then">Promise then()</h1>
+
+<ul>
+  <li>The Promise <code class="highlighter-rouge">then</code> method take one or two parameters
+    <ul>
+      <li>A function called when the Promise is fulfilled. This function has one argument, the fulfillment value</li>
+      <li>Optionally a function called when the Promise is rejected. This function has one argument, the rejection reason</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myPromise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">successMsg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Really: '</span> <span class="o">+</span> <span class="nx">successMsg</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">errorMsg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'So sad :( '</span> <span class="o">+</span> <span class="nx">errorMsg</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="promise-catch">Promise catch()</h1>
+
+<ul>
+  <li>The <code class="highlighter-rouge">catch</code> method returns a Promise and deals with rejected cases only, so takes only one parameter function</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myPromise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">successMsg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Really: '</span> <span class="o">+</span> <span class="nx">successMsg</span><span class="p">);</span>
+  <span class="c1">//but something bad...</span>
+  <span class="k">throw</span> <span class="s1">'oh, no :('</span><span class="p">;</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> 
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'after a catch the chain is restored'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="promise-race">Promise race()</h1>
+
+<ul>
+  <li>The Promise <code class="highlighter-rouge">race</code> takes an array (or other iterable) of promises and return a promise as soon as one of the promises in the iterable resolves or rejects</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s1">'one'</span><span class="p">);</span> 
+<span class="p">});</span>
+<span class="kd">const</span> <span class="nx">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">);</span> 
+<span class="p">});</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// with a huge probability "two"</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="promise-all">Promise all()</h1>
+
+<ul>
+  <li>The Promise <code class="highlighter-rouge">all</code> method returns a single Promise that resolves when all of the promises in the iterable argument have resolved or rejects. Returns
+    <ul>
+      <li>if all have resolved, an array of all the resolved values in the same order as defined in the iterable</li>
+      <li>if some have rejected, the reason of the first promise that rejects</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s1">'one'</span><span class="p">);</span> 
+<span class="p">});</span>
+<span class="kd">const</span> <span class="nx">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">);</span> 
+<span class="p">});</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">values</span><span class="p">);</span> <span class="c1">// ["one", "two"]</span>
+<span class="p">},</span> <span class="nx">reason</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reason</span><span class="p">);</span> <span class="c1">// or reject?</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="fetch">Fetch</h1>
+
+<ul>
+  <li>The Fetch API provides an interface for fetching resources locally or over the network (similar to <code class="highlighter-rouge">XMLHttpRequest</code>) and provides
+    <ul>
+      <li><code class="highlighter-rouge">GlobalFetch.fetch()</code> method used to fetch a resource</li>
+      <li><code class="highlighter-rouge">Headers</code> which represents response/request headers, allowing to query them and take different actions depending on the results</li>
+      <li><code class="highlighter-rouge">Request</code> which represents a resource request</li>
+      <li><code class="highlighter-rouge">Response</code> which represents the response to a request</li>
+      <li><code class="highlighter-rouge">Body</code> that provides methods relating to the body of the response/request, allowing to declare what its content type is and how it should be handled</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="fetch-1">fetch()</h1>
+
+<ul>
+  <li>The fetch() method starts the process of fetching a resource from the network. This returns a promise that resolves to the Response object representing the response to your request
+    <ul>
+      <li>A input attribute, either a string with the direct URL or a <code class="highlighter-rouge">Request</code> object</li>
+      <li>Optionally, an options object which contains settings for the request, like
+        <ul>
+          <li><code class="highlighter-rouge">method: POST</code></li>
+          <li><code class="highlighter-rouge">headers:</code> that will contains <code class="highlighter-rouge">Headers</code> object (e.g. to set <code class="highlighter-rouge">Content-Type</code> to <code class="highlighter-rouge">text/plain</code>)</li>
+          <li><code class="highlighter-rouge">mode:</code> The mode you want to use for the request, e.g., <code class="highlighter-rouge">cors</code>, <code class="highlighter-rouge">no-cors</code>, or <code class="highlighter-rouge">same-origin</code></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters">etc.</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="fetch-2">fetch()</h1>
+
+<p>Example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myImage</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'img'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">myRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s1">'http://placekitten.com/768/720'</span><span class="p">);</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="nx">myRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="k">if</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">blob</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Network response was not ok.'</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">myBlob</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">objectURL</span> <span class="o">=</span> <span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">myBlob</span><span class="p">);</span>
+  <span class="nx">myImage</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">objectURL</span><span class="p">;</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Problem :( '</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="header">Header</h1>
+
+<ul>
+  <li>The Headers interface of the Fetch API allows to perform various actions on HTTP request and response headers</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+  <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'text/plain'</span><span class="p">,</span>
+  <span class="s1">'Content-Length'</span><span class="p">:</span> <span class="nx">content</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">myInit</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+               <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
+               <span class="na">cache</span><span class="p">:</span> <span class="s1">'default'</span> <span class="p">};</span>
+ 
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://www.test.org'</span><span class="p">,</span> <span class="nx">myInit</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="request-response-and-body">Request, Response and Body</h1>
+
+<ul>
+  <li>The <code class="highlighter-rouge">Request</code> interface of the Fetch API represents a resource request
+    <ul>
+      <li>it contains properties such as <code class="highlighter-rouge">method</code>, <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">headers</code>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request#Properties">etc.</a></li>
+    </ul>
+  </li>
+  <li>The <code class="highlighter-rouge">Response</code> interface of the Fetch API represents the response to a request
+    <ul>
+      <li>it contains properties such as <code class="highlighter-rouge">headers</code>, <code class="highlighter-rouge">ok</code> (status code in range 200-299), <code class="highlighter-rouge">redirected</code>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response#Properties">etc.</a></li>
+    </ul>
+  </li>
+  <li>While you can create <code class="highlighter-rouge">Request</code> and <code class="highlighter-rouge">Response</code> objects, it is more likely to get them as the result of another API operation, e.g. as a <code class="highlighter-rouge">fetch()</code> result</li>
+  <li>Both implements the <code class="highlighter-rouge">Body</code> mixin
+    <ul>
+      <li>it provides methods such as <code class="highlighter-rouge">text()</code>, <code class="highlighter-rouge">json()</code>, <code class="highlighter-rouge">blob()</code>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body#Methods">etc.</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">const</span>  <span class="nx">myRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s1">'cats.json'</span><span class="p">);</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="nx">myRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span> 
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">json</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">json</span><span class="p">.</span><span class="nx">cats</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* ... */</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="sources">Sources</h1>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></li>
+</ul>
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        
+        <p class="copyright">Server Side Scripting Frameworks maintained by <a href="http://github.com/ilkkamtk">ilkkamtk</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+
+</body>
+</html>

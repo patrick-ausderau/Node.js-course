@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Week assignment 1 | SSSF-course</title>
+<meta property="og:title" content="Week assignment 1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Server-Side Scripting Frameworks" />
+<meta property="og:description" content="Server-Side Scripting Frameworks" />
+<link rel="canonical" href="http://localhost:4000/Assignments/Week1/W1-Week-assignment.html" />
+<meta property="og:url" content="http://localhost:4000/Assignments/Week1/W1-Week-assignment.html" />
+<meta property="og:site_name" content="SSSF-course" />
+<script type="application/ld+json">
+{"name":null,"description":"Server-Side Scripting Frameworks","author":null,"@type":"WebPage","url":"http://localhost:4000/Assignments/Week1/W1-Week-assignment.html","publisher":null,"image":null,"headline":"Week assignment 1","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+        <h1><a href="http://localhost:4000/">SSSF-course</a></h1>
+      
+
+      <h1 id="week-assignment-1">Week assignment 1</h1>
+
+<p>You are given a predefined set of data (spyArray). Your task is to create an app which displays the data on a web page using ES6.</p>
+
+<p>App features:</p>
+<ul>
+  <li>Display tumbnails</li>
+  <li>Display image title and details</li>
+  <li>Display larger version of the image in modal</li>
+  <li>Display (Google) map showing the location of the image</li>
+  <li>Display human readable date of the image</li>
+  <li>Sort/display by category</li>
+  <li>Whatever other features you want</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">spyArray</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"2017-03-02 22:55"</span><span class="p">,</span>
+    <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"Wife"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Title 1"</span><span class="p">,</span>
+    <span class="s2">"details"</span><span class="p">:</span> <span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales enim eget leo condimentum vulputate. Sed lacinia consectetur fermentum. Vestibulum lobortis purus id nisi mattis posuere. Praesent sagittis justo quis nibh ullamcorper, eget elementum lorem consectetur. Pellentesque eu consequat justo, eu sodales eros."</span><span class="p">,</span>
+    <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">60.2196781</span><span class="p">,</span>
+      <span class="s2">"lng"</span><span class="p">:</span> <span class="mf">24.8079786</span>
+    <span class="p">},</span>
+    <span class="s2">"thumbnail"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/320/300"</span><span class="p">,</span>
+    <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/768/720"</span><span class="p">,</span>
+    <span class="s2">"original"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/2048/1920"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"2017-03-01 19:23"</span><span class="p">,</span>
+    <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"Wife"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Title 2"</span><span class="p">,</span>
+    <span class="s2">"details"</span><span class="p">:</span> <span class="s2">"Donec dignissim tincidunt nisl, non scelerisque massa pharetra ut. Sed vel velit ante. Aenean quis viverra magna. Praesent eget cursus urna. Ut rhoncus interdum dolor non tincidunt. Sed vehicula consequat facilisis. Pellentesque pulvinar sem nisl, ac vestibulum erat rhoncus id. Vestibulum tincidunt sapien eu ipsum tincidunt pulvinar. "</span><span class="p">,</span>
+    <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">60.3196781</span><span class="p">,</span> <span class="s2">"lng"</span><span class="p">:</span> <span class="mf">24.9079786</span> <span class="p">},</span>
+    <span class="s2">"thumbnail"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/321/300"</span><span class="p">,</span>
+    <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/770/720"</span><span class="p">,</span>
+    <span class="s2">"original"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/2041/1920"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"2017-12-04 09:45"</span><span class="p">,</span>
+    <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"Girlfriend"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Title 3"</span><span class="p">,</span>
+    <span class="s2">"details"</span><span class="p">:</span> <span class="s2">"Phasellus imperdiet nunc tincidunt molestie vestibulum. Donec dictum suscipit nibh. Sed vel velit ante. Aenean quis viverra magna. Praesent eget cursus urna. Ut rhoncus interdum dolor non tincidunt. Sed vehicula consequat facilisis. Pellentesque pulvinar sem nisl, ac vestibulum erat rhoncus id. "</span><span class="p">,</span>
+    <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="mf">60.3196781</span><span class="p">,</span> <span class="s2">"lng"</span><span class="p">:</span> <span class="mf">24.9079786</span> <span class="p">},</span>
+    <span class="s2">"thumbnail"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/319/300"</span><span class="p">,</span>
+    <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/769/720"</span><span class="p">,</span>
+    <span class="s2">"original"</span><span class="p">:</span> <span class="s2">"http://placekitten.com/2039/1920"</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="1st-step-monday">1st step (Monday)</h3>
+<p>Create the HTML template for displaying a list of thumbnails with some details. Use the data from the array above.</p>
+
+<blockquote>
+  <p>Example layout:
+<img src="/Assignments/Week1/img/ui1.png" alt="Example layout" /></p>
+</blockquote>
+
+<h3 id="2nd-step-tuesday">2nd step (Tuesday)</h3>
+<p>Add modal to display the mid-size image of selected thumbnail</p>
+<blockquote>
+  <p>Example layout:
+<img src="/Assignments/Week1/img/ui2.png" alt="Example layout" /></p>
+</blockquote>
+
+<h3 id="3rd-step-wednesday">3rd step (Wednesday)</h3>
+<ul>
+  <li>Sort/display by category</li>
+  <li>Display date</li>
+</ul>
+
+<h3 id="4h-step-thursday">4h step (Thursday)</h3>
+<p>Finish the app by adding additional functionaility:</p>
+<ul>
+  <li>Create new file data.json and copy/paste the spyArray there. Delete spyArray from the code and use AJAX to load the array from data.json.</li>
+  <li>Google Map (or similar) to display the location of selected image</li>
+  <li>etc…</li>
+</ul>
+
+
+      
+    </div>
+    <script src="/assets/javascript/anchor-js/anchor.min.js"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

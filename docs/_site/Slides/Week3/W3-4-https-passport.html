@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Server Side Scripting Frameworks : Ile, Pate ja Olli">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784">
+
+    <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>First steps into security | Server Side Scripting Frameworks</title>
+<meta property="og:title" content="First steps into security" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ile, Pate ja Olli" />
+<meta property="og:description" content="Ile, Pate ja Olli" />
+<link rel="canonical" href="http://localhost:4000/Slides/Week3/W3-4-https-passport.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/Week3/W3-4-https-passport.html" />
+<meta property="og:site_name" content="Server Side Scripting Frameworks" />
+<script type="application/ld+json">
+{"name":null,"description":"Ile, Pate ja Olli","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/Week3/W3-4-https-passport.html","publisher":null,"image":null,"headline":"First steps into security","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="http://github.com/ilkkamtk/SSSF-course">View on GitHub</a>
+
+        <h1 id="project_title">Server Side Scripting Frameworks</h1>
+        <h2 id="project_tagline">Ile, Pate ja Olli</h2>
+
+        
+    </header>
+</div>
+
+<!-- NAVI -->
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+
+    <nav>
+    <ul>
+        
+        <li>
+            <a href="/assets/css/style.css"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/QA.html">Multiple local environments</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-1-Toolchain.html">Server-side scripting frameworks Toolchain</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-2-ECMAScript6-const-let-arrow_function.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/W1-4-ES6-promise-fetch.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week1/"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-1-express.html">Express.js</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-1-npm.html">NPM</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html"></a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-2-osx-install.html">MongoDB installation on OS X</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week2/W2-4-Deploy_on_jelastic.html">express and mongoose on jelasitc</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-1-NoSQL-MongoDB-mongoose-continued.html">NoSQL MongoDB database and mongoose continued</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-2-Pug.html">PUG</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week3/W3-4-https-passport.html">First steps into security</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week4/W4-2-WebRTC.html">WebRTC</a>
+        </li>
+        
+        <li>
+            <a href="/Slides/Week4/W4-4-Helmet-CORS.html">Security continued</a>
+        </li>
+        
+        <li>
+            <a href="/">Server-Side Scripting Frameworks</a>
+        </li>
+        
+    </ul>
+</nav>
+    <section id="main_content" class="inner">
+        <h1 id="first-steps-into-security">First steps into security</h1>
+
+<h2 id="https">HTTPS</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a>
+    <ul>
+      <li>HTTP over <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS/SSL</a></li>
+      <li><em>authentication</em> of the visited website</li>
+      <li>protection of the <em>privacy</em> and <em>integrity</em> of the exchanged data</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="express-localhost">express (localhost)</h3>
+
+<ul>
+  <li>Generate keys and certificate with <a href="https://www.openssl.org/">openssl</a> (in real life, you would need to get certified by a third party, e.g. <a href="https://letsencrypt.org/">Let’s Encrypt</a>)</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>openssl genrsa <span class="nt">-out</span> ssl-key.pem 1024
+<span class="nv">$ </span>openssl req <span class="nt">-new</span> <span class="nt">-key</span> ssl-key.pem <span class="nt">-out</span> certrequest.csr
+<span class="nv">$ </span>openssl x509 <span class="nt">-req</span> <span class="nt">-in</span> certrequest.csr <span class="nt">-signkey</span> ssl-key.pem <span class="nt">-out</span> ssl-cert.pem
+</code></pre></div></div>
+
+<ul>
+  <li>Put the keys and certificate in the app folder</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'https'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">sslkey</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">'ssl-key.pem'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sslcert</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">'ssl-cert.pem'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">key</span><span class="p">:</span> <span class="nx">sslkey</span><span class="p">,</span>
+      <span class="na">cert</span><span class="p">:</span> <span class="nx">sslcert</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Hello Secure World!'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Eventually, force redirection from HTTP to HTTPS</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="p">{</span> <span class="s1">'Location'</span><span class="p">:</span> <span class="s1">'https://localhost:3000'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="p">});</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="express-jelastic">express (jelastic)</h3>
+
+<ul>
+  <li>A valid certificate (courtesy of helpdesk) for jelastic.metropolia.fi can be used for all its subdomains
+    <ul>
+      <li>Well, nothing to do, navigate to your app with https://</li>
+    </ul>
+  </li>
+  <li>Eventually, force the redirection from HTTP to HTTPS</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">enable</span><span class="p">(</span><span class="s1">'trust proxy'</span><span class="p">);</span>
+
+<span class="c1">// Add a handler to inspect the req.secure flag (see </span>
+<span class="c1">// http://expressjs.com/api#req.secure). This allows us </span>
+<span class="c1">// to know whether the request was via http or https.</span>
+<span class="c1">// https://github.com/aerwin/https-redirect-demo/blob/master/server.js</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">secure</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// request was via https, so do no special handling</span>
+    <span class="nx">next</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// request was via http, so redirect to https</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">'https://'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="authentication">Authentication</h2>
+
+<ul>
+  <li>Process of validating the user is who she claims to be</li>
+  <li>Usually done online by user providing username and password</li>
+  <li>For APIs tokens are usually used because:
+    <ul>
+      <li>Single user can have multiple tokens</li>
+      <li>If one token is exposed, it can be easily disabled</li>
+      <li>Tokens can have explicit access restrictions and thus prevent possible damages on exposure</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="express">express</h3>
+
+<ul>
+  <li>Implementing security-related things yourself is generally not smart</li>
+  <li>Still, for the sake of example, authentication can be implemented as Express.js middleware:
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">token</span> <span class="o">===</span> <span class="s1">'SECRET_TOKEN_TOKEN'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">next</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">401</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Please sign in.'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="passportjs"><a href="http://passportjs.org/">Passport.js</a></h3>
+
+<ul>
+  <li>De facto standard authentication solution for Express.js applications</li>
+  <li>Flexible &amp; does not mount routes</li>
+  <li>Supports OAuth (Facebook, Twitter, etc.) &amp; OpenID</li>
+  <li>Has over 300 login strategies available</li>
+</ul>
+
+<h4 id="username-and-password-authentication">Username and password authentication</h4>
+
+<ul>
+  <li>Install:
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm install <span class="nt">--save</span> passport
+</code></pre></div>    </div>
+  </li>
+  <li>Register the strategy:
+```javascript
+const bodyParser = require(‘body-parser’);
+require(‘dotenv’).config();
+app.use(bodyParser.urlencoded({extended: true}));</li>
+</ul>
+
+<p>const passport = require(‘passport’);
+const LocalStrategy = require(‘passport-local’).Strategy;
+passport.use(new LocalStrategy(
+    (username, password, done) =&gt; {
+        if (username !== process.env.username || password !== process.env.password) {
+            done(null, false, {message: ‘Incorrect credentials.’});
+            return;
+        }
+        return done(null, {});
+    }
+));
+app.use(passport.initialize());</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* Login route:
+```javascript
+app.post('/login', 
+  passport.authenticate('local', { 
+    successRedirect: '/', 
+    failureRedirect: '/test', 
+    session: false })
+);
+
+</code></pre></div></div>
+
+<p>(If you test with <a href="https://www.getpostman.com/">postman</a>, make sure you send the parm as <code class="highlighter-rouge">x-www-form-urlencoded</code>.)</p>
+
+<h4 id="token-based-authentication">Token-based authentication</h4>
+
+<ul>
+  <li>Ready strategy for token-base authentication is available with <code class="highlighter-rouge">passport-localapikey</code> module:
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">passport</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">LocalAPIKeyStrategy</span><span class="p">(</span>
+<span class="p">(</span><span class="nx">apikey</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">apikey</span> <span class="o">!==</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TOKEN</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{});</span>
+<span class="p">}</span>
+<span class="p">));</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="authentication-errors">Authentication errors</h4>
+
+<ul>
+  <li>If authentication credentials are bad, <code class="highlighter-rouge">done(null, false)</code> should be called</li>
+  <li>If there happens an error, <code class="highlighter-rouge">done(error)</code> should be called</li>
+</ul>
+
+<hr />
+
+<h2 id="authorization">Authorization</h2>
+
+<ul>
+  <li>After user is identified, it needs to be determined whether user has access to certain resource</li>
+  <li>Often much more complicated than authentication</li>
+</ul>
+
+<h3 id="acl"><a href="https://www.npmjs.com/package/acl">acl</a></h3>
+<ul>
+  <li>Access Control List (ACL) module for authorization</li>
+  <li>Role-based, hierarchical access control</li>
+  <li>Supports Redis, MongoDB and in-memory backends with also 3rd-party backends for firebase, knex, etc.</li>
+</ul>
+
+<hr />
+
+<h4 id="example">Example</h4>
+<ul>
+  <li>with <a href="https://github.com/patrick-ausderau/https-and-passport">localhost https and passport</a></li>
+</ul>
+
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        
+        <p class="copyright">Server Side Scripting Frameworks maintained by <a href="http://github.com/ilkkamtk">ilkkamtk</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+
+</body>
+</html>

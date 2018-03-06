@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Server-side scripting frameworks Toolchain | SSSF-course</title>
+<meta property="og:title" content="Server-side scripting frameworks Toolchain" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Server-Side Scripting Frameworks" />
+<meta property="og:description" content="Server-Side Scripting Frameworks" />
+<link rel="canonical" href="http://localhost:4000/Slides/Week1/W1-1-Toolchain.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/Week1/W1-1-Toolchain.html" />
+<meta property="og:site_name" content="SSSF-course" />
+<script type="application/ld+json">
+{"name":null,"description":"Server-Side Scripting Frameworks","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/Week1/W1-1-Toolchain.html","publisher":null,"image":null,"headline":"Server-side scripting frameworks Toolchain","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+        <h1><a href="http://localhost:4000/">SSSF-course</a></h1>
+      
+
+      <h1 id="server-side-scripting-frameworks-toolchain">Server-side scripting frameworks Toolchain</h1>
+
+<h1 id="contents">Contents</h1>
+
+<ul>
+  <li>Editor/IDE: Visual Studio Code (vscode) or WebStrorm (or any)</li>
+  <li>Language: ES6</li>
+  <li>Version Control System: Git</li>
+  <li>NodeJS</li>
+</ul>
+
+<hr />
+
+<h1 id="code-editor-or-ide">Code editor or IDE</h1>
+
+<p>Ultimately, it’s your choice. VSCode or WebStorm are recommended.</p>
+
+<h4 id="visual-studio-code">Visual Studio Code</h4>
+
+<ul>
+  <li>free &amp; open source code editor by Microsoft (<strong>!=</strong> Visual Studio IDE)</li>
+  <li>wide extension support</li>
+  <li>lightweight, multiplatform support</li>
+  <li>good <a href="https://code.visualstudio.com/docs/editor/codebasics">docs &amp; instructions</a></li>
+  <li>choice of many Angular2 developers</li>
+</ul>
+
+<h4 id="webstorm">WebStorm</h4>
+
+<ul>
+  <li><a href="https://www.jetbrains.com/webstorm/">WebStorm</a>
+    <ul>
+      <li><a href="https://www.jetbrains.com/student/">free student license (only @metropolia.fi email address needed)</a></li>
+      <li>full featured IDE</li>
+      <li>based on IntelliJ IDEA, just like Android Studio</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="other-picks">Other picks</h4>
+
+<ul>
+  <li><a href="https://atom.io/">Atom</a></li>
+  <li><a href="http://brackets.io/">Brackets</a></li>
+  <li><a href="https://github.com/nodejs/node/wiki/Vim-Plugins">Vim</a></li>
+</ul>
+
+<hr />
+
+<h1 id="source-code-management---git">Source Code Management - Git</h1>
+
+<p>Check <a href="https://github.com/mattpe/git-intro/blob/master/git-basics.md">Git stuff</a></p>
+
+<p>What files to include in repo?</p>
+
+<ul>
+  <li>all source code</li>
+  <li><a href="https://help.github.com/articles/about-readmes/">README.md</a>, license and other documentation</li>
+  <li>eg. npm grunt or bower settings files</li>
+  <li>.gitignore file: list of local stuff not to be included in the version control -&gt;</li>
+</ul>
+
+<p>Exclude:</p>
+
+<ul>
+  <li>IDE specific project files &amp; folders</li>
+  <li>build targets and other automatically generated files</li>
+  <li>packages managed e.g. by npm or bower (= <em>node_modules/</em> &amp; <em>bower_components/</em> folders)</li>
+  <li>any temp &amp; OS specific files, like OS X’s <code class="highlighter-rouge">.DS_Store</code></li>
+</ul>
+
+<hr />
+
+<h1 id="nodejs">NodeJS</h1>
+
+<h2 id="npm---nodejs-package-manager"><a href="https://www.npmjs.com/">NPM</a> - Node.js Package Manager</h2>
+
+<ul>
+  <li>Install <a href="https://nodejs.org/en/">node.js</a> to get NodeJS and the package manager <strong>npm</strong></li>
+  <li>npm packages needed in a project (dependencies) are listed in the <code class="highlighter-rouge">package.json</code> file and can be install with <code class="highlighter-rouge">npm install</code> command</li>
+  <li>locally installed (=project specific) packages are downloaded to <code class="highlighter-rouge">node_modules/</code> folder (should be excluded from version control)</li>
+</ul>
+
+<h4 id="os-x-no-sudo-for-npm">OS X no sudo for NPM</h4>
+
+<ul>
+  <li><a href="https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md">instructions</a></li>
+</ul>
+
+<hr />
+
+<h1 id="getting-started-with-vscode">Getting Started with VSCode</h1>
+
+<hr />
+
+<h1 id="install-the-editor">Install the Editor</h1>
+
+<p>Download &amp; install <a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
+
+<p><img src="/Slides/Week1/img/vscode.png" alt="VSCode logo" /></p>
+
+<hr />
+
+<h1 id="install-extensions">Install Extensions</h1>
+
+<p>Press <em>ctrl-shift-x</em> or click extensions icon on the left panel.</p>
+
+<p>Search and install:</p>
+
+<ul>
+  <li>Auto Import</li>
+  <li>ESLint</li>
+</ul>
+
+<p>Other handy extensions:</p>
+
+<ul>
+  <li>EditorConfig for VS Code: support for <a href="http://editorconfig.org/">EditorConfig</a></li>
+  <li>Duplicate file: Add <em>right-click -&gt; Duplicate file</em> action</li>
+</ul>
+
+<hr />
+
+<h1 id="vscode---basic-usage">VSCode - Basic Usage</h1>
+
+<p>Active <strong>project</strong> is the folder open on the left side panel (<em>File -&gt; Open folder…</em>)</p>
+
+<p>Handy keyboard shortcuts (finnish layout, check <em>File -&gt; Preferences -&gt; Keyboard shortcuts</em> for more)</p>
+
+<ul>
+  <li>Multiline comment: <em>ctrl-‘</em></li>
+  <li>Delete line: <em>ctrl-shift-k</em></li>
+  <li>Move line(s): <em>alt-up/down</em></li>
+  <li>Copy line(s): <em>alt-shift-up/down</em></li>
+  <li>Auto format code: <em>alt-shift-f</em></li>
+  <li>Open integrated console: <em>ctrl-ö</em></li>
+  <li>Quick find/open files: <em>ctrl-p</em></li>
+  <li>Split editor: <em>ctrl-§</em></li>
+</ul>
+
+<hr />
+
+<h1 id="vscode---settings">VSCode - Settings</h1>
+
+<p>Change integrated console to Bash in Windows:</p>
+
+<ol>
+  <li>Install <a href="https://git-scm.com/downloads">Git for Windows</a> to default location</li>
+  <li>Edit vscode settings file (<em>File -&gt; Preferences -&gt; User settings</em>) and add the following property into json object:</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Place your settings in this file to overwrite the default settings</span>
+<span class="p">{</span>
+  <span class="s2">"terminal.integrated.shell.windows"</span><span class="p">:</span> <span class="s2">"C:</span><span class="err">\\</span><span class="s2">Program Files</span><span class="err">\\</span><span class="s2">Git</span><span class="err">\\</span><span class="s2">bin</span><span class="err">\\</span><span class="s2">bash.exe"</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="/assets/javascript/anchor-js/anchor.min.js"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
