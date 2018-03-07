@@ -10,16 +10,16 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784">
 
     <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Home | Server Side Scripting Frameworks</title>
-<meta property="og:title" content="Home" />
+<title>MongoDB on OS X | Server Side Scripting Frameworks</title>
+<meta property="og:title" content="MongoDB on OS X" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Ile, Pate ja Olli" />
 <meta property="og:description" content="Ile, Pate ja Olli" />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
+<link rel="canonical" href="http://localhost:4000/Slides/W2-2-osx-install.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/W2-2-osx-install.html" />
 <meta property="og:site_name" content="Server Side Scripting Frameworks" />
 <script type="application/ld+json">
-{"name":"Server Side Scripting Frameworks","description":"Ile, Pate ja Olli","author":null,"@type":"WebSite","url":"http://localhost:4000/","publisher":null,"image":null,"headline":"Home","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"Ile, Pate ja Olli","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/W2-2-osx-install.html","publisher":null,"image":null,"headline":"MongoDB on OS X","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -49,7 +49,7 @@
         
         
         <li>
-            <a class="active" href="/">Home</a>
+            <a  href="/">Home</a>
         </li>
         
         <li>
@@ -89,7 +89,7 @@
         </li>
         
         <li>
-            <a  href="/Slides/W2-2-osx-install.html">MongoDB on OS X</a>
+            <a class="active" href="/Slides/W2-2-osx-install.html">MongoDB on OS X</a>
         </li>
         
         <li>
@@ -131,27 +131,61 @@
     </ul>
 </nav>
     <section id="main_content" class="inner">
-        <h2 id="home">Home</h2>
-<h1 id="server-side-scripting-frameworks">Server-Side Scripting Frameworks</h1>
-<p>This course will provide understanding of server-side scripting, web application frameworks and web application security</p>
-
-<h3 id="course-content">Course content:</h3>
+        <h2 id="mongodb-on-os-x">MongoDB on OS X</h2>
+<h1 id="mongodb-installation-on-os-x">MongoDB installation on OS X</h1>
 <ul>
-  <li>Node.js</li>
-  <li>Express.js</li>
-  <li>MongoDB</li>
-  <li>WebRTC</li>
-  <li>Socket.io</li>
-  <li>Cloud hosting</li>
-  <li>Web application security</li>
+  <li>
+    <p>Go to the MongoDB website’s download section and <a href="https://www.mongodb.com/download-center#community">download</a> the community version of MongoDB.</p>
+
+    <p>After downloading Mongo move the gzipped tar file (the file with the extension .tgz that you downloaded) to the folder where you want Mongo installed. In this case, we’ll say that we want Mongo to live in our home folder, and so the commands might look something like this:</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   cd Downloads
+   mv mongodb-osx-[version].tgz ~/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Extract MongoDB from the the downloaded archive, and change the name of the directory to something more palatable:</p>
+  </li>
 </ul>
 
-<h2 id="weekly-assignments">Weekly Assignments</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cd ~/
+  tar -zxvf mongodb-osx-[version].tgz
+  mv mongodb-osx-[version] mongodb
+</code></pre></div></div>
 <ul>
-  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week1">Week 1</a></li>
-  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week2">Week 2</a></li>
-  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week3">Week 3</a></li>
-  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week4">Week 4</a></li>
+  <li>Create the directory where Mongo will store data, create the “db” directory. You can create the directory in the default location by running</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  mkdir -p /data/db
+</code></pre></div></div>
+
+<ul>
+  <li>Make sure that the /data/db directory has the right permissions by running</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo chown -R `id -un` /data/db
+   # Enter your password
+</code></pre></div></div>
+
+<ul>
+  <li>after installing set PATH variable:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  vim ~/.bashrc
+</code></pre></div></div>
+
+<ul>
+  <li>add following line:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export PATH=${HOME}/mongodb/bin:$PATH
+</code></pre></div></div>
+
+<ul>
+  <li>run <code class="highlighter-rouge">source ~/.bashrc</code> or restart terminal to update settings</li>
+  <li>run the Mongo daemon, in one terminal window run <code class="highlighter-rouge">mongod</code>. This will start the Mongo server.</li>
+  <li>run the Mongo shell, with the Mongo daemon running in one terminal, type <code class="highlighter-rouge">mongo</code> in another terminal window. This will run the Mongo shell which is an application to access data in MongoDB.</li>
+  <li>to exit the Mongo shell run <code class="highlighter-rouge">quit()</code></li>
+  <li>yo stop the Mongo daemon hit <code class="highlighter-rouge">ctrl-c</code></li>
 </ul>
 
     </section>

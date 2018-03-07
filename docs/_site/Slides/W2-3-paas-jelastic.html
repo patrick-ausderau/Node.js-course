@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Server Side Scripting Frameworks : Ile, Pate ja Olli">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=cac652a568b6b28ab6611d1d0378e9b2666f9784">
+
+    <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>PAAS + Jelastic | Server Side Scripting Frameworks</title>
+<meta property="og:title" content="PAAS + Jelastic" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ile, Pate ja Olli" />
+<meta property="og:description" content="Ile, Pate ja Olli" />
+<link rel="canonical" href="http://localhost:4000/Slides/W2-3-paas-jelastic.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/W2-3-paas-jelastic.html" />
+<meta property="og:site_name" content="Server Side Scripting Frameworks" />
+<script type="application/ld+json">
+{"name":null,"description":"Ile, Pate ja Olli","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/W2-3-paas-jelastic.html","publisher":null,"image":null,"headline":"PAAS + Jelastic","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="http://github.com/ilkkamtk/SSSF-course">View on GitHub</a>
+
+        <h1 id="project_title">Server Side Scripting Frameworks</h1>
+        <h2 id="project_tagline">Ile, Pate ja Olli</h2>
+
+        
+    </header>
+</div>
+
+<!-- NAVI -->
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+
+    <nav>
+    <ul>
+        
+        
+        <li>
+            <a  href="/">Home</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/QA.html">QA</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W1-1-JS-styleguide.html">Javascript Style Guide</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W1-1-Toolchain.html">Toolchain</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W1-2-ECMAScript6-const-let-arrow_function.html">Some new features of ES6</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W1-3-Functional-JS-Map-Reduce-Filter.html">map / reduce / filter</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W1-4-ES6-promise-fetch.html">Promise &amp; fetch</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W2-1-express.html">Express</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W2-1-npm.html">NPM</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W2-2-NoSQL-MongoDB-mongoose.html">NoSQL + mongoose</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W2-2-osx-install.html">MongoDB on OS X</a>
+        </li>
+        
+        <li>
+            <a class="active" href="/Slides/W2-3-paas-jelastic.html">PAAS + Jelastic</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W2-4-Deploy_on_jelastic.html">Deploy on Jelastic</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W3-1-NoSQL-MongoDB-mongoose-continued.html">Mongoose continued</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W3-2-Pug.html">PUG</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W3-3-rest-and-express.html">REST</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W3-4-https-passport.html">Security</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W4-2-WebRTC.html">WebRTC</a>
+        </li>
+        
+        <li>
+            <a  href="/Slides/W4-4-Helmet-CORS.html">Security continued</a>
+        </li>
+        
+        <li>
+            <a  href="/assets/css/style.css"></a>
+        </li>
+        
+    </ul>
+</nav>
+    <section id="main_content" class="inner">
+        <h2 id="paas--jelastic">PAAS + Jelastic</h2>
+<h2 id="platform-as-a-service-jelastic">Platform-as-a-service, Jelastic</h2>
+<h4 id="server-side-scripting-frameworks">Server-side scripting frameworks</h4>
+<h4 id="tx00cr77-3001--spring-2017">TX00CR77-3001 / Spring 2017</h4>
+<h4 id="olli-alm">Olli Alm</h4>
+
+<hr />
+
+<h1 id="contents">Contents</h1>
+
+<ul>
+  <li>Cloud services</li>
+  <li>Platform-as-a-service</li>
+  <li>Jelastic &amp; Node.js</li>
+</ul>
+
+<hr />
+
+<h1 id="evolution-of-cloud-computing">Evolution of cloud computing</h1>
+
+<p><strong>Servers</strong></p>
+
+<ul>
+  <li>Individual machines</li>
+  <li>Fixed hardware, with fixed software</li>
+  <li>One-to-one correspondence between hardware and operating system</li>
+</ul>
+
+<p><strong>Virtualization</strong></p>
+
+<ul>
+  <li>Virtual machine (VM): machine as logical construct, not “following” the hardware constraints</li>
+  <li>Software / operating system is separated from hardware</li>
+  <li>For one (hardware) machine, there can be multiple OSs</li>
+  <li>For multiple machines, there can be one OS</li>
+</ul>
+
+<p><strong>Cloud computing</strong></p>
+<ul>
+  <li>Next generation of virtualization</li>
+  <li>Big amount of computers somewhere</li>
+  <li>Geographical location unclear</li>
+  <li>No more talk about computers, but <em>units</em> or <em>nodes</em></li>
+</ul>
+
+<hr />
+
+<h1 id="nist-definition-of-cloud-computing">NIST definition of cloud computing</h1>
+
+<ul>
+  <li>NIST: National Institute of Standards and Technology (US): http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf</li>
+</ul>
+
+<ol>
+  <li>On-demand self-service
+    <ul>
+      <li>Consumer controls the resources, immediately in use</li>
+      <li>Was before*: no self-service, long installation time</li>
+    </ul>
+  </li>
+  <li>Broad network access
+    <ul>
+      <li>Use with any device with stadard protocols (HTTP)</li>
+      <li>Was: controlled access with special software</li>
+    </ul>
+  </li>
+  <li>Resource pooling
+    <ul>
+      <li>Set of shared resources for all the users (multi-tenancy)</li>
+      <li>Was: resources were static: machine reserved for the specific users, resources wasted</li>
+    </ul>
+  </li>
+  <li>Rapid elasticity
+    <ul>
+      <li>Scaling up and down of the resources dynamically</li>
+      <li>Was: no scaling, only by buying new hardware</li>
+    </ul>
+  </li>
+  <li>Measured service
+    <ul>
+      <li>Billing is based on the resources used</li>
+      <li>Was: billing based on the static resources bought</li>
+    </ul>
+  </li>
+</ol>
+
+<p>(<em>“was before”</em> –&gt; how the things <em>were before</em> the cloud computing)</p>
+
+<hr />
+
+<h1 id="3-service-models-of-cloud-computing">3 service models of cloud computing</h1>
+
+<p><em>Service model:</em> what is provided for the customer</p>
+
+<p><strong>SAAS</strong>: Software as a service</p>
+
+<ul>
+  <li>Customer gets <em>an application</em>, e.g. email, map application</li>
+  <li><em>SAAS</em> is for end users</li>
+</ul>
+
+<p><strong>PAAS</strong>: Platform as a service</p>
+
+<ul>
+  <li>Customer gets <em>a server</em>, a platform to host software</li>
+  <li><em>PAAS</em> is for developers, no need to own server hardware</li>
+</ul>
+
+<p><strong>IAAS</strong>: Infrastructure as a service</p>
+
+<ul>
+  <li>Customer gets <em>a stack of services</em> to support a company or organization</li>
+  <li>Company IT-administrators could use <em>IAAS</em> and provide it for employees</li>
+  <li><em>IAAS</em> is “a service for providing services”.</li>
+</ul>
+
+<hr />
+
+<h1 id="jelastic-platform-as-a-service">Jelastic, Platform-as-a-service</h1>
+
+<ul>
+  <li><a href="https://jelastic.com/">Jelastic</a> is a PAAS platform for test use for this course</li>
+  <li>Hosting for
+    <ul>
+      <li>Node.js</li>
+      <li>Java (Tomcat, JBoss, Glassfish, …)</li>
+      <li>PHP (Apache, NGinx)</li>
+      <li>Ruby (Apache, NGinx)</li>
+      <li>.NET (IIS8)</li>
+      <li>Python (Apache)</li>
+      <li>Docker (Kind of lightweight virtual machine)</li>
+    </ul>
+  </li>
+  <li>And a marketplace with out of the box software
+    <ul>
+      <li>Wiki engines</li>
+      <li>CMS: Wordpress, Drupal, Alfresco, …</li>
+      <li>
+        <h2 id="db-clusters">DB clusters</h2>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="jelastic-login">Jelastic, login</h1>
+
+<p>&lt;img height=420px width=747px src=”http://users.metropolia.fi/~ollial/nodejs-2017/img/jelastic_login.png”&gt;&lt;/img&gt;</p>
+
+<hr />
+
+<h1 id="jelastic-main-view">Jelastic, main view</h1>
+
+<p>&lt;img height=420px width=747px src=”http://users.metropolia.fi/~ollial/nodejs-2017/img/jelastic_main.png”&gt;&lt;/img&gt;</p>
+
+<hr />
+
+<h1 id="jelastic-environment-settings">Jelastic, environment settings</h1>
+
+<p>&lt;img height=420px width=747px src=”http://users.metropolia.fi/~ollial/nodejs-2017/img/jelastic_env.png”&gt;&lt;/img&gt;</p>
+
+<hr />
+
+<h1 id="jelastic-marketplace">Jelastic, marketplace</h1>
+
+<p>&lt;img height=420px width=747px src=”http://users.metropolia.fi/~ollial/nodejs-2017/img/jelastic_marketplace.png”&gt;&lt;/img&gt;</p>
+
+<hr />
+
+<h1 id="jelastic-warmup-task">Jelastic, warmup task</h1>
+
+<ul>
+  <li>Deploy PB2, a serverless Node.js server for socket connections from here: 
+https://github.com/OAlm/pb2</li>
+</ul>
+
+<hr />
+
+<h1 id="assignment-for-the-afternoon">Assignment for the afternoon</h1>
+
+<ul>
+  <li>Available <a href="https://gist.github.com/OAlm/b49b8ab820163c128d9c9ceb065a6d09">here</a></li>
+  <li>Deadline on Friday 16:00 (but afternoon should be enough for this.)</li>
+</ul>
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        
+        <p class="copyright">Server Side Scripting Frameworks maintained by <a href="http://github.com/ilkkamtk">ilkkamtk</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+
+</body>
+</html>

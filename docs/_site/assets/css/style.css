@@ -267,3 +267,6 @@ Small Device Styles
 #main_content_wrap { display: flex; flex-wrap: wrap; }
 #main_content_wrap nav { padding: 1rem; }
 #main_content_wrap nav ul { list-style-type: none; }
+#main_content_wrap .active { color: #28a745; }
+
+#main_content h2:first-child { display: none; }

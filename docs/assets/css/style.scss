@@ -13,4 +13,13 @@
       list-style-type: none;
     }
   }
+  .active {
+    color: #28a745;
+  }
+}
+
+#main_content {
+  h2:first-child {
+    display: none;
+  }
 }
