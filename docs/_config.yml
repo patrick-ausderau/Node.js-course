@@ -1,4 +1,5 @@
 theme: jekyll-theme-slate
 title: Server Side Scripting Frameworks
 description: Ile, Pate ja Olli
-url: https://ilkkamtk.github.io/SSSF-course/
+url: https://ilkkamtk.github.io
+baseurl: /SSSF-course
