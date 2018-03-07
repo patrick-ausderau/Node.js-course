@@ -54,7 +54,8 @@ Exclude:
 - IDE specific project files & folders
 - build targets and other automatically generated files
 - packages managed e.g. by npm or bower (= _node_modules/_ & _bower_components/_ folders) 
-- any temp & OS specific files, like OS X's `.DS_Store` 
+- any temp & OS specific files (config,...), like OS X's `.DS_Store` 
+- dot files (db location/username/password,...)
 
 ---
 
