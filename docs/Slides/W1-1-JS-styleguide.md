@@ -1,4 +1,4 @@
-## Javascript Style Guide
+## W1-1-Javascript Style Guide
 #### Server-side scripting frameworks 
 #### TX00CR77-3001 / Spring 2017
 #### Olli Alm
