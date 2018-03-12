@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Server Side Scripting Frameworks : Ile, Pate ja Olli">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=0f86fa92524822fb1894982fecd4a7c7c5028944">
+
+    <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Server Side Scripting Frameworks | Ile, Pate ja Olli</title>
+<meta property="og:title" content="Server Side Scripting Frameworks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ile, Pate ja Olli" />
+<meta property="og:description" content="Ile, Pate ja Olli" />
+<link rel="canonical" href="http://localhost:4000/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html" />
+<meta property="og:url" content="http://localhost:4000/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html" />
+<meta property="og:site_name" content="Server Side Scripting Frameworks" />
+<script type="application/ld+json">
+{"name":null,"description":"Ile, Pate ja Olli","author":null,"@type":"WebPage","url":"http://localhost:4000/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html","publisher":null,"image":null,"headline":"Server Side Scripting Frameworks","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="http://github.com/ilkkamtk/SSSF-course">View on GitHub</a>
+
+        <h1 id="project_title">Server Side Scripting Frameworks</h1>
+        <h2 id="project_tagline">Ile, Pate ja Olli</h2>
+
+        
+    </header>
+</div>
+
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <!-- NAVI -->
+    <nav>
+    <ul class="nav flex-column">
+        
+        
+        
+        
+        
+        <li class="dropdown ">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Week 1 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                
+                
+                <li>
+                    <a href="/Slides/Week1/W1-1-JS-styleguide.html">1. JS Style Guide</a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/Slides/Week1/W1-1-Toolchain.html">1b. Toolchain</a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/Slides/Week1/W1-2-ECMAScript6-const-let-arrow_function.html">2. ES6 Basics</a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/Slides/Week1/W1-3-Functional-JS-Map-Reduce-Filter.html">3. ES6 Basics contd.</a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/Slides/Week1/W1-4-ES6-promise-fetch.html">4. AJAX</a>
+                </li>
+                
+                
+            </ul>
+        </li>
+        
+        
+    </ul>
+</nav>
+    <section id="main_content" class="inner">
+        <p>class: center, middle</p>
+
+<h2 id="nodejs">NodeJS</h2>
+<h5 id="nosql-mongodb-database-and-mongoose">NoSQL MongoDB database and mongoose</h5>
+<h4 id="tx00cr77-3001--spring-2017">TX00CR77-3001 / Spring 2017</h4>
+<h4 id="patrick-ausderau">Patrick Ausderau</h4>
+
+<hr />
+
+<h1 id="contents">Contents</h1>
+
+<ol>
+  <li>NoSQL</li>
+  <li>MongoDB</li>
+  <li>mongoose</li>
+</ol>
+
+<hr />
+
+<h1 id="nosql">NoSQL</h1>
+
+<ul>
+  <li>NoSQL = “non SQL”, “non relational” or “not only SQL”</li>
+  <li>Contains about anything that is not only relational databases
+    <ul>
+      <li>Document databases like MongoDB</li>
+      <li>Key-value storages like Redis</li>
+      <li>Graph databases like OrientDB and Neo4j</li>
+      <li>Object databases like ObjectDB</li>
+      <li>Tabular databases like Hbase and BigTable</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="mongodb">MongoDB</h1>
+
+<ul>
+  <li><a href="https://github.com/mongodb/mongo">Free &amp; open source</a> document-oriented database
+    <ul>
+      <li>First released in February 2009</li>
+      <li>Currently v3.x</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Lab 1</strong></p>
+<ul>
+  <li><a href="https://docs.mongodb.com/manual/administration/install-community/">Install</a></li>
+  <li><a href="https://docs.mongodb.com/v3.0/tutorial/getting-started-with-the-mongo-shell/">Shell access</a> (eventually, some UI like <a href="https://robomongo.org/">Robomongo</a>)</li>
+  <li><a href="https://docs.mongodb.com/manual/tutorial/enable-authentication/">Enable authentication</a></li>
+</ul>
+
+<hr />
+
+<h1 id="main-features">Main features</h1>
+
+<ul>
+  <li>Ad hoc queries</li>
+  <li>Indexing</li>
+  <li>High availability (replication)</li>
+  <li>Supports sharding (scaling horizontally)</li>
+  <li>File storage</li>
+  <li>JavaScript execution</li>
+  <li>Aggregation with map-reduce</li>
+</ul>
+
+<hr />
+
+<h1 id="basic-structure">Basic structure</h1>
+
+<ul>
+  <li>Server has multiple databases</li>
+  <li>Database has multiple collections
+    <ul>
+      <li>Like tables in relational database</li>
+      <li>Usually contains many related documents</li>
+      <li>Do not enforce schema on documents</li>
+      <li>Starting from 3.2 validations available for documents (checked on inserts and updates)</li>
+    </ul>
+  </li>
+  <li>Collection has multiple documents (rows)
+    <ul>
+      <li>JSON-like structure for collection of key-value pairs</li>
+      <li>Serialized and stored as BSON (Binary JSON)</li>
+    </ul>
+  </li>
+  <li>Document has multiple fields (columns)
+    <ul>
+      <li>Can have different fields from each other within the collection</li>
+      <li>Collection-wide unique identifier (12-byte, stored usually in _id field) can be manually set for document. If not set, one is generated</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="modeling-data">Modeling data</h1>
+
+<ul>
+  <li>Modeling the data is different from relational databases
+    <ul>
+      <li>Storage is cheap compared to computing time</li>
+      <li>Duplicating data is acceptable</li>
+    </ul>
+  </li>
+  <li>Model data by user requirements</li>
+  <li>Joins on write, not on read</li>
+  <li>Optimize for most usual use case</li>
+  <li>Example: Blog post documents stores tags (strings) and comments (objects with text, author etc.) within the blog document itself (with author, text, date, etc.)</li>
+</ul>
+
+<hr />
+
+<h1 id="mongoose">Mongoose</h1>
+
+<ul>
+  <li>“Elegant MongoDB object modeling for Node.js”</li>
+  <li>Provides a schema-based solution to model data</li>
+  <li>Built-in type casting, validation, query building, business logic hooks etc.</li>
+  <li>Methods return a promise
+    <ul>
+      <li>All async operations return promises</li>
+      <li>Queries do return object with .then() but are not actual fully-fledged promises (use .exec() to obtain one)</li>
+      <li>For backwards-compatibility reasons, Mongoose returns <a href="https://www.npmjs.com/package/mpromise">mpromise</a> promises by default. But will be removed in Mongoose 5 and will be replaced by ES6 promises, if available, and otherwise by <a href="https://github.com/petkaantonov/bluebird">Bluebird promises</a></li>
+      <li>Can already be changed to native ES6 promises</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="connecting">Connecting</h1>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'mongoose'</span><span class="p">);</span>
+<span class="nx">mongoose</span><span class="p">.</span><span class="nb">Promise</span> <span class="o">=</span> <span class="nb">global</span><span class="p">.</span><span class="nb">Promise</span><span class="p">;</span> <span class="c1">//ES6 Promise</span>
+
+<span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">'mongodb://localhost:27017/test'</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected successfully.'</span><span class="p">);</span>
+<span class="p">},</span> <span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connection to db failed: '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<ul>
+  <li>In case connection is lost, Mongoose automatically reconnects and executes all commands in buffer</li>
+  <li>Format for URL is: mongodb://[username:password@]host1[:port1][/[database]]</li>
+</ul>
+
+<p><strong>Lab 2</strong></p>
+<ul>
+  <li>In your <a href="https://github.com/gofore/node-training/tree/master/express#exercise-12">cats-api</a>, connect the  database and start the server (<code class="highlighter-rouge">app.listen</code>) only if the connection is successfull</li>
+  <li>Of course: <code class="highlighter-rouge">npm install --save mongoose</code></li>
+</ul>
+
+<hr />
+
+<h1 id="schema">Schema</h1>
+
+<ul>
+  <li>maps to a MongoDB collection and defines the shape of the documents</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">blogSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schema</span><span class="p">({</span>
+  <span class="na">title</span><span class="p">:</span>  <span class="nb">String</span><span class="p">,</span>
+  <span class="na">author</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span>   <span class="nb">String</span><span class="p">,</span>
+  <span class="na">comments</span><span class="p">:</span> <span class="p">[{</span> <span class="na">body</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="na">date</span><span class="p">:</span> <span class="nb">Date</span><span class="p">,</span> <span class="na">author</span><span class="p">:</span> <span class="nb">String</span> <span class="p">}],</span>
+  <span class="na">date</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="nb">Date</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="p">},</span>
+  <span class="na">hidden</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+  <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">votes</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+    <span class="na">favs</span><span class="p">:</span>  <span class="nb">Number</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="schema-types">Schema types</h1>
+
+<ul>
+  <li><a href="http://mongoosejs.com/docs/guide.html">Schema</a> supports basic <a href="http://mongoosejs.com/docs/schematypes.html">types</a>:
+    <ul>
+      <li>String</li>
+      <li>Number</li>
+      <li>Date</li>
+      <li>Buffer</li>
+      <li>Boolean</li>
+      <li>Mixed</li>
+      <li>ObjectId</li>
+      <li>Array</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="lab-3">Lab 3</h1>
+
+<p>Define a schema for cat with following attributes:</p>
+
+<ul>
+  <li>name (string)</li>
+  <li>age (number)
+    <ul>
+      <li>If you want to train more with momentjs, go for: dob (Date)</li>
+    </ul>
+  </li>
+  <li>gender (string, male or female (hint: <code class="highlighter-rouge">enum</code>))</li>
+  <li>color (string)</li>
+  <li>weight (number)</li>
+</ul>
+
+<hr />
+
+<h1 id="model">Model</h1>
+
+<ul>
+  <li>To use the schema, we need to create a model associated with it:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Blog</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">'Blog'</span><span class="p">,</span> <span class="nx">blogSchema</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Each instance of model is a document</li>
+  <li>Only way to store and retrieve data to/from database</li>
+</ul>
+
+<hr />
+
+<h1 id="crud">CRUD</h1>
+
+<ul>
+  <li>To create a new document, call the <a href="http://mongoosejs.com/docs/models.html">model</a> <code class="highlighter-rouge">create</code> method:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Blog</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="na">hidden</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">post</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>To modify existing documents, call the <code class="highlighter-rouge">update</code> method and the <code class="highlighter-rouge">remove</code> to delete</li>
+  <li>Documents can be retreived using models’ <code class="highlighter-rouge">find</code>, <code class="highlighter-rouge">findById</code>, <code class="highlighter-rouge">findOne</code>, or <code class="highlighter-rouge">where</code>:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// select *</span>
+<span class="nx">Blog</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">exec</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">blogs</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Got </span><span class="p">${</span><span class="nx">blogs</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="s2"> blogs`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// where</span>
+<span class="nx">Blog</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">hidden</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}).</span><span class="nx">where</span><span class="p">(</span><span class="s1">'date'</span><span class="p">).</span><span class="nx">gt</span><span class="p">(</span><span class="nx">oneYearAgo</span><span class="p">).</span><span class="nx">exec</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="lab-4">Lab 4</h1>
+
+<ul>
+  <li>Create a <a href="https://github.com/gofore/node-training/tree/master/express#serving-static-files">static</a> or with <a href="https://github.com/gofore/node-training/tree/master/express#template-engines">template</a> a html form. On <code class="highlighter-rouge">POST /cats</code> create a new cat with the data that comes as <a href="https://github.com/gofore/node-training/tree/master/express#request-body">body</a> argument.</li>
+  <li>Respond to <code class="highlighter-rouge">GET /cats</code> with JSON containing all the male cats that have weight over 10kg and are older than 10 years.</li>
+</ul>
+
+<hr />
+
+<h1 id="instance-methods">Instance methods</h1>
+
+<ul>
+  <li>Models have some built-in instance methods</li>
+  <li>Models can also have custom <a href="http://mongoosejs.com/docs/guide.html#methods">instance methods</a>:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">blogSchema</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">findFromSameDate</span> <span class="o">=</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">'Blog'</span><span class="p">).</span><span class="nx">find</span><span class="p">({</span> <span class="na">date</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">date</span> <span class="p">},</span> <span class="nx">cb</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">post1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blog</span><span class="p">({</span> <span class="na">date</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span> <span class="p">...</span> <span class="p">});</span>
+
+<span class="nx">post1</span><span class="p">.</span><span class="nx">findFromSameDate</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">posts</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">);</span> <span class="c1">// woof</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Built-in instance methods should not be overwritten</li>
+</ul>
+
+<hr />
+
+<h1 id="static-methods">Static methods</h1>
+
+<ul>
+  <li><a href="http://mongoosejs.com/docs/guide.html#statics">Static methods</a> can be used for example to perform more sophisticated lookups:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">blogSchema</span><span class="p">.</span><span class="nx">statics</span><span class="p">.</span><span class="nx">findByTitle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">title</span><span class="p">:</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="s1">'i'</span><span class="p">)</span> <span class="p">},</span> <span class="nx">cb</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">Blog</span><span class="p">.</span><span class="nx">findByTitle</span><span class="p">(</span><span class="s1">'My title'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">posts</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="query-helpers">Query helpers</h1>
+
+<ul>
+  <li><a href="http://mongoosejs.com/docs/guide.html#query-helpers">Query helpers</a> allow chained query building:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">blogSchema</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">byTitle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">title</span><span class="p">:</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="s1">'i'</span><span class="p">)</span> <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="nx">Blog</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">byTitle</span><span class="p">(</span><span class="s1">'My title'</span><span class="p">).</span><span class="nx">exec</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">posts</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+<hr />
+
+<h1 id="sources">Sources</h1>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL (wikipedia)</a></li>
+  <li><a href="https://www.mongodb.com/">MongoDB</a></li>
+  <li><a href="http://mongoosejs.com/index.html">mongoose</a></li>
+</ul>
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        
+        <p class="copyright">Server Side Scripting Frameworks maintained by <a href="http://github.com/ilkkamtk">ilkkamtk</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
