@@ -24,3 +24,11 @@
       url: /Slides/Week2/W2-3-paas-jelastic.html
     - title: 4. Deploy on Jelastic
       url: /Slides/Week2/W2-4-Deploy_on_jelastic.html
+- title: Week 3
+  sublinks:
+    - title: Sometitle
+      url: /Slides/Week3/filename
+- title: Week 4
+  sublinks:
+    - title: Sometitle
+      url: /Slides/Week4/filename
