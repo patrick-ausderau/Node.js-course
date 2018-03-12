@@ -1,12 +1,9 @@
-- title: "Home"
-  href: "/"
-
-- title: "News"
-  href: "/news/"
-
-- title: "Snippets"
-  subcategories:
-    - subtitle: "Example1"
-      subhref: "#"
-    - subtitle: "Example2"
-      subhref: "#"
+- title: Week 1
+  sublinks:
+    - title: 1. JS Style Guide
+      url: Slides/Week1/W1-1-JS-styleguide.html
+    - title: Documentation
+      url: /documentation.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
