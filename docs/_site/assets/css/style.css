@@ -264,7 +264,7 @@ Small Device Styles
   h5 { font-size: 14px; }
   h6 { font-size: 12px; }
   code, pre { min-width: 240px; max-width: 320px; font-size: 11px; } }
-#header_wrap { background: #343a40; background: -moz-linear-gradient(top, #373737, #343a40); background: -webkit-linear-gradient(top, #373737, #343a40); background: -ms-linear-gradient(top, #373737, #343a40); background: -o-linear-gradient(top, #373737, #343a40); background: linear-gradient(top, #373737, #343a40); border-bottom: none; }
+#header_wrap { background: #343a40; background: -moz-linear-gradient(top, #08A, #343a40); background: -webkit-linear-gradient(top, #08A, #343a40); background: -ms-linear-gradient(top, #08A, #343a40); background: -o-linear-gradient(top, #08A, #343a40); background: linear-gradient(top, #08A, #343a40); border-bottom: none; }
 
 #main_content_wrap { display: flex; flex-wrap: wrap; border-top: none; border-bottom: none; }
 #main_content_wrap nav ul { list-style-type: none; }
