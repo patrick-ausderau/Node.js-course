@@ -32,3 +32,5 @@
   sublinks:
     - title: Sometitle
       url: /Slides/Week4/filename
+- title: Home
+  url: /

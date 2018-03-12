@@ -5,28 +5,20 @@
         <ul class="list-unstyled">
             {% assign links = site.data.nav %}
             {% for link in links %}
-            {% assign class = nil %}
-            {% if page.url contains link.url %}
-            {% assign class = 'active' %}
-            {% endif %}
             {% if link.sublinks %}
-            <li>
+            <li class="{{ class }}">
                 <a href="#{{ link.title }}"  data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>{{ link.title }}</a>
                 <ul id="{{link.title}}"class="list-unstyled collapse">
                     {% for sublink in link.sublinks %}
-                    {% if sublink.title == 'separator' %}
-                    <li role="separator" class="divider"></li>
-                    {% else %}
                     <li>
                         <a href="{{ site.baseurl }}{{ sublink.url }}">{{ sublink.title }}</a>
                     </li>
-                    {% endif %}
                     {% endfor %}
                 </ul>
             </li>
             {% else %}
-            <li class="{{ class }}">
-                <a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+            <li>
+                <a href="{{ site.baseurl }}{{ link.url }}"><i class="fa fa-fw fa-angle-right"></i>{{ link.title }}</a>
             </li>
             {% endif %}
             {% endfor %}
