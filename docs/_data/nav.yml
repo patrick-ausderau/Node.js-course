@@ -1,4 +1,5 @@
 - title: Week 1
+  url: Week1
   sublinks:
     - title: 1. JS Style Guide
       url: /Slides/Week1/W1-1-JS-styleguide.html
@@ -11,6 +12,7 @@
     - title: 4. AJAX
       url: /Slides/Week1/W1-4-ES6-promise-fetch.html
 - title: Week 2
+  url: Week2
   sublinks:
     - title: 1. NPM
       url: /Slides/Week2/W2-1-npm.html
@@ -33,4 +35,4 @@
     - title: Sometitle
       url: /Slides/Week4/filename
 - title: Home
-  url: /
+  url: /index.html

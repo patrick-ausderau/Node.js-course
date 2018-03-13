@@ -1,27 +1,34 @@
-<nav class="d-flex align-items-stretch">
 
-    <div class="sidebar navbar-dark bg-dark">
+    <nav class="sidebar navbar-dark bg-dark">
         <h3 class="navbar-brand pl-4">Slides</h3>
+
         <ul class="list-unstyled">
             {% assign links = site.data.nav %}
             {% for link in links %}
+            {% assign class = nil %}
+            {% if page.url contains link.url %}
+            {% assign class = 'active' %}
+            {% endif %}
             {% if link.sublinks %}
             <li class="{{ class }}">
-                <a href="#{{ link.title }}"  data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>{{ link.title }}</a>
-                <ul id="{{link.title}}"class="list-unstyled collapse">
+                <a href="#{{ link.title }}" data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>{{ link.title }}</a>
+                <ul id="{{link.title}}" class="collapse list-unstyled ">
                     {% for sublink in link.sublinks %}
+                    {% if sublink.title == 'separator' %}
+                    <li role="separator" class="divider"></li>
+                    {% else %}
                     <li>
                         <a href="{{ site.baseurl }}{{ sublink.url }}">{{ sublink.title }}</a>
                     </li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </li>
             {% else %}
-            <li>
+            <li class="{{ class }}">
                 <a href="{{ site.baseurl }}{{ link.url }}"><i class="fa fa-fw fa-angle-right"></i>{{ link.title }}</a>
             </li>
             {% endif %}
             {% endfor %}
         </ul>
-    </div>
-</nav>
+    </nav>

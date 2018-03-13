@@ -294,7 +294,7 @@ Small Device Styles
 
 .sidebar.toggled { margin-left: -250px; }
 
-.content { width: 100%; }
+.content { width: 100%; background-color: #f2f2f2; padding: 1em; }
 
 .display-5 { font-size: 2.5rem; font-weight: 300; line-height: 1.2; }
 

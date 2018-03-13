@@ -30,15 +30,16 @@
         </section>
         {% endif %}
     </header>
+    <a class="sidebar-toggle text-light pl-3"><i class="fa fa-bars"></i></a>
 </div>
 
-<div class=""
+
 
 <!-- MAIN CONTENT -->
-<div id="main_content_wrap" class="outer">
+<div class="d-flex align-items-stretch">
     <!-- NAVI -->
     {% include nav.html %}
-    <section id="main_content" class="inner">
+    <section id="main_content" class="content">
         {{ content }}
     </section>
 </div>
@@ -56,5 +57,28 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function () {
+    // toggle sidebar when button clicked
+    $('.sidebar-toggle').on('click', function () {
+      $('.sidebar').toggleClass('toggled');
+    });
+
+    // auto-expand submenu if an item is active
+    var active = $('.sidebar .active');
+
+    console.log(active);
+
+    console.log(active.find('.collapse').length);
+
+    if (active.length && active.find('.collapse').length) {
+      var parent = active.find('.collapse');
+
+
+      parent.prev('a').attr('aria-expanded', true);
+      parent.addClass('show');
+    }
+  });
+</script>
 </body>
 </html>
