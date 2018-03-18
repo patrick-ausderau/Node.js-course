@@ -1,6 +1,6 @@
 # Week assignment 1
 
-You are given a predefined set of data (spyArray). Your task is to create an app which displays the data on a web page using ES6.
+You are given a predefined set of data (picArray). Your task is to create an app which displays the data on a web page using ES6.
 
 App features:
   * Display tumbnails
@@ -12,7 +12,7 @@ App features:
   * Whatever other features you want 
 
 ```javascript
-const spyArray = [
+const picArray = [
   {
     "id": 12,
     "time": "2017-03-02 22:55",
