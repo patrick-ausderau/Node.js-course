@@ -1,10 +1,10 @@
 - title: Week 1
   url: Week1
   sublinks:
-    - title: 1. JS Style Guide
-      url: /Slides/Week1/W1-1-JS-styleguide.html
-    - title: 1b. Toolchain
+    - title: 1. Toolchain
       url: /Slides/Week1/W1-1-Toolchain.html
+    - title: 1b. JS Style Guide
+      url: /Slides/Week1/W1-1-JS-styleguide.html
     - title: 2. ES6 Basics
       url: /Slides/Week1/W1-2-ECMAScript6-const-let-arrow_function.html
     - title: 3. ES6 Basics contd.
@@ -27,12 +27,32 @@
     - title: 4. Deploy on Jelastic
       url: /Slides/Week2/W2-4-Deploy_on_jelastic.html
 - title: Week 3
+  url: Week3
   sublinks:
-    - title: Sometitle
-      url: /Slides/Week3/filename
+    - title: 2. Database
+      url: /Slides/Week3/W3-1-NoSQL-MongoDB-mongoose-continued.html
+    - title: 3. REST
+      url: /Slides/Week3/W3-3-rest-and-express.html
+    - title: 4. Security
+      url: /Slides/Week3/W3-4-https-passport.html
+    - title: 5. Security 2
+      url: /Slides/Week3/W3-5-Helmet-CORS.html
 - title: Week 4
+  url: Week4
   sublinks:
-    - title: Sometitle
-      url: /Slides/Week4/filename
+    - title: 1. REST continued
+      url: /Slides/week4/
+    - title: 2. Templates
+      url: /Slides/Week4/W4-2-Pug.html
+    - title: 3. APIdoc
+      url: /Slides/Week4/
+    - title: 4. TBA
+- title: Week 5
+  url: Week5
+  sublinks:
+    - title: socket.io
+      url: /Slides/Week5/socket.html
+    - title: WebRTC
+      url: /Slides/Week5/W5-2-WebRTC.html
 - title: Home
   url: /index.html

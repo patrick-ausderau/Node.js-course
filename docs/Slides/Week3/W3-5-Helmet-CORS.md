@@ -95,6 +95,6 @@ Check your project for known vulnerabilities
 # Use TLS
 
 * TLS is the new progression of SSL
-* Express.js can handle HTTPS [relatively simply](../Week3/W3-4-https-passport.md)
+* Express.js can handle HTTPS [relatively simply](W3-4-https-passport.md)
 * Generally better to implement TLS in reverse-proxy such as Nginx (as implemented in jelastic)
 
