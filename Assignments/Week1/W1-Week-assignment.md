@@ -70,6 +70,6 @@ Add modal to display the mid-size image of selected thumbnail
 
 ### 4h step (Thursday)
 Finish the app by adding additional functionaility:
- * Create new file data.json and copy/paste the spyArray there. Delete spyArray from the code and use AJAX to load the array from data.json.
- * Google Map (or similar) to display the location of selected image
+ * Create new file 'data.json' and copy/paste the picArray there. Delete picArray from the code and use AJAX to load the array from data.json.
+ * Use Google Maps (or similar) to display the location of selected image
  * etc...
