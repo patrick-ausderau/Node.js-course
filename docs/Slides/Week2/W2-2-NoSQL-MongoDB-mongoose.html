@@ -22,7 +22,7 @@ class: center, middle
 
 ## NodeJS
 ##### NoSQL MongoDB database and mongoose
-#### TX00CR77-3001 / Spring 2017
+#### TX00CR77-3001 / Spring 2018
 #### Patrick Ausderau
 
 ---
@@ -55,7 +55,7 @@ class: center, middle
 
 __Lab 1__
 * [Install](https://docs.mongodb.com/manual/administration/install-community/)
-* [Shell access](https://docs.mongodb.com/v3.0/tutorial/getting-started-with-the-mongo-shell/) (eventually, some UI like [Robomongo](https://robomongo.org/))
+* [Shell access](https://docs.mongodb.com/v3.0/tutorial/getting-started-with-the-mongo-shell/) (eventually, some UI like [Robo 3T](https://robomongo.org/))
 * [Enable authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/)
 
 ---
@@ -103,14 +103,14 @@ __Lab 1__
 
 # Mongoose
 
-* "Elegant MongoDB object modeling for Node.js"
+* ["Elegant MongoDB object modeling for Node.js"](http://mongoosejs.com/)
 * Provides a schema-based solution to model data
 * Built-in type casting, validation, query building, business logic hooks etc.
 * Methods return a promise
   * All async operations return promises
-  * Queries do return object with .then() but are not actual fully-fledged promises (use .exec() to obtain one)
-  * For backwards-compatibility reasons, Mongoose returns [mpromise](https://www.npmjs.com/package/mpromise) promises by default. But will be removed in Mongoose 5 and will be replaced by ES6 promises, if available, and otherwise by [Bluebird promises](https://github.com/petkaantonov/bluebird)
-  * Can already be changed to native ES6 promises
+  * Queries do return object with .then()
+    * In older mongoose (before 5) were not fully-fledged promises (use .exec() to obtain one)
+  * For backwards-compatibility reasons, Mongoose was returning [mpromise](https://www.npmjs.com/package/mpromise) promises by default. But is now deprecated in Mongoose 5 and is replaced by ES6 promises.
 
 ---
 
@@ -118,7 +118,8 @@ __Lab 1__
 
 ```javascript
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise; //ES6 Promise
+// if mongoose < 5.x, force ES6 Promise
+// mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://localhost:27017/test').then(() => {
   console.log('Connected successfully.');
@@ -212,12 +213,12 @@ Blog.create({ hidden: false }).then(post => {
 
 ```javascript
 // select *
-Blog.find().exec().then((blogs) => {
+Blog.find().then((blogs) => {
   console.log(`Got ${blogs.length} blogs`);
 });
 
 // where
-Blog.find({ hidden: false }).where('date').gt(oneYearAgo).exec().then(data => {
+Blog.find({ hidden: false }).where('date').gt(oneYearAgo).then(data => {
   console.log(data);
 });
 ```
@@ -237,13 +238,15 @@ Blog.find({ hidden: false }).where('date').gt(oneYearAgo).exec().then(data => {
 * Models can also have custom [instance methods](http://mongoosejs.com/docs/guide.html#methods):
 
 ```javascript
-blogSchema.methods.findFromSameDate = (cb) => {
+// Do not declare methods using ES6 arrow functions (=>). 
+// Arrow functions explicitly prevent binding this
+blogSchema.methods.findFromSameDate = function(cb) {
   return this.model('Blog').find({ date: this.date }, cb);
 };
 var post1 = new Blog({ date: Date.now(), ... });
 
 post1.findFromSameDate((err, posts) => {
-  console.log(posts); // woof
+  console.log(posts);
 });
 ```
 
@@ -256,7 +259,7 @@ post1.findFromSameDate((err, posts) => {
 * [Static methods](http://mongoosejs.com/docs/guide.html#statics) can be used for example to perform more sophisticated lookups:
 
 ```javascript
-blogSchema.statics.findByTitle = (title, cb) => {
+blogSchema.statics.findByTitle = function(title, cb) {
   return this.find({ title: new RegExp(title, 'i') }, cb);
 };
 
@@ -272,17 +275,20 @@ Blog.findByTitle('My title', (err, posts) => {
 * [Query helpers](http://mongoosejs.com/docs/guide.html#query-helpers) allow chained query building:
 
 ```javascript
-blogSchema.query.byTitle = (title) => {
+blogSchema.query.byTitle = function(title) {
   return this.find({ title: new RegExp(title, 'i') });
 };
 
-Blog.find().byTitle('My title').exec((err, posts) => {
-  console.log(posts);
-});
+Blog.find().byTitle('My title').then(
+  (posts) => {
+    console.log(posts);
+  },
+  (err) => {
+    console.log('Error: ' + err);
+  });
 ```    
 
 ---
---- 
  
 # Sources
 
