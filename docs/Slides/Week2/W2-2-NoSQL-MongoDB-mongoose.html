@@ -213,7 +213,7 @@ Blog.create({ hidden: false }).then(post => {
 
 ```javascript
 // select *
-Blog.find().then((blogs) => {
+Blog.find().then(blogs => {
   console.log(`Got ${blogs.length} blogs`);
 });
 
@@ -280,10 +280,10 @@ blogSchema.query.byTitle = function(title) {
 };
 
 Blog.find().byTitle('My title').then(
-  (posts) => {
+  posts => {
     console.log(posts);
   },
-  (err) => {
+  err => {
     console.log('Error: ' + err);
   });
 ```    
