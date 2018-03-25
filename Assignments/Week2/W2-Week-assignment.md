@@ -7,7 +7,8 @@ App features:
   * Set the coordinates by clicking (Google etc.) map or get the coordinates from EXIF data.
     * [EXIF](https://github.com/gomfunkel/node-exif)
   * Upload image
-    * [_multer_](https://github.com/expressjs/multer)
+    * send as [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+    * receive with [_multer_](https://github.com/expressjs/multer)
   * Convert image to small and medium versions
     * [_sharp_](https://github.com/lovell/sharp)
   * 1st version: Save the data from the form and image urls to data.json
