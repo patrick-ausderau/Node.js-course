@@ -11,7 +11,7 @@ App features:
   * Convert image to small and medium versions
     * [_sharp_](https://github.com/lovell/sharp)
   * 1st version: Save the data from the form and image urls to data.json
-     * [_body-parser_](https://github.com/expressjs/body-parser)
+     * multer and/or [_body-parser_](https://github.com/expressjs/body-parser)
      * [Node Filesystem](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html) or [node-jsonfile](https://github.com/jprichardson/node-jsonfile)
   * 2nd version: Save the data from the form and image urls to database
   * Display the updated data on the frontend
