@@ -7,11 +7,11 @@ App features:
   * Set the coordinates by clicking (Google etc.) map or get the coordinates from EXIF data.
     * [EXIF](https://github.com/gomfunkel/node-exif)
   * Upload image
-    * _multer_
+    * [_multer_](https://github.com/expressjs/multer)
   * Convert image to small and medium versions
-    * _sharp_
+    * [_sharp_](https://github.com/lovell/sharp)
   * 1st version: Save the data from the form and image urls to data.json
-     * _body-parser_
+     * [_body-parser_](https://github.com/expressjs/body-parser)
      * [Node Filesystem](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html)
   * 2nd version: Save the data from the form and image urls to database
   * Display the updated data on the frontend
