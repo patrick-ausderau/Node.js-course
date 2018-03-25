@@ -15,7 +15,7 @@
 #### Exercise
   * create new folder 'npm-test'
   * start npm project
-  * install _eslint_ globally
+  * install _eslint_ locally
     * after installing use _eslint_ in your project `eslint --init`
     * edit .eslintrc.js: 
     ```javascript 
