@@ -28,12 +28,14 @@
     ```
   * install moment.js locally to dependencies.
   * create a new JS file: _index.js_
-  * log current date and time to console in human readable form (use moment.js)
-  * import modules to index.js: `const my-module = require('my-module');`
+  * create an app that logs current date and time to console in human readable form every second (use moment.js and setInterval())
+    * import modules to index.js: `const my-module = require('my-module');`
   * how to run: `node index.js`
 
 ### Automatig tasks
   * [npm scripts](https://docs.npmjs.com/misc/scripts)
+#### Excercise
+  * create a start script that runs index.js when you run `npm start`
 
 #### Exercise
   * install [_supervisor_](https://github.com/petruisfan/node-supervisor) globally 
