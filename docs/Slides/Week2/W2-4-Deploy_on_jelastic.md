@@ -32,7 +32,7 @@ You should already have created your jelastic account and got it activated.
 ```javascript
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/cat`).then(() => {/* ... */}
 ```
-1. Test locally `node -r dotenv/config server.js`
+1. Test locally `node -r dotenv/config server.js` and update your package.json start script
 1. `git commit -m` your local changes
 
 ## Remote
