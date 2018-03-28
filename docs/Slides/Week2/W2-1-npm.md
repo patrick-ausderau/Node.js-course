@@ -16,7 +16,8 @@
   * create new folder 'npm-test'
   * start npm project
   * install _eslint_ locally
-    * after installing use _eslint_ in your project `eslint --init`
+    * after installing use _eslint_ in your project `node eslint --init`
+     * Use a popular style guide > google
     * edit .eslintrc.js: 
     ```javascript 
     module.exports = {
