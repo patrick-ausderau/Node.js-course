@@ -32,7 +32,7 @@
   url: Week3
   sublinks:
     - title: 2. Database
-      url: /Slides/Week3/W3-1-NoSQL-MongoDB-mongoose-continued.html
+      url: /Slides/Week3/W3-2-NoSQL-MongoDB-mongoose-continued.html
     - title: 3. REST
       url: /Slides/Week3/W3-3-rest-and-express.html
     - title: 4. Security
