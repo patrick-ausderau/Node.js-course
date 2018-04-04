@@ -23,7 +23,7 @@ class: center, middle
 
 ## REST, HTTP requests
 #### Server-side scripting frameworks 
-#### TX00CR77-3001 / Spring 2017
+#### TX00CR77-3002 / Spring 2018
 #### Olli Alm
 
 ---
@@ -171,7 +171,7 @@ Note 1: HTTP POST is also used for getting data (when there is lot of data to be
 
 Note 2: For updates (POST, PUT, PATCH, DELETE) you typically **authenticate first**
 
-Note: For restful experiments, use [Postman](https://www.getpostman.com/)
+Note: For restful experiments, use [Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/), [Hurl.it](https://www.hurl.it/) or such.
 
 ---
 
@@ -231,8 +231,6 @@ app.post('/helloPost', (req, res) => {
 app.listen(3000);
 ```
 
-* Note: test the request with [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
-
 ---
 
 # Request path and show it, HTTP, all methods
@@ -248,8 +246,6 @@ app.all('/hello', (req, res) => {
 
 app.listen(3000);
 ```
-
-* Note: test the request with [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
 
 ---
 # Request wildcards
