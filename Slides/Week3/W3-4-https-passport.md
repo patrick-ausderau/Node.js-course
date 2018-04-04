@@ -55,7 +55,7 @@ http.createServer((req, res) => {
 ### express (jelastic)
 
 * A valid certificate (courtesy of helpdesk) for jelastic.metropolia.fi can be used for all its subdomains
-  * Well, nothing to do, navigate to your app with https://
+  * Well, nothing to do, navigate to your app with https:// (check that SSL is enabled in environment topology)
 * Eventually, force the redirection from HTTP to HTTPS
 
 ```javascript
@@ -97,6 +97,7 @@ app.listen(3000);
 
 * Implementing security-related things yourself is generally not smart
 * Still, for the sake of example, authentication can be implemented as Express.js middleware:
+
 ```javascript
 app.use((req, res, next) => {
     if (req.query.token === 'SECRET_TOKEN_TOKEN') {
@@ -118,11 +119,13 @@ app.use((req, res, next) => {
 #### Username and password authentication
 
 * Install:
+
 ```shell
 $ npm install --save passport
 ```
 
 * Register the strategy:
+
 ```javascript
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -143,6 +146,7 @@ app.use(passport.initialize());
 ```
 
 * Login route:
+
 ```javascript
 app.post('/login', 
   passport.authenticate('local', { 
@@ -158,6 +162,7 @@ app.post('/login',
 #### Token-based authentication
 
 * Ready strategy for token-base authentication is available with `passport-localapikey` module:
+
 ```javascript
 passport.use(new LocalAPIKeyStrategy(
   (apikey, done) => {
@@ -181,6 +186,7 @@ passport.use(new LocalAPIKeyStrategy(
 
 
 ### [acl](https://www.npmjs.com/package/acl)
+
 * Access Control List (ACL) module for authorization
 * Role-based, hierarchical access control
 * Supports Redis, MongoDB and in-memory backends with also 3rd-party backends for firebase, knex, etc.
@@ -188,5 +194,6 @@ passport.use(new LocalAPIKeyStrategy(
 ---
 
 #### Example
+
 * with [localhost https and passport](https://github.com/patrick-ausderau/https-and-passport)
 
