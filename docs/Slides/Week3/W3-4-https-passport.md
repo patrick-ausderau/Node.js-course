@@ -97,6 +97,7 @@ app.listen(3000);
 
 * Implementing security-related things yourself is generally not smart
 * Still, for the sake of example, authentication can be implemented as Express.js middleware:
+
 ```javascript
 app.use((req, res, next) => {
     if (req.query.token === 'SECRET_TOKEN_TOKEN') {
@@ -118,11 +119,13 @@ app.use((req, res, next) => {
 #### Username and password authentication
 
 * Install:
+
 ```shell
 $ npm install --save passport
 ```
 
 * Register the strategy:
+
 ```javascript
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -143,6 +146,7 @@ app.use(passport.initialize());
 ```
 
 * Login route:
+
 ```javascript
 app.post('/login', 
   passport.authenticate('local', { 
@@ -158,6 +162,7 @@ app.post('/login',
 #### Token-based authentication
 
 * Ready strategy for token-base authentication is available with `passport-localapikey` module:
+
 ```javascript
 passport.use(new LocalAPIKeyStrategy(
   (apikey, done) => {
