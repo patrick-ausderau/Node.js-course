@@ -55,7 +55,8 @@ http.createServer((req, res) => {
 ### express (jelastic)
 
 * A valid certificate (courtesy of helpdesk) for jelastic.metropolia.fi can be used for all its subdomains
-  * Well, nothing to do, navigate to your app with https://
+  * Make sure you enable SSL (under environment topology)
+  * navigate to your app with https://
 * Eventually, force the redirection from HTTP to HTTPS
 
 ```javascript
