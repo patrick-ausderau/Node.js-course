@@ -42,12 +42,14 @@
 - title: Week 4
   url: Week4
   sublinks:
-    - title: 1. REST continued
-      url: /Slides/week4/
+    - title: 1a. HTTP Inspector
+      url: /Slides/week4/W4-1-morning-HTTP-inspector.html
+    - title: 1b. Express Routing
+      url: /Slides/week4/W4-1-afternoon-express.routing.html
     - title: 2. Templates
       url: /Slides/Week4/W4-2-Pug.html
-    - title: 3. APIdoc
-      url: /Slides/Week4/
+    - title: 3. Socket programming
+      url: /Slides/Week4/W4-3-sockets.html
     - title: 4. TBA
 - title: Week 5
   url: Week5

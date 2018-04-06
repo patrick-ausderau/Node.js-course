@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTTP Inspector</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## HTTP headers and messaging
+#### Server-side scripting frameworks 
+#### TX00CR77-3002 / Spring 2018
+#### Olli Alm
+
+---
+
+class: center, middle
+
+## Hands-on experiments with HTTP messaging
+
+---
+
+# HTTP Inspector
+
+```javascript
+'use strict';
+const express = require('express');
+const app = express();
+
+app.get('/*', (req, res) => {
+  const param1 = req.path;
+  const queryparams = req.query;
+  res.send('Got to the root with path: '+param1+' with query params: '+
+        JSON.stringify(queryparams));
+});
+
+console.log('inspector started');
+app.listen(3000);
+
+```
+* Use the code above as a template 
+* Use [HTTP Header fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) as reference
+
+---
+
+class: center, middle
+
+## Task 1: Send request cookies back in response
+
+---
+
+class: center, middle
+
+## Task 2: Create a cookie and send back in response
+
+---
+
+# Further information about cookies
+
+* [Cookies, Wikipedia](https://en.wikipedia.org/wiki/HTTP_cookie) 
+* [Cookie uses, Wikipedia](https://en.wikipedia.org/wiki/HTTP_cookie#Uses)
+* Cookies are domain-specific: *"If a cookie's Domain and Path attributes are not specified by the server, they default to the domain and path of the resource that was requested"* (from [Wikipedia / Domain and Path](https://en.wikipedia.org/wiki/HTTP_cookie#Domain_and_Path))
+* [Cookie-session library, Express-middleware](https://github.com/expressjs/cookie-session)
+
+---
+
+class: center, middle
+
+## Task 3: Send timestamp in response
+### (hint: moment.js)
+
+---
+
+class: center, middle
+
+## Task 4: Send user agent information in response
+
+---
+
+class: center, middle
+## Task 5: Send user IP-address in response
+
+---
+
+## Task 6: Do conditional formatting for the content
+
+* Conditional formatting, based on request.headers *accept*-field
+* See [Accept](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept) and [Content Negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation)
+* use *res.format*, formats (Mime-types), e.g.
+  * text/plain
+  * text/html
+  * text/pdf
+  * application/json
+
+---
+
+## Further inspections
+
+* Measure connection speed: https://github.com/ddsol/speedtest.net
+* Location based on IP-address?
+* Previous web page
+* Keystroke identification of the user: https://en.wikipedia.org/wiki/Keystroke_dynamics
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

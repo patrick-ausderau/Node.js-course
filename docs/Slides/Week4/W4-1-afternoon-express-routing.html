@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Express routing</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## Assignment: Express routing
+#### Server-side scripting frameworks 
+#### TX00CR77-3002 / Spring 2018
+#### Olli Alm
+
+---
+
+# Assignment 1: Rest revisited
+
+* Get familiar with [Express Routing](https://expressjs.com/en/guide/routing.html)
+
+```javascript
+app.route('/book')
+  .get(function (req, res) {
+    res.send('Get a random book')
+  })
+  .post(function (req, res) {
+    res.send('Add a book')
+  })
+  .put(function (req, res) {
+    res.send('Update the book')
+  })
+```
+
+* Use the above example and implement a route for *user*, with methods:
+  * get a user by id, identified by *route parameter*
+  * update a user, identified by *route parameter*
+  * add a user into a collection (no identifier given)
+  * delete a user
+* dummy implementation is fine, no need for much content
+* See also [Rest slide from last week](http://users.metropolia.fi/~ollial/nodejs-2017/rest_http.html#10)
+
+---
+
+# Assignment 2: Middleware
+
+* Get familar with [Express Middleware](https://expressjs.com/en/guide/writing-middleware.html)
+* Implement a middleware-function that prints into the console
+  * timestamp
+  * requested path
+  * IP-address
+  * browser name
+
+---
+
+# Assignment 3: Error handling
+
+* Get familar with [Error handling Middleware](https://expressjs.com/en/guide/error-handling.html)
+* Implement an error handler 
+  * Error handler should write the event on the screen
+  * Error handler should send a meaningful [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_error) to user
+  * Try to also figure out how to log the errors into user specified file (e.g. error.log)
+  
+---
+
+# Assignment 4: Middleware libraries
+
+* Get familar with [custom middleware](https://expressjs.com/en/resources/middleware.html)
+* Choose a library you didn't know before and tell how you could utilize it in your project?
+
+---
+
+# Assignment 5: Routes in separate modules
+
+* Read a blog entry about [Express Routes](https://www.terlici.com/2014/09/29/express-router.html)
+* Implement at least two different route-modules (files) into *routes* folder (same as controllers in blog)
+  * Create a separate routes folder (use [Express Generator](https://expressjs.com/en/starter/generator.htm) if you like)
+  * Route-modules can be e.g. books and cars or something related to your project
+  * For each module, implement at least two routes
+* **Return your assignments into Oma, latest on Wednesday morning.**
+* **Grading: 1-10 points, two points for each correct solution.**
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

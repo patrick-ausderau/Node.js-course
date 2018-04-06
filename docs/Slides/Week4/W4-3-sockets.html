@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket programming</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## Socket programming
+#### Server-side scripting frameworks 
+#### TX00CR77-3002 / Spring 2018
+#### Olli Alm
+
+---
+
+class: center, middle
+
+# Part 1: Websockets, background
+
+---
+
+# Problems with request-reply (Why Websockets?)
+
+* Server cannot answer without request from client (server cannot push)
+* Performance issues
+* Pull paradigm
+* Polling
+* Slow (=reply from server comes when it's requested)
+* Eats resources (unnecessary responses and requests)
+
+---
+
+# Websockets
+
+* Websockets makes it possible to 
+  * **push messages** from server to client
+  * have **persistent, two-way connections** between server and client
+  * have blazing-fast messaging
+* Client subscribes / starts listening (future) messages (from server)
+* Server sends messages them whenever it likes
+* Example on publish-subscribe: PubSubHubbub https://www.youtube.com/watch?v=B5kHx0rGkec
+* **Note:** communication is connected and "stateful", and (also) thus different from Rest paradigm
+
+---
+
+# Websockets
+
+* [RFC 7936: The Websocket protocol](https://tools.ietf.org/html/rfc6455)
+* New (application level) protocol, runs on TCP
+* Protocol prefix: WS or WSS
+
+---
+
+# Websockets in Node.js
+
+* Many libraries exist, e.g. [WS](https://github.com/websockets/ws), [UWS](https://github.com/uWebSockets/bindings/tree/master/nodejs) and [Socket.io](https://socket.io/)
+* Today, we will concentrate on **Socket.io**
+  * Socket.io: stable, well documented
+  * High-level functionalities for messaging and session management
+  * Easy to use
+  * [Fallback](http://www.jonahnisenson.com/how-does-socket-io-fallback-to-xhr-or-jsonp/) to HTTP / longpolling
+* Can have several [concurrent connections](https://blog.jayway.com/2015/04/13/600k-concurrent-websocket-connections-on-aws-using-node-js/)
+---
+
+# Why to use Websockets?
+
+* Real time messaging
+* (For live video / audio, prefer WebRTC)
+* Use cases
+  * Social media, chat
+  * Gaming
+  * Remote commands 
+  * Collecting sensor data 
+  * Collaborative apps
+  * etc.
+
+---
+
+# Why not Websockets?
+
+* REST is enough
+* No need for continuous real-time messaging
+* Bit more difficult to implement than REST
+* States, sessions
+
+---
+
+class: center, middle
+
+# Demo: [PB2](http://pb2-serverless.jelastic.metropolia.fi/), [source](https://github.com/OAlm/pb2)
+
+---
+
+class: center, middle
+
+# Part 2: Hands-on Socket.io
+
+---
+
+# Socket.io
+
+* [Server API](https://socket.io/docs/server-api/)
+* [Client API](https://socket.io/docs/client-api/)
+* Server: npm install socket.io
+* Client: load [library](https://github.com/socketio/socket.io-client/tree/master/dist)
+
+---
+
+# Socket.io / [Server](https://gist.github.com/OAlm/d1d58723fc509ae632c76ac6e8dd7dd0)
+
+```javascript
+'use strict';
+const app = require('express')();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+io.on('connection', function(socket) {
+    const socketid = socket.id;
+    console.log('a user connected with session id '+socket.id);
+    
+    socket.on('disconnect', function() {
+        console.log('user disconnected');
+    });
+
+    socket.on('message', function(jsonMsg) {
+        console.log('received message from client: '+JSON.stringify(jsonMsg));
+        socket.emit('message', 'Server says: whatsupp?');
+    });
+   }
+);
+
+server.listen(3000, function() {
+    console.log('Server started (3000)');
+});
+```
+
+---
+
+# Socket.io / [Client](https://gist.github.com/OAlm/a1c4a5913120ff604555a1b1bdfce745)
+
+```html
+<script src="socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost:3000');
+  socket.on('message', function (data) {
+    console.log('got message from server: '+data);
+  });
+  socket.on('connect', function() {
+        console.log('socket.io connected!');
+  });
+  socket.on('disconnect', function() {
+        console.log('socket.io connected!');
+  });
+
+  function sendMsg() {
+    console.log('send msg');
+    let msg = {};
+    msg.app_id = this.appName;
+    msg.time = Date.now();
+    msg.json = 'json';
+    // socket.json.emit('message', msg);
+    socket.emit('message', 'Client says: how are you?');
+  }
+
+  setTimeout(sendMsg, 1000);
+</script>
+```
+
+---
+
+# Socket.io, core parts
+
+* Both client & server connect
+* Receiving messages: *socket.on('message', ...*
+* Client can be identified by *session.id*
+* Server has *rooms*, channels for grouping messages
+* [Sending messages](https://gist.github.com/alexpchin/3f257d0bb813e2c8c476):
+  * **socket.emit** to sender only
+  * **io.emit** to all clients
+  * **socket.broadcast.emit** to all clients except sender
+  * **socket.broadcast.to('room').emit** to room, to all clients except sender
+  * **socket.join('some room')** join room (server side)
+  * **socket.leave('some room')** leave1 room (server side)
+  
+---
+
+# Tasks for the afternoon (April 11th)
+
+0. For the experiments with your friends, you might like to deploy your app into Jelastic
+1. Create a website, with input text, which will be broadcasted to other people in the same page
+2. Add a textfield for a user to give a nickname (e.g. *Olli* says "Hello")
+3. Add rooms in your app: User can choose a room where she belongs to, and messages posted into a room
+4. What are namespaces in Socket.io? How they are different from rooms?
+5. Let me know how you could utilize websockets in your project.
+
+**Note:** If you like, you can replace sending text with other data, like graphics, sensor data, sound, video...
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
