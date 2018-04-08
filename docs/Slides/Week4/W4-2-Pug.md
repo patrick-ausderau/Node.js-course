@@ -10,16 +10,16 @@
       p This here is a paragraph.
   ```
   * result:
-  ```
-  <div>
-    <h1>My heading</h1>
-    <ul>
-      <li>Some list item</li>
-      <li>Some other list item</li>
-    </ul>
-    <p>This here is a paragraph.</p>
-  </div>
-  ```
+      ```html
+      <div>
+        <h1>My heading</h1>
+        <ul>
+          <li>Some list item</li>
+          <li>Some other list item</li>
+        </ul>
+        <p>This here is a paragraph.</p>
+      </div>
+      ```
 
 ## Use in Express.js
   * [Instructions](https://expressjs.com/en/guide/using-template-engines.html)
@@ -38,26 +38,26 @@
   * Excercise
       * List the cats in your Mongo database using Pug
       * Resulted HTML might be something like this
-      ```html
-      <table>
-          <tr>
-              <th>name</th>
-              <th>age</th>
-              <th>gender</th>
-              <th>weight</th>
-          </tr>
-          <tr>
-              <td>Viski</td>
-              <td>4</td>
-              <td>male</td>
-              <td>4</td>
-          </tr>
-          <tr>
-              <td>Kerttu</td>
-              <td>4</td>
-              <td>male</td>
-              <td>5.5</td>
-          </tr>
-      </table>
-      ```
+          ```html
+          <table>
+              <tr>
+                  <th>name</th>
+                  <th>age</th>
+                  <th>gender</th>
+                  <th>weight</th>
+              </tr>
+              <tr>
+                  <td>Viski</td>
+                  <td>4</td>
+                  <td>male</td>
+                  <td>4</td>
+              </tr>
+              <tr>
+                  <td>Kerttu</td>
+                  <td>4</td>
+                  <td>male</td>
+                  <td>5.5</td>
+              </tr>
+          </table>
+          ```
   
