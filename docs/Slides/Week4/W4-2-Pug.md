@@ -10,7 +10,7 @@
       p This here is a paragraph.
   ```
   * result:
-  ```html
+  ```
   <div>
     <h1>My heading</h1>
     <ul>
