@@ -44,6 +44,6 @@
               * Use pug to create all HTML; read the data from database and print using pug     
       * Version 2:
         * Use pug just for the UI, add cats and list cats by using front-end JavaScript and REST calls; 
-      * Make the UI in two languages
+      * Make the UI in two languages (Version 1 or 2, your choise)
         * user should be able to change between the languages
         * you can add the UI texts to database or use a separate JSON files
