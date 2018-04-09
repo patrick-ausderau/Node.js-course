@@ -106,7 +106,7 @@ npm outdated
 
 ---
 
-## Major update
+### Major update
 
 * By default, ``npm update`` only updates minor versions (e.g. ``mongoose  ^5.0.11  →  ^5.0.13`` or ``body-parser      ^1.17.1  →  ^1.18.2``). 
 * Major version (e.g. ``dotenv    ^4.0.0  →  ^5.0.1`` or ``passport  ^0.3.2  →  ^0.4.0``) can bring nice new features; but DO NOT GUARANTEE BACKWARD COMPATIBILITY! Double check change logs, readme, etc. to know what changes you might need in your code.
@@ -119,11 +119,18 @@ ncu
 ```
 
 Upgrade a project's package file:
+
 **Make sure your package file is in version control and all changes have been committed. This will overwrite your package file.**
 
 ```shell
 ncu -u
 ```
+
+---
+
+### Exercise
+
+Check if your packages are up to date (at least minor version)
 
 ---
 
