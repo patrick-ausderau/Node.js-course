@@ -37,8 +37,6 @@
       url: /Slides/Week3/W3-3-rest-and-express.html
     - title: 4. Security
       url: /Slides/Week3/W3-4-https-passport.html
-    - title: 5. Security 2
-      url: /Slides/Week3/W3-5-Helmet-CORS.html
 - title: Week 4
   url: Week4
   sublinks:
@@ -50,7 +48,8 @@
       url: /Slides/Week4/W4-2-Pug.html
     - title: 3. Socket programming
       url: /Slides/Week4/W4-3-sockets.html
-    - title: 4. TBA
+    - title: 4. Security 2
+      url: /Slides/Week3/W4-4-Helmet-CORS.html
 - title: Week 5
   url: Week5
   sublinks:
