@@ -43,4 +43,4 @@
       * Use pug just for the UI, add cats and list cats by using REST
       * Make the UI in two languages
         * user should be able to change between the languages
-        * you can add the UI texts to database or use a separate JSON file
+        * you can add the UI texts to database or use a separate JSON files
