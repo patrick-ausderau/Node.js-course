@@ -23,7 +23,7 @@
 
 ## Use in Express.js
   * [Instructions](https://expressjs.com/en/guide/using-template-engines.html)
-  * Excercise
+  * Excercise 1
     * Create a simple web page using instructions above
   
 ## Features
@@ -31,33 +31,16 @@
   * [Attributes](https://pugjs.org/language/attributes.html)
   * [Includes](https://pugjs.org/language/includes.html)
   * Excercise
-    * Modify the template of the previous excercise so that the result is [valid HTML](https://validator.w3.org/)
+    * Modify the template of excercise 1 so that the result is [valid HTML](https://validator.w3.org/)
   * [Template inheritance](https://pugjs.org/language/inheritance.html)
   * [Interpolation](Interpolation)
   * [Iteration](https://pugjs.org/language/iteration.html)
   * Excercise
-      * List the cats in your Mongo database using Pug
-      * Resulted HTML might be something like this
-          ```html
-          <table>
-              <tr>
-                  <th>name</th>
-                  <th>age</th>
-                  <th>gender</th>
-                  <th>weight</th>
-              </tr>
-              <tr>
-                  <td>Viski</td>
-                  <td>4</td>
-                  <td>male</td>
-                  <td>4</td>
-              </tr>
-              <tr>
-                  <td>Kerttu</td>
-                  <td>4</td>
-                  <td>male</td>
-                  <td>5.5</td>
-              </tr>
-          </table>
-          ```
-  
+      * Create a UI for your cat-app.
+        * Make at least two templates:
+            * Add cats
+            * List cats
+      * Use pug just for the UI, add cats and list cats by using REST
+      * Make the UI in two languages
+        * user should be able to change between the languages
+        * you can add the UI texts to database or use a separate JSON file
