@@ -12,5 +12,6 @@ App features:
     * e.g. multiple users who need to login
       * at least one user (e.g. local strategy .env)
       * files belong to a single user
+  * Convert your front-end HTML to pug (or other template engine)
   * Week 5: Video chat between two users
   
