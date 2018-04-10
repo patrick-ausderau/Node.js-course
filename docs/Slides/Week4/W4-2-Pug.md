@@ -33,7 +33,7 @@
   * Excercise
     * Modify the template of excercise 1 so that the result is [valid HTML](https://validator.w3.org/)
   * [Template inheritance](https://pugjs.org/language/inheritance.html)
-  * [Interpolation](Interpolation)
+  * [Interpolation](https://pugjs.org/language/interpolation.html)
   * [Iteration](https://pugjs.org/language/iteration.html)
   * Excercise
       * Create a UI for your cat-app.
