@@ -14,6 +14,6 @@ App features:
       * files belong to a single user
   * Convert your front-end HTML to pug (or other template engine)
   * Security:
-    * Helmet, search for vulnerabilities
+    * Helmet, search for vulnerabilities and fix them
   * Week 5: Video chat between two users
   
