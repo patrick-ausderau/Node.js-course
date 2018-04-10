@@ -13,5 +13,7 @@ App features:
       * at least one user (e.g. local strategy .env)
       * files belong to a single user
   * Convert your front-end HTML to pug (or other template engine)
+  * Security:
+    * Helmet, search for vulnerabilities
   * Week 5: Video chat between two users
   
