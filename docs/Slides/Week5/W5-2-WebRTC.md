@@ -1,123 +1,141 @@
 # WebRTC
   * RTC = Real Time Communications
   * [Getting started](https://www.html5rocks.com/en/tutorials/webrtc/basics/)
-  * [Some server related stuff](https://www.html5rocks.com/en/tutorials/webrtc/basics/)
   * [WebRTC tutorial](https://codelabs.developers.google.com/codelabs/webrtc-web/#0)
   * [Browser support](http://iswebrtcreadyyet.com/)
   
-## SimpleWebRTC
-  * [Home page](https://simplewebrtc.com/)
-  * [On GitHub](https://github.com/andyet/SimpleWebRTC)
-  
-## Signalmaster
-  * [On GitHub](https://github.com/andyet/signalmaster)
   
 #### Excercise: Create a simple videochat on localhost
-(note: Since we dont have TURN server(s) video chat does not usually work unless chatters are in the same network. [More info](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/#after-signaling-using-ice-to-cope-with-nats-and-firewalls))
-  1. Write a simple express.js server to serve 'public' folder over [https](https://github.com/ilkkamtk/SSSF-course/blob/master/Slides/Week3/W3-4-https-passport.md)
+  1. Write a simple express.js server to serve content over [https](https://ilkkamtk.github.io/SSSF-course/Slides/Week3/W3-4-https-passport.html)
      * create following folder structure
      ```
-     -server.js
+     -index.js
      public
        -videochat.html
-       js
-         -rtc.js
+        js
+            -rtc.js
      ```
+     
+     * serve public folder `app.use(express.static('public'));`
       
       videochat.html:
       ```html
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
         <head>
-            <script src="https://simplewebrtc.com/latest-v2.js"></script>
+            <meta charset="UTF-8"
+            <title>WebRTC example</title>
             <style>
-                #remoteVideos video {
-                    height: 150px;
-                }
-                #localVideo {
+                video {
                     height: 150px;
                 }
             </style>
         </head>
         <body>
-        <video id="localVideo"></video>
-        <div id="remoteVideos"></div>
-        <script src="js/rtc.js"></script>
+            <video id="localVideo" autoplay></video>
+            <button type="button" id="btnMakeCall">Make Call</button>
+            <script src="js/rtc.js"></script>
         </body>
         </html>
       ```
       rtc.js:
       ```javascript
-        const webrtc = new SimpleWebRTC({
-            // the id/element dom element that will hold "our" video
-            localVideoEl: 'localVideo',
-            // the id/element dom element that will hold remote videos
-            remoteVideosEl: 'remoteVideos',
-            // immediately ask for camera access
-            autoRequestMedia: true,
-        });
+          'use strict';
         
-        // we have to wait until it's ready
-        webrtc.on('readyToCall', function () {
-            // you can name it anything
-            webrtc.joinRoom('your room name');
+          const constraints = {audio: true, video: true};       
+          navigator.mediaDevices.getUserMedia(constraints).then(mediaStream => {
+            const video = document.querySelector('video');
+            video.srcObject = mediaStream;
+          }).catch(err => {
+            console.log(err.name + ': ' + err.message);
+          });
+      ```
+  1. Start server, open `https://localhost:3000/videochat.html`
+     * When you click on the button, you should see live video from your webcam
+     
+  1. Install socket.io
+     * add socket.io server to index.js and socket.io client to videochat.html and rtc.js
+     * note that you are using _https_
+     * test connection: 
+        ```javascript
+        socket.on('connect', () => {
+          console.log('socket.io connected!');
         });
-      ```
-  2. Start server, open `https://localhost:3000/videochat.html`
-     * If you open the same address in another browser window you should see two videos
-  3. To chat with your classmates, you need to move 'public' folder to users.metropolia.fi (use https) or deploy project to Jelastic
-  4. Previous example uses simpleWebRTC:s server to handle the signaling. Create your own signalling server:
-     * Start another project and write a simple express.js [https](https://github.com/ilkkamtk/SSSF-course/blob/master/Slides/Week3/W3-4-https-passport.md) server **_without_** force redirection
-        * use port 8888 instead of 3000 because you will have two server instances running on localhost
-     * Add [Signalmaster](https://github.com/andyet/signalmaster) and [getconfig](https://github.com/HenrikJoreteg/getconfig) to the project:
+
+        ```
+     
+  1. Add another <video> element to HTML for remote video.
+  
+  1. Start a signaling service with socket.io to broadcast call events between chatters:
+        1. Now you should have videochat.html open in two browser windows/tabs 
+        1. When user clicks 'Make call', emit message 'call' with 'hello' (or smthn) as value to the server
+        1. Server receives 'call' and broadcasts the message to all clients except sender. Log 'call' value to console
+        1. Client receives broadcasted 'call' and emits message 'answer' with value 'call answered' to all clients except sender. Log the answer value to console.
+        1. At this point when 'Make call' is clicked in the first window, the second window logs 'hello' (or smthn) to the console, then 'call answered' is logged in the first browser window.
+    
+  1. Start RTC communications:
+        1. In rtj.js initialize peer connection: `const caller = new RTCPeerConnection();`
+        1. Add video stream to the peer connection after the videostream is added to <video> element: `caller.addStream(mediaStream);`
+        1. Prepare <video> element for remote stream:
+            ```javascript
+            //onaddstream handler to receive remote feed and show in remoteview video element
+            caller.onaddstream = evt => {
+              console.log('onaddstream called');
+              document.querySelector('#someID').srcObject = evt.stream;
+            };
+            ```
+        1. Start call with [createOffer()](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createOffer)
+            * you already started a function in 5.ii. Continue that.
+            * when promise is successful add local description to peer connection: `caller.setLocalDescription(new RTCSessionDescription(returnValueFromPromise));`  and then send the 'call message' which you did in 5.ii. Set it's value to `JSON.stringify({'call': returnValueFromPromise})`
+            * as you can see we are using socket.io to send serialized description object between peers, so in server.js resend the returnValueFromPromise to other peer: 
+                ```javascript
+                socket.on('call', (msg) => {
+                    console.log('call routed!');
+                    socket.broadcast.emit('call', msg);
+                  });
+                ```
+        1. To answer a call continue function you started in 5.iii: `caller.setRemoteDescription(
+                                                                             new RTCSessionDescription(JSON.parse(answer).call));`                                                                 
+        1. Listen for ICE Candidates and send them to remote peers
+              ```javascript
+               caller.onicecandidate = evt => {
+                       if (!evt.candidate) return;
+                       console.log('onicecandidate called');
+                       onIceCandidate(evt);
+                     };
+               //Send the ICE Candidate to the remote peer
+               const onIceCandidate = (evt) => {
+                 socket.emit('candidate', JSON.stringify({'candidate': evt.candidate}));
+               };
+              ```
+        1. In server.js receive 'candidate' and broadcast it forward:
+            ```javascript
+            socket.on('candidate', (msg) => {
+                console.log('candidate message recieved!');
+                socket.broadcast.emit('candidate', msg);
+              });
+            ```
+        1. when client recieves 'candidate'-message (socket.on(.....)), add the candidate to peer connection: `caller.addIceCandidate(new RTCIceCandidate(JSON.parse(nameOfinputObject).nameOfMessage));`
+         
+  1. Add STUN & TURN servers to make calls between two computers.
+    * Create account to [numb](http://numb.viagenie.ca/)
+    * add this to your rtc.js:
+            ```javascript
+            const servers = {
+              'iceServers': [
+                {'urls': 'stun:stun.services.mozilla.com'},
+                {'urls': 'stun:stun.l.google.com:19302'},
+                {
+                  'urls': 'turn:numb.viagenie.ca',
+                  'credential': 'password',
+                  'username': 'email',
+                }],
+            };
+            ```
+    * Make the neccessary modifications to server.js (https stuff) and deploy the app to Jelastic 
       
-       `npm install signal-master getconfig --save`
-       
-     * add/modify followind to server.js
-     ```javascript
-        // add this with other requires:
-        const config = require('getconfig');
-        const sockets = require('signal-master/sockets');
-        // modify this line:
-        const server = https.createServer(options, app).listen(8888);
-        // add this to the end of file
-        sockets(server, config);   
-       
-     ```
-     * create folder 'config' and add development.json
-     development.json:
-     ```json
-        {
-          "isDev": true,
-          "rooms": {
-            "/* maxClients */": "/* maximum number of clients per room. 0 = no limit */",
-            "maxClients": 0
-          },
-          "stunservers": [
-            {
-              "url": "stun:stun.l.google.com:19302"
-            }
-          ],
-          "turnservers": [
-            {
-              "urls": ["turn:your.turn.servers.here"],
-              "secret": "turnserversharedsecret",
-              "expiry": 86400
-            }
-          ]
-        }
-     ```
-   5. Start your server, open https://localhost:8888 and accept secirity execption
-   6. Modify rtc.js:
-      ```javascript
-      const webrtc = new SimpleWebRTC({
-          ...
-          url: 'https://localhost:8888',
-      });
-      ```
-   7. Open `https://localhost:3000/videochat.html` in two broser windows (or on Chrome and Firefox) to test the application. Use developer tools->network tab to troubleshoot.
-   8. If you would deploy signalling server to Jelastic, change the port number to 3000
-   9. _FYI: Public signalling server is at https://signaler.jelastic.metropolia.fi (edit url in rtc.js if you want to test this)_
+ 
+  
     
 #### Excercise 2: Stylise video chat
   * [Instructions](https://simplewebrtc.com/notsosimple.html)
