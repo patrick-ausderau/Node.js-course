@@ -74,7 +74,7 @@
         1. At this point when 'Make call' is clicked in the first window, the second window logs 'hello' (or smthn) to the console, then 'call answered' is logged in the first browser window.
     
   1. Start RTC communications:
-        1. In rtj.js initialize peer connection: `const caller = new RTCPeerConnection();`
+        1. In rtc.js initialize peer connection: `const caller = new RTCPeerConnection();`
         1. Add video stream to the peer connection after the videostream is added to `<video>` element: `caller.addStream(mediaStream);`
         1. Prepare `<video>` element for remote stream:
             ```javascript
