@@ -118,8 +118,8 @@
         1. when client recieves 'candidate'-message (socket.on(.....)), add the candidate to peer connection: `caller.addIceCandidate(new RTCIceCandidate(JSON.parse(nameOfinputObject).nameOfMessage));`
          
   1. Add STUN & TURN servers to make calls between two computers.
-    * Create account to [numb](http://numb.viagenie.ca/)
-    * add this to your rtc.js:
+        * Create account to [numb](http://numb.viagenie.ca/)
+        * add this to your rtc.js:
             ```javascript
             const servers = {
               'iceServers': [
