@@ -76,7 +76,7 @@
   1. Start RTC communications:
         1. In rtj.js initialize peer connection: `const caller = new RTCPeerConnection();`
         1. Add video stream to the peer connection after the videostream is added to `<video>` element: `caller.addStream(mediaStream);`
-        1. Prepare `<video> element for remote stream:
+        1. Prepare `<video>` element for remote stream:
             ```javascript
             //onaddstream handler t`o receive remote feed and show in remoteview video element
             caller.onaddstream = evt => {
