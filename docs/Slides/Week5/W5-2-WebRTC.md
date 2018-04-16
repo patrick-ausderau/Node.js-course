@@ -95,7 +95,7 @@
                   });
                 ```
         1. To answer a call continue function you started in 5.iii: `caller.setRemoteDescription(
-                                                                             new RTCSessionDescription(JSON.parse(answer).call));`                                                                 
+                                                                             new RTCSessionDescription(JSON.parse(msg).call));`                                                                 
         1. Listen for ICE Candidates and send them to remote peers
               ```javascript
                caller.onicecandidate = evt => {
