@@ -51,7 +51,7 @@
           });
       ```
   1. Start server, open `https://localhost:3000/videochat.html`
-     * When you click on the button, you should see live video from your webcam
+     * You should see live video from your webcam
      
   1. Install socket.io
      * add socket.io server to index.js and socket.io client to videochat.html and rtc.js
