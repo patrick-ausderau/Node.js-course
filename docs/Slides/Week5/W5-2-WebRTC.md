@@ -78,7 +78,7 @@
         1. Add video stream to the peer connection after the videostream is added to `<video>` element: `caller.addStream(mediaStream);`
         1. Prepare `<video>` element for remote stream:
             ```javascript
-            //onaddstream handler t`o receive remote feed and show in remoteview video element
+            //onaddstream handler to receive remote feed and show in remoteview video element
             caller.onaddstream = evt => {
               console.log('onaddstream called');
               document.querySelector('#someID').srcObject = evt.stream;
