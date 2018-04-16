@@ -64,7 +64,7 @@
 
         ```
      
-  1. Add another <video> element to HTML for remote video.
+  1. Add another `<video>` element to HTML for remote video.
   
   1. Start a signaling service with socket.io to broadcast call events between chatters:
         1. Now you should have videochat.html open in two browser windows/tabs 
@@ -75,10 +75,10 @@
     
   1. Start RTC communications:
         1. In rtj.js initialize peer connection: `const caller = new RTCPeerConnection();`
-        1. Add video stream to the peer connection after the videostream is added to <video> element: `caller.addStream(mediaStream);`
-        1. Prepare <video> element for remote stream:
+        1. Add video stream to the peer connection after the videostream is added to `<video>` element: `caller.addStream(mediaStream);`
+        1. Prepare `<video> element for remote stream:
             ```javascript
-            //onaddstream handler to receive remote feed and show in remoteview video element
+            //onaddstream handler t`o receive remote feed and show in remoteview video element
             caller.onaddstream = evt => {
               console.log('onaddstream called');
               document.querySelector('#someID').srcObject = evt.stream;
