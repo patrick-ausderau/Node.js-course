@@ -86,7 +86,7 @@
             ```
         1. Start call with [createOffer()](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createOffer)
             * you already started a function in 5.ii. Continue that.
-            * when promise is successful add local description to peer connection: `caller.setLocalDescription(new RTCSessionDescription(returnValueFromPromise));`  and then send the 'call message' which you did in 5.ii. Set it's value to `JSON.stringify({'call': returnValueFromPromise})`
+            * when promise is successful add local description to peer connection: `caller.setLocalDescription(new RTCSessionDescription(returnValueFromPromise));`  and then send the 'call message' which you did in 5.ii. Set it's value to `JSON.stringify(returnValueFromPromise)`
             * as you can see we are using socket.io to send serialized description object between peers, so in server.js resend the returnValueFromPromise to other peer: 
                 ```javascript
                 socket.on('call', (msg) => {
