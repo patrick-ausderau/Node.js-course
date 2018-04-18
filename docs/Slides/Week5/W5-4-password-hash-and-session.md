@@ -155,11 +155,14 @@ app.use(session({
     , proxy   : 'true'
     , store   : new MemcachedStore({
         hosts: ['127.0.0.1:11211'],
-        secret: '123, easy as ABC. ABC, easy as 123' // Optionally use transparent encryption for memcache session data 
+        secret: '123, easy as ABC. ABC, easy as 123'
     })
 }));
 ```
 
 ---
 
+## Rest API session
 
+* consider [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token)
+* a popular implementation in node is [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
