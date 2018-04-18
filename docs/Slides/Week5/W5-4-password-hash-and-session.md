@@ -122,4 +122,44 @@ app.get('/', (req, res) => {
 app.post('/login', 
   passport.authenticate('local', { successRedirect: '/', failureRedirect: '/failed' })
 );
+```
+
+---
+
+### Session store
+
+* memory databases
+  * [redis](https://redis.io/) is popular, store your session with [connect-redis](https://www.npmjs.com/package/connect-redis)
+  * [memcached](https://memcached.org/) is another and is available on jelastic, use [connect-memcached](https://www.npmjs.com/package/connect-memcached)
+* mongo database with [connect-mongodb-session](https://www.npmjs.com/package/connect-mongodb-session)
+* [etc.](https://www.npmjs.com/package/express-session#compatible-session-stores)
+
+---
+
+* Install:
+
+```shell
+npm install connect-memcached --save
+```
+
+---
+
+* Basic usage:
+
+```javascript
+const MemcachedStore = require('connect-memcached')(session);
+
+app.use(session({
+      secret  : 'CatOnKeyboard'
+    , key     : 'test'
+    , proxy   : 'true'
+    , store   : new MemcachedStore({
+        hosts: ['127.0.0.1:11211'],
+        secret: '123, easy as ABC. ABC, easy as 123' // Optionally use transparent encryption for memcache session data 
+    })
+}));
+```
+
+---
+
 
