@@ -27,7 +27,7 @@ npm install bcrypt --save
 const bcrypt = require('bcrypt');
 
 const saltRound = 12; //okayish in 2018
-const myPwd = 'Secret123?';
+const myPwd = 'Secret123😉';
 
 bcrypt.hash(myPwd, saltRound, (err, hash) => {
   // Store hash in the database
@@ -45,11 +45,11 @@ bcrypt.compare(myPwd, hash, (err, res) => {
 
 * HTTP is a staless protocol; session is a way to remember your users over multiple requests
 * after user logged in, store some user info (e.g. id) in two main ways with cookies
-  * on the server
+  * on the server with [express-session](https://www.npmjs.com/package/express-session)
     * stores only a session identifier on the client within a cookie and stores the session data on the server's memory or in a database
     * require more processing on the server
     * if not well managed, risk of leaking memory
-  * on the client
+  * on the client with [cookie-session](https://www.npmjs.com/package/cookie-session)
     * limited amount of data from browser's max cookie size 
     * if you have multiple cookies, they are sent in every request
     * all data will be visible on user's browser
@@ -58,4 +58,68 @@ bcrypt.compare(myPwd, hash, (err, res) => {
 
 ---
 
+### example with express-session and passport-session
+
+* Installation:
+
+```shell
+npm install express-session --save
+```
+
+* Basic usage:
+
+```javascript
+'use strict';
+const session = require('express-session');
+const passport = require('passport');
+//require express, bcrypt, https, helmet, ssl certicates, etc.
+
+const LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    if (username === process.env.username) {
+      bcrypt.compare(password, process.env.pwdhash, (err, res) => {
+        if (res) {
+          return done(null, { username: username });
+        } else {
+          done(null, false, {message: 'Incorrect credentials.'});
+          return;
+        } 
+      });
+    } else {
+      done(null, false, {message: 'Incorrect credentials.'});
+      return;
+    }
+  }));
+
+// data put in passport cookies needs to be serialized
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+app.use(session({
+  secret: 'some s3cr3t value',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: true,
+    maxAge: 2 * 60 * 60 * 1000}
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+https.createServer(sslstuff, app).listen(3000);
+
+app.get('/', (req, res) => {
+  if(req.user !== undefined)
+    return res.send(`Hello ${req.user.username}!`);
+  res.send('Hello Secure World!');
+});
+
+app.post('/login', 
+  passport.authenticate('local', { successRedirect: '/', failureRedirect: '/failed' })
+);
 
