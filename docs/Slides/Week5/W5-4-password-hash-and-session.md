@@ -1,4 +1,4 @@
-# Security continued (3)
+# Security continued
 
 ## bcrypt
 
@@ -166,3 +166,4 @@ app.use(session({
 
 * consider [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token)
 * a popular implementation in node is [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+
