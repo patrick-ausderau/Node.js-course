@@ -115,7 +115,7 @@ app.use((req, res, next) => {
 * De facto standard authentication solution for Express.js applications
 * Flexible & does not mount routes
 * Supports OAuth (Facebook, Twitter, etc.) & OpenID 
-* Has over 300 login strategies available
+* Has over 500 login strategies available
 
 #### Username and password authentication
 
@@ -140,7 +140,7 @@ passport.use(new LocalStrategy(
             done(null, false, {message: 'Incorrect credentials.'});
             return;
         }
-        return done(null, {});
+        return done(null, {}); // returned object usally contains something to identify the user
     }
 ));
 app.use(passport.initialize());
@@ -187,6 +187,7 @@ passport.use(new LocalAPIKeyStrategy(
 
 
 ### [acl](https://www.npmjs.com/package/acl)
+
 * Access Control List (ACL) module for authorization
 * Role-based, hierarchical access control
 * Supports Redis, MongoDB and in-memory backends with also 3rd-party backends for firebase, knex, etc.
@@ -194,5 +195,6 @@ passport.use(new LocalAPIKeyStrategy(
 ---
 
 #### Example
+
 * with [localhost https and passport](https://github.com/patrick-ausderau/https-and-passport)
 
