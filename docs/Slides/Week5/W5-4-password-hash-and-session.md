@@ -66,6 +66,8 @@ bcrypt.compare(myPwd, hash, (err, res) => {
 npm install express-session --save
 ```
 
+---
+
 * Basic usage:
   * Note: to have the secure cookie to work, you must use [https](../Week3/W3-4-https-passport.html) and in production environment behind a proxy (like in jelastic) you have to [enable trust proxy](../Week3/W3-4-https-passport.html#express-jelastic).
 
