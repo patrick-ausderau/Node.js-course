@@ -43,7 +43,7 @@ bcrypt.compare(myPwd, hash, (err, res) => {
 
 ## session
 
-* HTTP is a staless protocol; session is a way to remember your users over multiple requests
+* HTTP is a stateless protocol; session is a way to remember your users over multiple requests
 * after user logged in, store some user info (e.g. id) in two main ways with cookies
   * on the server with [express-session](https://www.npmjs.com/package/express-session)
     * stores only a session identifier on the client within a cookie and stores the session data on the server's memory or in a database
@@ -53,7 +53,7 @@ bcrypt.compare(myPwd, hash, (err, res) => {
     * limited amount of data from browser's max cookie size 
     * if you have multiple cookies, they are sent in every request
     * all data will be visible on user's browser
-    * if an attacker find your encrytion secret key, s/he will be able to read all the data 
+    * if an attacker find your encryption secret key, s/he will be able to read all the data 
 * NEVER persist user sensitive data in sessions, like password and salt
 
 ---
@@ -67,30 +67,27 @@ npm install express-session --save
 ```
 
 * Basic usage:
+  * Note: to have the secure cookie to work, you must use [https](../Week3/W3-4-https-passport.html) and in production environment behind a proxy (like in jelastic) you have to [enable trust proxy](../Week3/W3-4-https-passport.html#express-jelastic).
 
 ```javascript
 'use strict';
 const session = require('express-session');
 const passport = require('passport');
-//require express, bcrypt, https, helmet, ssl certicates, etc.
+// require express, bcrypt, https, helmet, ssl certicates, etc.
 
 const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(
   (username, password, done) => {
-    if (username === process.env.username) {
-      bcrypt.compare(password, process.env.pwdhash, (err, res) => {
-        if (res) {
-          return done(null, { username: username });
-        } else {
-          done(null, false, {message: 'Incorrect credentials.'});
-          return;
-        } 
-      });
+    // prefer asynchronous bcrypt.compare(pwd, hash, (err, res) => {})
+    if (username === process.env.username 
+        && bcrypt.compareSync(password, process.env.pwdhash)) {
+      return done(null, { username: username });
     } else {
       done(null, false, {message: 'Incorrect credentials.'});
       return;
     }
-  }));
+  })
+);
 
 // data put in passport cookies needs to be serialized
 passport.serializeUser((user, done) => {
@@ -105,8 +102,8 @@ app.use(session({
   secret: 'some s3cr3t value',
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: true,
-    maxAge: 2 * 60 * 60 * 1000}
+  cookie: { secure: true, // only over https
+    maxAge: 2 * 60 * 60 * 1000} // 2 hours
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -120,7 +117,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', 
-  passport.authenticate('local', { successRedirect: '/', failureRedirect: '/failed' })
+  passport.authenticate('local', { 
+    successRedirect: '/', 
+    failureRedirect: '/failed' 
+  })
 );
 ```
 
