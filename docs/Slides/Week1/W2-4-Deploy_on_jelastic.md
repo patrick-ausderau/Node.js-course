@@ -15,7 +15,7 @@ You should already have created your jelastic account and got it activated.
 
 * In Jelastic, create a NodeJS (9.4 with npm) with MongoDB (3.4) servers and reserve 2 cloudlets
   * Once created, you should receive an email with DB credentials
-    * Create your [cat database](../Week2/W2-2-NoSQL-MongoDB-mongoose.html) 
+    * Create your [cat database](/W2-2-NoSQL-MongoDB-mongoose.html) 
     * Create a [user with read/write permissions](https://docs.mongodb.com/manual/tutorial/enable-authentication/#create-additional-users-as-needed-for-your-deployment) (or follow the link from your DB email) to your jelastic cat database
 
 ## Locally

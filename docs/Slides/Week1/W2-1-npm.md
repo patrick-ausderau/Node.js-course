@@ -39,7 +39,7 @@
   * create a start script that runs index.js when you run `npm start`
 
 #### Exercise
-  * install [_supervisor_](https://github.com/petruisfan/node-supervisor) globally 
+  * install [_nodemon_](https://nodemon.io/) globally 
   * in package.json create a 'start' script which watches index.js and automatically restarts node when the file is updated
   
 ### Updating

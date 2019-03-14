@@ -1,6 +1,6 @@
 # NoSQL MongoDB database and mongoose continued
-  * [Previous week: NoSQL](../Week2/W2-2-NoSQL-MongoDB-mongoose.html)
-  * [Previous week: db auth and deploy on Jelastic](../Week2/W2-4-Deploy_on_jelastic.md)
+  * [Previous week: NoSQL](../Week1/W2-2-NoSQL-MongoDB-mongoose.html)
+  * [Previous week: db auth and deploy on Jelastic](../Week1/W2-4-Deploy_on_jelastic.md)
   * [Searching (by Mozilla)](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose#Searching_for_records)
   * [Updating](http://mongoosejs.com/docs/documents.html)
   * [Deleting](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)

@@ -137,6 +137,6 @@ Check if your packages are up to date (at least minor version)
 # Use TLS
 
 * TLS is the new progression of SSL
-* Express.js can handle HTTPS [relatively simply](../Week3/W3-4-https-passport.md)
+* Express.js can handle HTTPS [relatively simply](../Week2/W3-4-https-passport.md)
 * Generally better to implement TLS in reverse-proxy such as Nginx (as implemented in jelastic)
 
