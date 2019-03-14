@@ -51,8 +51,8 @@
     - title: 4. Security 2
       url: /Slides/Week3/W4-4-Helmet-CORS.html
     - title: 1. socket.io
-     url: /Slides/Week4/socket.html
+      url: /Slides/Week4/socket.html
     - title: 4. Security 3
-     url: /Slides/Week4/W5-4-password-hash-and-session.html
+      url: /Slides/Week4/W5-4-password-hash-and-session.html
 - title: Home
   url: /index.html
