@@ -1,4 +1,4 @@
-- title: Week 1
+- title: JS recap + Toolchain
   url: JS recap
   sublinks:
     - title: 1. Toolchain
@@ -13,7 +13,7 @@
       url: /Slides/JS recap/W1-3-Functional-JS-Map-Reduce-Filter.html
     - title: 4. AJAX
       url: /Slides/JS recap/W1-4-ES6-promise-fetch.html
-- title: Week 2
+- title: Week 1
   url: Week1
   sublinks:
     - title: 1. NPM
@@ -28,7 +28,7 @@
       url: /Slides/Week1/W2-3-paas-jelastic.html
     - title: 4. Deploy on Jelastic
       url: /Slides/Week1/W2-4-Deploy_on_jelastic.html
-- title: Week 3
+- title: Week 2
   url: Week2
   sublinks:
     - title: 2. Database
@@ -37,7 +37,7 @@
       url: /Slides/Week2/W3-3-rest-and-express.html
     - title: 4. Security
       url: /Slides/Week2/W3-4-https-passport.html
-- title: Week 4
+- title: Week 3
   url: Week3
   sublinks:
     - title: 1a. HTTP Inspector
@@ -50,13 +50,10 @@
       url: /Slides/Week3/W4-3-sockets.html
     - title: 4. Security 2
       url: /Slides/Week3/W4-4-Helmet-CORS.html
-- title: Week 5
-  url: Week4
-  sublinks:
-    - title: 1. socket.io
-      url: /Slides/Week4/socket.html
+     - title: 1. socket.io
+     url: /Slides/Week4/socket.html
     - title: 2. WebRTC
-      url: /Slides/Week4/W5-2-WebRTC.html
+    url: /Slides/Week4/W5-2-WebRTC.html
     - title: 4. Security 3
       url: /Slides/Week4/W5-4-password-hash-and-session.html
 - title: Home
