@@ -38,9 +38,9 @@
     - title: 3. Security
       url: /Slides/Week2/W3-3-https-passport.html
     - title: 4a. HTTP Inspector
-      url: /Slides/Week2/W3-4a-morning-HTTP-inspector.html
+      url: /Slides/Week2/W3-4a-HTTP-inspector.html
     - title: 4b. Express Routing
-      url: /Slides/Week2/W3-4b-afternoon-express-routing.html
+      url: /Slides/Week2/W3-4b-express-routing.html
 - title: Week 3
   url: Week3
   sublinks:
