@@ -32,27 +32,27 @@
   url: Week2
   sublinks:
     - title: 1. Database
-      url: /Slides/Week2/W3-2-NoSQL-MongoDB-mongoose-continued.html
+      url: /Slides/Week2/W3-1-NoSQL-MongoDB-mongoose-continued.html
     - title: 2. REST
-      url: /Slides/Week2/W3-3-rest-and-express.html
+      url: /Slides/Week2/W3-2-rest-and-express.html
     - title: 3. Security
-      url: /Slides/Week2/W3-4-https-passport.html
+      url: /Slides/Week2/W3-3-https-passport.html
     - title: 4a. HTTP Inspector
-      url: /Slides/Week3/W4-1-morning-HTTP-inspector.html
+      url: /Slides/Week3/W3-4a-morning-HTTP-inspector.html
     - title: 4b. Express Routing
-      url: /Slides/Week3/W4-1-afternoon-express-routing.html
+      url: /Slides/Week3/W3-4b-afternoon-express-routing.html
 - title: Week 3
   url: Week3
   sublinks:
     - title: 1. Templates
-      url: /Slides/Week3/W4-2-Pug.html
+      url: /Slides/Week3/W4-1-Pug.html
     - title: 2a. Socket programming
-      url: /Slides/Week3/W4-3-sockets.html
+      url: /Slides/Week3/W4-2-sockets.html
     - title: 2b. socket.io
       url: /Slides/Week4/socket.html
     - title: 3. Security 2
-      url: /Slides/Week3/W4-4-Helmet-CORS.html
+      url: /Slides/Week3/W4-3-Helmet-CORS.html
     - title: 4. Security 3
-      url: /Slides/Week4/W5-4-password-hash-and-session.html
+      url: /Slides/Week4/W4-4-password-hash-and-session.html
 - title: Home
   url: /index.html
