@@ -46,10 +46,8 @@
   sublinks:
     - title: 1. Templates
       url: /Slides/Week3/W4-1-Pug.html
-    - title: 2a. Socket programming
+    - title: 2. Socket programming
       url: /Slides/Week3/W4-2-sockets.html
-    - title: 2b. socket.io
-      url: /Slides/Week4/socket.html
     - title: 3. Security 2
       url: /Slides/Week3/W4-3-Helmet-CORS.html
     - title: 4. Security 3
