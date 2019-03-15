@@ -45,7 +45,7 @@ class: center, middle
 * Cannot share its name with a function or a variable in the same scope
 
 ```javascript
-"use strict";
+'use strict';
 const MY_CONST = 7;
 
 if (MY_CONST === 7) {
@@ -65,7 +65,7 @@ console.log(MY_CONST); //7
   * the variable identifier cannot be reassigned, will raise `SyntaxError` exception
 
 ```javascript
-"use strict";
+'use strict';
 for (let i = 0; i < 10; i++) {
     console.log(i); //0,1,2,...
 }
@@ -89,7 +89,7 @@ let j = 12; //SyntaxError
 * Better avoid to use as method functions 
 
 ```javascript
-"use strict";
+'use strict';
 const add = (x, y) => {return x + y;};
 console.log(add(1, 2));
 
@@ -112,7 +112,7 @@ console.log(no_param());
 * lexical `this`, e.g. in object 
 
 ```javascript
-"use strict";
+'use strict';
 function Prefixer(prefix) {
   this.prefix = prefix;
 }
@@ -129,9 +129,9 @@ Prefixer.prototype.prefixArrayES6 = function(arr) {
   return arr.map( x => {return this.prefix + x;});
 }
 
-const prefixer = new Prefixer("Hi ");
-console.log(prefixer.prefixArrayES5(["Joe", "Mary"]));
-console.log(prefixer.prefixArrayES6(["Alice" , "Bob"]));
+const prefixer = new Prefixer('Hi ');
+console.log(prefixer.prefixArrayES5(['Joe', 'Mary']));
+console.log(prefixer.prefixArrayES6(['Alice' , 'Bob']));
 ```
 
 ---
@@ -144,7 +144,7 @@ console.log(prefixer.prefixArrayES6(["Alice" , "Bob"]));
 * `static` class members 
 
 ```javascript
-"use strict";
+'use strict';
 class PrefixerClassES6 {
   constructor(prefix) {
     this.prefix = prefix;
@@ -152,11 +152,11 @@ class PrefixerClassES6 {
   prefixArray(arr) {
     return arr.map(x => this.prefix + x); 
   }
-  get something() {return this.prefix + "Test";}
+  get something() {return this.prefix + 'Test';}
 }
 
-const prefixerES6 = new PrefixerClassES6("Hei ");
-console.log(prefixerES6.prefixArray(["Mike", "Carla"]));
+const prefixerES6 = new PrefixerClassES6('Hei ');
+console.log(prefixerES6.prefixArray(['Mike', 'Carla']));
 console.log(prefixerES6.something);
 ```
 
@@ -166,7 +166,7 @@ console.log(prefixerES6.something);
 
 * default values for function parameters
 ```javascript
-"use strict";
+'use strict';
 const defParam = (x, y = 42, z = 2) => x + y + z;
 console.log(defParam(6)); //50
 console.log(defParam(3, 1)); //6
@@ -175,7 +175,7 @@ console.log(defParam(3, 1)); //6
 * Aggregation of remaining arguments
 ```javascript
 const restParam = (x, y, ...a) => {return (x + y) * a.length;};
-console.log(restParam(1, 2, "foo", "bar", "baz", 42)); //12
+console.log(restParam(1, 2, 'foo', 'bar', 'baz', 42)); //12
 ```
 
 ---
@@ -184,10 +184,10 @@ console.log(restParam(1, 2, "foo", "bar", "baz", 42)); //12
 
 * Spreading of elements of an iterable collection (like array or string) into both literal elements and individual function parameters
 ```javascript
-const params = ["foo", "bar", 42];
+const params = ['foo', 'bar', 42];
 const spreadConst = [1, 2, ...params];
 console.log(restParam(...spreadConst)); //9
-const str = "foobar";
+const str = 'foobar';
 console.log([...str]); //[ 'f', 'o', 'o', 'b', 'a', 'r' ]
 ```
 
