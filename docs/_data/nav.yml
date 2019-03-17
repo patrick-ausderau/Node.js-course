@@ -22,7 +22,7 @@
       url: /Slides/Week1/W2-1-express.html
     - title: 2. NoSQL
       url: /Slides/Week1/W2-2-NoSQL-MongoDB-mongoose.html
-    - title: 2b. Mongo MacOS install.
+    - title: 2b. Mongo MacOS install if you don't have brew.
       url: /Slides/Week1/W2-2-osx-install.html
     - title: 3. Jelastic
       url: /Slides/Week1/W2-3-paas-jelastic.html
