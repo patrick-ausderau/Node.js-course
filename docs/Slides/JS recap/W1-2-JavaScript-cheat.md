@@ -65,7 +65,7 @@ element.addEventListener('click',  (evt) => {
 #### Old way
 ```javascript
 const xhr = new XMLHttpRequest();
-xhr.open('get', 'someJsonResponseServlet');
+xhr.open('get', 'someUrl');
 xhr.onreadystatechange = function(){
    if (xhr.readyState == 4 && xhr.status == 200) {
          const result = JSON.parse(xhr.responseText);
@@ -92,7 +92,7 @@ fetch('someUrl')
 const myForm = document.querySelector('form');
 const fData = new FormData(myForm);
 const xhr = new XMLHttpRequest();
-xhr.open('post', 'someJsonResponseServlet');
+xhr.open('post', 'someUrl');
 xhr.onreadystatechange = function(){
    if (xhr.readyState == 4 && xhr.status == 200) {
          const result = JSON.parse(xhr.responseText);
