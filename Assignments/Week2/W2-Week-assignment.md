@@ -27,9 +27,9 @@ Make an Express.js app that has following features.
     
     ```
   * Upload image
-    * send as [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+    * For sending you can use basic [HTML form](https://www.w3schools.com/tags/att_form_enctype.asp) or you can use JavaScript and fetch with [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
     * receive with [_multer_](https://github.com/expressjs/multer)
-  * Convert image to small and medium versions
+  * Create middleware to convert image to small and medium versions
     * [_sharp_](https://github.com/lovell/sharp)
   * 1st version: Save the data from the form and image urls to data.json
      * multer and/or [_body-parser_](https://github.com/expressjs/body-parser)
