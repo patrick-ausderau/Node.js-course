@@ -76,7 +76,7 @@ xhr.send();
 ```
 #### New way
 ```javascript
-fetch('someJsonResponseServlet')
+fetch('someUrl')
   .then( (response) => {
     return response.json();
   })
