@@ -65,7 +65,7 @@ element.addEventListener('click',  (evt) => {
 #### Old way
 ```javascript
 const xhr = new XMLHttpRequest();
-xhr.open('get', 'someJsonResponseServlet');
+xhr.open('get', 'someUrl');
 xhr.onreadystatechange = function(){
    if (xhr.readyState == 4 && xhr.status == 200) {
          const result = JSON.parse(xhr.responseText);
@@ -76,7 +76,7 @@ xhr.send();
 ```
 #### New way
 ```javascript
-fetch('someJsonResponseServlet')
+fetch('someUrl')
   .then( (response) => {
     return response.json();
   })
@@ -92,7 +92,7 @@ fetch('someJsonResponseServlet')
 const myForm = document.querySelector('form');
 const fData = new FormData(myForm);
 const xhr = new XMLHttpRequest();
-xhr.open('post', 'someJsonResponseServlet');
+xhr.open('post', 'someUrl');
 xhr.onreadystatechange = function(){
    if (xhr.readyState == 4 && xhr.status == 200) {
          const result = JSON.parse(xhr.responseText);
@@ -103,15 +103,26 @@ xhr.send(fData);
 ```
 #### New way
 ```javascript
-// get data from e.g. form
-const myForm = document.querySelector('form');
-const fData = new FormData(lomake);
-// asetusobjekti fetchiä varten 
-const settings = {
-  method: 'post',
-  data: fData
+// some data
+const data = {
+  username: 'someuser',
+  password: 'somepassword'
 };
-fetch('someJsonResponseServlet', asetukset)
+// settings object for fetch 
+const settings = {
+  method: "POST", // *GET, POST, PUT, DELETE, etc.
+  mode: "cors", // no-cors, cors, *same-origin
+  cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+  credentials: "same-origin", // include, *same-origin, omit
+  headers: {
+      "Content-Type": "application/json",
+      // "Content-Type": "application/x-www-form-urlencoded",
+  },
+  redirect: "follow", // manual, *follow, error
+  referrer: "no-referrer", // no-referrer, *client
+  body: JSON.stringify(data), // body data type must match "Content-Type" header  
+};
+fetch('someUrl', settings)
   .then( (response) => {
     return response.json();
   })
