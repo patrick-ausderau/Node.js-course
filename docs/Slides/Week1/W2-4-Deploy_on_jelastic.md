@@ -13,7 +13,7 @@ You should already have created your jelastic account and got it activated.
 * Generate [public/private keys](https://docs.jelastic.com/ssh-generate-key) (DO NOT USE ONE OF YOUR EXISTING KEY PAIR)
   * public key to [github and private to jelastic](https://docs.jelastic.com/git-ssh)
 
-* In Jelastic, create a NodeJS (9.4 with npm) with MongoDB (3.4) servers and reserve 2 cloudlets
+* In Jelastic, create a NodeJS (10.x or11.x) ** with npm ** with MongoDB (4.x) servers and reserve 2 cloudlets
   * Once created, you should receive an email with DB credentials
     * Create your [cat database](/W2-2-NoSQL-MongoDB-mongoose.html) 
     * Create a [user with read/write permissions](https://docs.mongodb.com/manual/tutorial/enable-authentication/#create-additional-users-as-needed-for-your-deployment) (or follow the link from your DB email) to your jelastic cat database
