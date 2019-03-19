@@ -1,4 +1,4 @@
-# Week assignment 4
+# Week 3 assignment
 
 Continue the backend you did last week.
 
@@ -15,5 +15,3 @@ App features:
   * Convert your front-end HTML to pug (or other template engine)
   * Security:
     * Helmet, search for vulnerabilities and fix them
-  * Week 5: Video chat between two users
-  

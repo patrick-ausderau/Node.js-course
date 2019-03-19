@@ -1,4 +1,4 @@
-# Week assignment 3
+# Week 2 assignment
 
 Continue the backend you did last week.
 
