@@ -20,6 +20,7 @@ $ openssl x509 -req -in certrequest.csr -signkey ssl-key.pem -out ssl-cert.pem
 ```
 
 * Put the keys and certificate in the app folder
+* Make sure to add them in .gitignore too!
 
 ```javascript
 const express = require('express');
