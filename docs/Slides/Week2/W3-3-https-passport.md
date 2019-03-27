@@ -10,14 +10,17 @@
 ### express (localhost)
 
 * Generate keys and certificate with [openssl](https://www.openssl.org/) (in real life, you would need to get certified by a third party, e.g. [Let’s Encrypt](https://letsencrypt.org/))
+* If you target [modern compability](https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility), recommendation is to use elliptic curve algorithm [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) with prime256v1, secp384r1 or secp521r1 TLS curves (e.g. [see](https://msol.io/blog/tech/create-a-self-signed-ecc-certificate/)) instead of [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+  * For intermediate compatibility (IE7, Android 2.3, Java 7,...), minimum is 2048 bit RSA key; but you can safely use 4096 key
 
 ```shell
-$ openssl genrsa -out ssl-key.pem 1024
+$ openssl genrsa -out ssl-key.pem 2048
 $ openssl req -new -key ssl-key.pem -out certrequest.csr
 $ openssl x509 -req -in certrequest.csr -signkey ssl-key.pem -out ssl-cert.pem
 ```
 
 * Put the keys and certificate in the app folder
+* Make sure to add them in .gitignore too!
 
 ```javascript
 const express = require('express');
@@ -192,9 +195,9 @@ passport.use(new LocalAPIKeyStrategy(
 * Role-based, hierarchical access control
 * Supports Redis, MongoDB and in-memory backends with also 3rd-party backends for firebase, knex, etc.
 
----
+<!---
 
 #### Example
 
 * with [localhost https and passport](https://github.com/patrick-ausderau/https-and-passport)
-
+-->
