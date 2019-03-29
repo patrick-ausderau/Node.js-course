@@ -94,7 +94,7 @@ Make an Express.js app that has following features.
   * Task 1: 3p. 
   * Task 2: 3p. 
   * Task 3: 6p.
-* Return all answers and links to the Readme.md of Week 1 or 2 tasks.
+* Return all answers and links to the Readme.md of Week 3 tasks.
 
 ### Task 1: Cloud computing 
 
