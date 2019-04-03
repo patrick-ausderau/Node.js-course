@@ -15,6 +15,7 @@ App features:
   * Convert your front-end HTML to pug (or other template engine)
   * Security:
     * https redirection 
-    * Helmet, search for vulnerabilities and fix them
+    * Helmet
+    * Search for vulnerabilities and fix them
   * PAAS:
     * Optional: App run on Jelastic (or heroku,...) 
