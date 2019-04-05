@@ -19,3 +19,4 @@ App features:
     * Search for vulnerabilities and fix them
   * PAAS:
     * Optional: App run on Jelastic (or heroku,...) 
+  * Optional: WebSocket
