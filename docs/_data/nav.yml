@@ -24,31 +24,25 @@
       url: /Slides/Node.js/2-NoSQL-MongoDB-mongoose.html
     - title: 2b. Mongo MacOS install if you don't have brew.
       url: /Slides/Node.js/2-osx-install.html
-    - title: 3. Deploy on Jelastic
+    - title: 3. Deploy on Server
       url: /Slides/Node.js/3-Deploy_on_jelastic.html
-- title: Week 2
-  url: Week2
-  sublinks:
-    - title: 1. Database
-      url: /Slides/Week2/W3-1-NoSQL-MongoDB-mongoose-continued.html
-    - title: 2. REST
-      url: /Slides/Week2/W3-2-rest-and-express.html
-    - title: 3. Security
-      url: /Slides/Week2/W3-3-https-passport.html
-    - title: 4a. HTTP Inspector
-      url: /Slides/Week2/W3-4a-HTTP-inspector.html
-    - title: 4b. Express Routing
-      url: /Slides/Week2/W3-4b-express-routing.html
-- title: Week 3
-  url: Week3
-  sublinks:
-    - title: 1. Templates
-      url: /Slides/Week3/W4-1-Pug.html
-    - title: 2. Security 2
-      url: /Slides/Week3/W4-2-Helmet-CORS.html
-    - title: 3. Security 3
-      url: /Slides/Week3/W4-3-password-hash-and-session.html
-    - title: 4. Socket programming
-      url: /Slides/Week3/W4-4-sockets.html
+    - title: 4. Database
+      url: /Slides/Node.js/4-NoSQL-MongoDB-mongoose-continued.html
+    - title: 5. REST
+      url: /Slides/Node.js/5-rest-and-express.html
+    - title: 6. Security
+      url: /Slides/Node.js/6-https-passport.html
+    - title: 7a. HTTP Inspector
+      url: /Slides/Node.js/7a-HTTP-inspector.html
+    - title: 7b. Express Routing
+      url: /Slides/Node.js/7b-express-routing.html
+    - title: 8. Templates
+      url: /Slides/Node.js/8-Pug.html
+    - title: 9. Security 2
+      url: /Slides/Node.js/9-Helmet-CORS.html
+    - title: 10. Security 3
+      url: /Slides/Node.js/10-password-hash-and-session.html
+    - title: 11. Socket programming
+      url: /Slides/Node.js/11-sockets.html
 - title: Home
   url: /index.html
