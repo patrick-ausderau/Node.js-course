@@ -1,13 +1,13 @@
 ## Home
-# Server-Side Scripting Frameworks
+# Node.js
 This course will provide understanding of server-side scripting, web application frameworks and web application security
 
 ### Course content:
+* ES6
 * Node.js
 * Express.js
 * MongoDB
-* Socket.io
-* Cloud hosting
+* Server deployment 
 * Web application security
 
 ## Weekly Assignments
