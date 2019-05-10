@@ -1,4 +1,3 @@
-
 ## Javascript Style Guide
 #### Server-side scripting frameworks 
 #### TX00CR77-3001 / Spring 2017
@@ -11,7 +10,6 @@
 * Coding conventions
 * Style guides for Javascript
 * Linting 
-* ESLint demo (VS Code)
 
 ---
 
