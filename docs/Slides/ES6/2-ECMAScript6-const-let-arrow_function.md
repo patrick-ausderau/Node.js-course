@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ES6 - const, let, arrow function, class</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-class: center, middle
 
 ## ECMAScript 2015 (6th edition)
 ##### const, let, arrow function and some new features of ES6
@@ -260,12 +239,3 @@ console.log([...str]); //[ 'f', 'o', 'o', 'b', 'a', 'r' ]
 * [ES6 features](http://es6-features.org/)
 * [exploring js es6 arrow function this](http://exploringjs.com/es6/ch_arrow-functions.html)
 * [Power of ES6](http://charlesbking.com/power_of_es6/)
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      const slideshow = remark.create();
-    </script>
-  </body>
-</html>

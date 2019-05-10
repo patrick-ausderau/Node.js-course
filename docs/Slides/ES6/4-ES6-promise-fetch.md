@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Promise and fetch</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
-
 ## ECMAScript 2015 (6th edition)
 ##### Promise & fetch
 #### TX00CR77-3001 / Spring 2018
@@ -241,12 +218,3 @@ fetch(myRequest).then(response => {
 
   * [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
   * [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      const slideshow = remark.create();
-    </script>
-  </body>
-</html>

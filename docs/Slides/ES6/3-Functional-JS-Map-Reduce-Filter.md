@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>JS functional programming basics</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
 
 ## Functional Javascript Basics with map / reduce / filter
 #### Server-side scripting frameworks 
@@ -218,16 +196,3 @@ Try out following tasks, **using map, reduce, filter** approach in ES6 syntax
 6. ...
 
 [*](http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/)
-
-**Update: return a code sample of your achievements to Oma**
-
-**Be ready to present your achievements on Thursday morning**
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>
