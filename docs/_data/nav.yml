@@ -13,21 +13,19 @@
       url: /Slides/ES6/3-Functional-JS-Map-Reduce-Filter.html
     - title: 4. AJAX
       url: /Slides/ES6/4-ES6-promise-fetch.html
-- title: Week 1
-  url: Week1
+- title: Node.js
+  url: Node.js
   sublinks:
     - title: 1. NPM
-      url: /Slides/Week1/W2-1-npm.html
+      url: /Slides/Node.js/1-npm.html
     - title: 1b. Express
-      url: /Slides/Week1/W2-1-express.html
+      url: /Slides/Node.js/1-express.html
     - title: 2. NoSQL
-      url: /Slides/Week1/W2-2-NoSQL-MongoDB-mongoose.html
+      url: /Slides/Node.js/2-NoSQL-MongoDB-mongoose.html
     - title: 2b. Mongo MacOS install if you don't have brew.
-      url: /Slides/Week1/W2-2-osx-install.html
-    - title: 3. Jelastic
-      url: /Slides/Week1/W2-3-paas-jelastic.html
-    - title: 4. Deploy on Jelastic
-      url: /Slides/Week1/W2-4-Deploy_on_jelastic.html
+      url: /Slides/Node.js/2-osx-install.html
+    - title: 3. Deploy on Jelastic
+      url: /Slides/Node.js/3-Deploy_on_jelastic.html
 - title: Week 2
   url: Week2
   sublinks:
