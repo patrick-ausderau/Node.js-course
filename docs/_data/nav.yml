@@ -25,7 +25,7 @@
     - title: 2b. Mongo MacOS install if you don't have brew.
       url: /Slides/Node.js/2-osx-install.html
     - title: 3. Deploy on Server
-      url: /Slides/Node.js/3-Deploy_on_jelastic.html
+      url: /Slides/Node.js/3-Deploy_on_server.html
     - title: 4. Database
       url: /Slides/Node.js/4-NoSQL-MongoDB-mongoose-continued.html
     - title: 5. REST
