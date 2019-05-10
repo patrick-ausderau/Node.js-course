@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Server Side Scripting Frameworks, Node.js : Ile, Pate ja Olli">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=21cf29b8451d359f9bd5293620f097413f1885af">
+
+    <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Home | Node.js Course</title>
+<meta property="og:title" content="Home" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:description" content="Server Side Scripting Frameworks, Node.js : Ile, Pate ja Olli" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Node.js - Course" />
+<script type="application/ld+json">
+{"name":"Node.js Course","description":"Server Side Scripting Frameworks","author":"Ile, Pate ja Olli","@type":"WebSite","url":"http://localhost:4000/","publisher":null,"image":null,"headline":"Home","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="http://github.com/ilkkamtk/SSSF-course">View on GitHub</a>
+
+        <h1 id="project_title">Server Side Scripting Frameworks</h1>
+        <h2 id="project_tagline">Ile, Pate ja Olli</h2>
+
+        
+    </header>
+    <a class="sidebar-toggle text-light pl-3"><i class="fa fa-bars"></i></a>
+</div>
+
+
+
+<!-- MAIN CONTENT -->
+<div class="d-flex align-items-stretch">
+    <!-- NAVI -->
+    
+    <nav class="sidebar navbar-dark bg-dark">
+        <h3 class="navbar-brand pl-4">Slides</h3>
+
+        <ul class="list-unstyled">
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="#Week 1" data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>Week 1</a>
+                <ul id="Week 1" class="collapse list-unstyled ">
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week1/W1-1-Toolchain.html">1. Toolchain</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week1/W1-1-JS-styleguide.html">1b. JS Style Guide</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week1/W1-2-ECMAScript6-const-let-arrow_function.html">2. ES6 Basics</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week1/W1-2-JavaScript-cheat.html">2b. ES6 Cheat sheet</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week1/W1-3-Functional-JS-Map-Reduce-Filter.html">3. ES6 Basics cont.</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week1/W1-4-ES6-promise-fetch.html">4. AJAX</a>
+                    </li>
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="#Week 2" data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>Week 2</a>
+                <ul id="Week 2" class="collapse list-unstyled ">
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week2/W2-1-npm.html">1. NPM</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week2/W2-1-express.html">1b. Express</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week2/W2-2-NoSQL-MongoDB-mongoose.html">2. NoSQL</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week2/W2-2-osx-install.html">2b. Mongo MacOS install.</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week2/W2-3-paas-jelastic.html">3. Jelastic</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week2/W2-4-Deploy_on_jelastic.html">4. Deploy on Jelastic</a>
+                    </li>
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="#Week 3" data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>Week 3</a>
+                <ul id="Week 3" class="collapse list-unstyled ">
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week3/W3-1-NoSQL-MongoDB-mongoose-continued.html">2. Database</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week3/W3-3-rest-and-express.html">3. REST</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week3/W3-4-https-passport.html">4. Security</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week3/W3-5-Helmet-CORS.html">5. Security 2</a>
+                    </li>
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="#Week 4" data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>Week 4</a>
+                <ul id="Week 4" class="collapse list-unstyled ">
+                    
+                    
+                    <li>
+                        <a href="/Slides/week4/">1. REST continued</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week4/W4-2-Pug.html">2. Templates</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week4/">3. APIdoc</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="">4. TBA</a>
+                    </li>
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="#Week 5" data-toggle="collapse"><i class="fa fa-fw fa-angle-right"></i>Week 5</a>
+                <ul id="Week 5" class="collapse list-unstyled ">
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week5/socket.html">socket.io</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/Slides/Week5/W5-2-WebRTC.html">WebRTC</a>
+                    </li>
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="/index.html"><i class="fa fa-fw fa-angle-right"></i>Home</a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+
+    <section id="main_content" class="content">
+        <h2 id="home">Home</h2>
+<h1 id="server-side-scripting-frameworks">Server-Side Scripting Frameworks</h1>
+<p>This course will provide understanding of server-side scripting, web application frameworks and web application security</p>
+
+<h3 id="course-content">Course content:</h3>
+<ul>
+  <li>Node.js</li>
+  <li>Express.js</li>
+  <li>MongoDB</li>
+  <li>WebRTC</li>
+  <li>Socket.io</li>
+  <li>Cloud hosting</li>
+  <li>Web application security</li>
+</ul>
+
+<h2 id="weekly-assignments">Weekly Assignments</h2>
+<ul>
+  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week1">Week 1</a></li>
+  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week2">Week 2</a></li>
+  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week3">Week 3</a> (will be updated)</li>
+  <li><a href="https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week4">Week 4</a> (will be updated)</li>
+</ul>
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer bg-dark">
+    <footer class="inner">
+        
+        <p class="copyright">Server Side Scripting Frameworks maintained by <a href="http://github.com/ilkkamtk">ilkkamtk</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function () {
+    // toggle sidebar when button clicked
+    $('.sidebar-toggle').on('click', function () {
+      $('.sidebar').toggleClass('toggled');
+    });
+
+    // auto-expand submenu if an item is active
+    var active = $('.sidebar .active');
+
+    console.log(active);
+
+    console.log(active.find('.collapse').length);
+
+    if (active.length && active.find('.collapse').length) {
+      var parent = active.find('.collapse');
+
+
+      parent.prev('a').attr('aria-expanded', true);
+      parent.addClass('show');
+    }
+  });
+</script>
+</body>
+</html>
