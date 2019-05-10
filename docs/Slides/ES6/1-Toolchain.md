@@ -1,4 +1,3 @@
-
 # Server-side scripting frameworks Toolchain
 
 ---
@@ -28,7 +27,7 @@ Ultimately, it's your choice. VSCode or WebStorm are recommended.
 #### WebStorm
 
 - [WebStorm](https://www.jetbrains.com/webstorm/)
-  - [free student license (only @metropolia.fi email address needed)](https://www.jetbrains.com/student/)
+  - [free student license](https://www.jetbrains.com/student/)
   - full featured IDE
   - based on IntelliJ IDEA, just like Android Studio
 
@@ -38,7 +37,7 @@ Ultimately, it's your choice. VSCode or WebStorm are recommended.
 
 - [Atom](https://atom.io/)
 - [Brackets](http://brackets.io/)
-- [Vim](https://github.com/nodejs/node/wiki/Vim-Plugins)
+- [Vim](https://www.vim.org/) or [Emacs](https://www.gnu.org/software/emacs/)
 
 ---
 
@@ -59,7 +58,7 @@ Exclude:
 - build targets and other automatically generated files
 - packages managed e.g. by npm or bower (= _node_modules/_ & _bower_components/_ folders)
 - any temp & OS specific files (config,...), like OS X's `.DS_Store`
-- dot files (db location/username/password,...)
+- dot files (db url/username/password,...)
 
 ---
 
