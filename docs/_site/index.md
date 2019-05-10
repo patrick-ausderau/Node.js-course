@@ -1,18 +1,16 @@
 ## Home
-# Server-Side Scripting Frameworks
+# Node.js
 This course will provide understanding of server-side scripting, web application frameworks and web application security
 
 ### Course content:
+* ES6
 * Node.js
 * Express.js
 * MongoDB
-* WebRTC
-* Socket.io
-* Cloud hosting
+* Server deployment 
 * Web application security
 
 ## Weekly Assignments
-* [Week 1](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week1)
-* [Week 2](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week2)
-* [Week 3](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week3) (will be updated)
-* [Week 4](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week4) (will be updated)
+* [Week 1](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week2/W2-Week-assignment.md)
+* [Week 2](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week3/W3-Week-assignment.md)
+* [Week 3](https://github.com/ilkkamtk/SSSF-course/tree/master/Assignments/Week4/W4-Week-assignment.md)
