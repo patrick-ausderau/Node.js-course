@@ -231,11 +231,21 @@ console.log([...str]); //[ 'f', 'o', 'o', 'b', 'a', 'r' ]
 
 * [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) V.S. [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 * [Syntax (wikipedia)](https://en.wikipedia.org/wiki/JavaScript_syntax)
+* [JSON (wikipedia)](https://en.wikipedia.org/wiki/JSON)
 * [MDN JavaScript reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) e.g.
   * [const](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const)
   * [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) V.S. [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
   * [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+  * [class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
   * etc.
 * [ES6 features](http://es6-features.org/)
 * [exploring js es6 arrow function this](http://exploringjs.com/es6/ch_arrow-functions.html)
 * [Power of ES6](http://charlesbking.com/power_of_es6/)
+
+---
+
+# Exercise: class
+
+1. check and recreate the Rectangle class example form [mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) (the version with getters and methods)
+2. create a Square class that inherit from Rectangle
+3. create instances of Rectangle and Square and ``console.log`` their attributes and area
