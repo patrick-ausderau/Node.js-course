@@ -166,9 +166,9 @@ words.map( word => word.toUpperCase() )
 
 ---
 
-# Assignment 1: playing with text
+# Exercise: playing with text
 
-Download texts by [Linus](https://gist.githubusercontent.com/OAlm/fc8d4c6eadb057ddbb68959743713c69/raw/4b3a7a1cbdecba5ed71fd49f9c651874067e65ad/linus.txt) and [Turing](https://gist.githubusercontent.com/OAlm/5cda155b75b048d9c82bc5fde5606d81/raw/e0dd59c8987ff8a0861f22d133d32ef83d751a80/turing.txt)
+Download texts by [Linus](https://gist.githubusercontent.com/OAlm/fc8d4c6eadb057ddbb68959743713c69/raw/4b3a7a1cbdecba5ed71fd49f9c651874067e65ad/linus.txt) and [Turing](https://gist.githubusercontent.com/OAlm/5cda155b75b048d9c82bc5fde5606d81/raw/e0dd59c8987ff8a0861f22d133d32ef83d751a80/turing.txt). If you want to download in the script, check [AJAX](https://patrick-ausderau.github.io/Node.js-course/Slides/ES6/4-ES6-promise-fetch.html) and run the script from your browser (or if you run your script as standalone node, use e.g. [node-fetch](https://www.npmjs.com/package/node-fetch)).
 
 Try out following tasks, **using map, reduce, filter** approach in ES6 syntax
 
@@ -178,21 +178,6 @@ Try out following tasks, **using map, reduce, filter** approach in ES6 syntax
 4. Count words
 5. Remove all vowels from the text
 6. Count all consonants
-7. ...
-  
----
+7. Create a string that will contain all the words that have 5 or more characters
+8. ...
 
-# Assignment 2: playing with data
-
-Download [Bond villains](https://en.wikipedia.org/wiki/List_of_James_Bond_villains) from [here](https://gist.githubusercontent.com/OAlm/027725f4d3d0e85338a51e6c29c3dfac/raw/091c7ddbb5abe4d21c30cdc3dfd777149a8f5915/bond_villains.json)
-
-Try out following tasks, **using map, reduce, filter** approach in ES6 syntax
-
-1. List all the villains from 1970s
-2. Count the average time between the movies
-3. Get all the villains who acted in a movie having letter 'e' in their name
-4. List all entries with a villain name longer than 15 characters
-5. Create a modified JSON without numbers and years
-6. ...
-
-[*](http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/)
