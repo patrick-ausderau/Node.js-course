@@ -69,7 +69,9 @@ let j = 12; //SyntaxError
 
 ```javascript
 'use strict';
-const add = (x, y) => {return x + y;};
+const add = (x, y) => {
+  return x + y;
+};
 console.log(add(1, 2));
 
 //no curl brace and implicit return
@@ -81,7 +83,9 @@ const one_param = x => x * x;
 console.log(one_param(3));
 
 //if no (or multiple) param, must use parenthesis
-const no_param = () => {return 42;};
+const no_param = () => {
+  return 42;
+};
 console.log(no_param());
 ```
 ---
@@ -105,7 +109,9 @@ Prefixer.prototype.prefixArrayES5 = function(arr) {
 }
 
 Prefixer.prototype.prefixArrayES6 = function(arr) {
-  return arr.map( x => {return this.prefix + x;});
+  return arr.map( x => {
+    return this.prefix + x;
+  });
 }
 
 const prefixer = new Prefixer('Hi ');
@@ -131,7 +137,9 @@ class PrefixerClassES6 {
   prefixArray(arr) {
     return arr.map(x => this.prefix + x); 
   }
-  get something() {return this.prefix + 'Test';}
+  get something() {
+    return this.prefix + 'Test';
+  }
 }
 
 const prefixerES6 = new PrefixerClassES6('Hei ');
