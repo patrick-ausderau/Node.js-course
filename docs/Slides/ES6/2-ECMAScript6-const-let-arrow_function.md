@@ -186,11 +186,6 @@ console.log([...str]); //[ 'f', 'o', 'o', 'b', 'a', 'r' ]
   * Class definition
   * Constructor, getter/setter
   * Static 
-
----
-
-# New features (will continue on Wed and Thu (or today?))
-
 * New Built-In Methods
    * Object Property Assignment
    * Array Element Finding
@@ -206,11 +201,6 @@ console.log([...str]); //[ 'f', 'o', 'o', 'b', 'a', 'r' ]
    * Number Formatting
    * Currency Formatting
    * Date/Time Formatting
-
----
-
-# New features (will continue on Wed and Thu (or today?))
-
 * Generator `function*` (iterator)
 * Class/Object Inheritance (multiple)
 * Promise
