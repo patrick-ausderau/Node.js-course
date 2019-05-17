@@ -78,7 +78,7 @@ app.listen(3000);
 * Measure connection speed: https://github.com/ddsol/speedtest.net
 * Location based on IP-address?
 * Previous web page
-* Browser fingerprinting ([Am I unique?](https://amiunique.org))
+* Browser fingerprinting ([Am I unique?](https://amiunique.org) or [panopticlick](https://panopticlick.eff.org/))
 * Keystroke identification of the user: https://en.wikipedia.org/wiki/Keystroke_dynamics
 
 For further inspections, see also [List of HTTP header fields in Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) 
