@@ -1,6 +1,5 @@
 ## ECMAScript 2015 (6th edition)
 ##### Promise & fetch
-#### TX00CR77-3001 / Spring 2018
 #### Patrick Ausderau
 
 ---

@@ -1,7 +1,6 @@
 
 ## Functional Javascript Basics with map / reduce / filter
 #### Server-side scripting frameworks 
-#### TX00CR77-3002 / Spring 2018
 #### Olli Alm
 
 ---

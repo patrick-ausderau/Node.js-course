@@ -26,7 +26,7 @@ npm install bcrypt --save
 
 const bcrypt = require('bcrypt');
 
-const saltRound = 12; //okayish in 2018
+const saltRound = 12; //okayish in 2019
 const myPwd = 'Secret123😉';
 
 bcrypt.hash(myPwd, saltRound, (err, hash) => {
