@@ -11,9 +11,4 @@ This course will provide understanding of server-side scripting, web application
  * Web application security
  
 ## Material
-  * [Github.io](https://ilkkamtk.github.io/SSSF-course/)
-  
-## Assignments
-  * [Week 1](Assignments/Week2)
-  * [Week 2](Assignments/Week3) 
-  * [Week 3](Assignments/Week4)
+  * [Github.io](https://patrick-ausderau.github.io/Node.js-course/)
