@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>NoSQL, MongoDB and mongoose</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-class: center, middle
-
 ## NodeJS
 ##### NoSQL MongoDB database and mongoose
 #### Patrick Ausderau
@@ -295,12 +273,3 @@ Blog.find().byTitle('My title').then(
 * [NoSQL (wikipedia)](https://en.wikipedia.org/wiki/NoSQL)
 * [MongoDB](https://www.mongodb.com/)
 * [mongoose](http://mongoosejs.com/index.html)
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      const slideshow = remark.create();
-    </script>
-  </body>
-</html>

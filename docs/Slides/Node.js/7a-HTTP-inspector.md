@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>HTTP Inspector</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
-
 ## HTTP headers and messaging
 #### Server-side scripting frameworks 
 #### Olli Alm
 
 ---
-
-class: center, middle
 
 ## Hands-on experiments with HTTP messaging
 
@@ -56,13 +31,9 @@ app.listen(3000);
 
 ---
 
-class: center, middle
-
 ## Task 1: Send request parameters back in response
 
 ---
-
-class: center, middle
 
 ## Task 2: Create a cookie and send back in response
 
@@ -77,20 +48,15 @@ class: center, middle
 
 ---
 
-class: center, middle
-
 ## Task 3: Send timestamp in response
 ### (hint: moment.js)
 
 ---
 
-class: center, middle
-
 ## Task 4: Send user agent information in response
 
 ---
 
-class: center, middle
 ## Task 5: Send user IP-address in response
 
 ---
@@ -116,11 +82,3 @@ class: center, middle
 * Keystroke identification of the user: https://en.wikipedia.org/wiki/Keystroke_dynamics
 
 For further inspections, see also [List of HTTP header fields in Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) 
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>

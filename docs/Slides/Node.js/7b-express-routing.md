@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Express routing</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
-
 ## Assignment: Express routing
 #### Server-side scripting frameworks 
 #### Olli Alm
@@ -91,13 +68,3 @@ app.route('/book')
   * For each module, implement at least two routes
 * ** For extra points (if you didn't return last week's weekly task) Return your assignments to Readme.md of this weeks weekly task**
 * **Grading: 0-100%, 20% for each correct solution.**
-
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>

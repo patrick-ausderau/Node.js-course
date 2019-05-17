@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>REST, HTTP APIs</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
-
 ## REST, HTTP requests
 #### Server-side scripting frameworks 
 #### Olli Alm
@@ -40,8 +17,6 @@ Part 2
 * HTTP processing in Node.js
 
 ---
-
-class: center, middle
 
 ## Part 1: Web services & REST
 
@@ -173,8 +148,6 @@ Note 2: For updates (POST, PUT, PATCH, DELETE) you typically **authenticate firs
 Note: For restful experiments, use [Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/), [Hurl.it](https://www.hurl.it/) or such.
 
 ---
-
-class: center, middle
 
 ## Part 2: Rest in Node.js and Express
 
@@ -359,15 +332,3 @@ app.use(function(req, res, next) {
 # Further reading
 
 * Express: https://expressjs.com/en/guide/routing.html
-
-
-
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>

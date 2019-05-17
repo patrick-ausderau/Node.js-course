@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Socket programming</title>
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
-
 ## Socket programming
 #### Server-side scripting frameworks 
 #### Olli Alm
 
 ---
-
-class: center, middle
 
 # Part 1: Websockets, background
 
@@ -99,13 +74,9 @@ class: center, middle
 
 ---
 
-class: center, middle
-
 # Demo: [PB2](https://socket.jelastic.metropolia.fi/), [source](https://github.com/OAlm/pb2)
 
 ---
-
-class: center, middle
 
 # Part 2: Hands-on Socket.io
 
@@ -197,7 +168,6 @@ server.listen(3000, function() {
   * **socket.leave('some room')** leave1 room (server side)
   
 ---
-class: center, middle
 
 # WebRTC
   * [Basics](https://www.html5rocks.com/en/tutorials/webrtc/basics/)
@@ -215,13 +185,3 @@ class: center, middle
 5. Let me know how you could utilize websockets in your project.
 
 **Note:** If you like, you can replace sending text with other data, like graphics, sensor data, sound, video...
-
-
-    </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>
