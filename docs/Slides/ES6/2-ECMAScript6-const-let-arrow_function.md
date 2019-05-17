@@ -242,7 +242,7 @@ console.log([...str]); //[ 'f', 'o', 'o', 'b', 'a', 'r' ]
 
 ---
 
-# Exercise: class
+# Exercise/Homework: class
 
 1. check and recreate the Rectangle class example form [mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) (the version with getters and methods)
 2. create a Square class that inherit from Rectangle

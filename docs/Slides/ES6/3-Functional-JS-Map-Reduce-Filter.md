@@ -166,7 +166,7 @@ words.map( word => word.toUpperCase() )
 
 ---
 
-# Exercise: playing with text
+# Exercise/Homework: playing with text
 
 Download texts by [Linus](https://gist.githubusercontent.com/OAlm/fc8d4c6eadb057ddbb68959743713c69/raw/4b3a7a1cbdecba5ed71fd49f9c651874067e65ad/linus.txt) and [Turing](https://gist.githubusercontent.com/OAlm/5cda155b75b048d9c82bc5fde5606d81/raw/e0dd59c8987ff8a0861f22d133d32ef83d751a80/turing.txt). If you want to download in the script, check [AJAX](https://patrick-ausderau.github.io/Node.js-course/Slides/ES6/4-ES6-promise-fetch.html) and run the script from your browser (or if you run your script as standalone node, use e.g. [node-fetch](https://www.npmjs.com/package/node-fetch)).
 

@@ -12,7 +12,7 @@
     * --save-dev for adding package automatically to dev-dependencies in package.json
   * `npm install -g package-name` installs package globally
     * use this for command line tools
-#### Exercise
+#### Exercise/Homework
   * create new folder 'npm-test'
   * start npm project
   * install _eslint_ locally
