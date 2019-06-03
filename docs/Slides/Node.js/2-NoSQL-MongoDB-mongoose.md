@@ -30,9 +30,9 @@
   * First released in February 2009
   * Currently v3.x
 
-__Lab 1__
+__Lab/Homework 1__
 * [Install](https://docs.mongodb.com/manual/administration/install-community/)
-* [Shell access](https://docs.mongodb.com/v3.0/tutorial/getting-started-with-the-mongo-shell/) (eventually, some UI like [Robo 3T](https://robomongo.org/))
+* [Shell access](https://docs.mongodb.com/manual/mongo/#the-mongo-shell) (eventually, some UI like [Robo 3T](https://robomongo.org/))
 * [Enable authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/)
 
 ---
@@ -107,7 +107,7 @@ mongoose.connect('mongodb://localhost:27017/test').then(() => {
 * In case connection is lost, Mongoose automatically reconnects and executes all commands in buffer
 * Format for URL is: mongodb://[username:password@]host1[:port1][/[database]]
 
-__Lab 2__
+__Lab/Homework 2__
 * In your [cats-api](https://github.com/gofore/node-training/tree/master/express#exercise-12), connect the  database and start the server (`app.listen`) only if the connection is successfull
 * Of course: `npm install --save mongoose`
 
@@ -150,13 +150,13 @@ const blogSchema = new Schema({
 
 ---
 
-# Lab 3
+# Lab/Homework 3
 
 Define a schema for cat with following attributes:
 
 * name (string)
-* age (number)
-  * If you want to train more with momentjs, go for: dob (Date)
+* age (number, minimum is 0)
+  * If you want to train more with ES6 [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) and/or [momentjs](https://www.npmjs.com/package/moment), go for: dateOfBirth (Date, maximum is `Date.now`)
 * gender (string, male or female (hint: `enum`))
 * color (string)
 * weight (number)
@@ -203,7 +203,7 @@ Blog.find({ hidden: false }).where('date').gt(oneYearAgo).then(data => {
 
 ---
 
-# Lab 4
+# Lab/Homework 4
 
 * Create a [static](https://github.com/gofore/node-training/tree/master/express#serving-static-files) (or with [template](https://github.com/gofore/node-training/tree/master/express#template-engines)) html form. Alternative, use postman. On `POST /cats` create a new cat with the data that comes as [body](https://github.com/gofore/node-training/tree/master/express#request-body) argument.
 * Respond to `GET /cats` with JSON containing all the male cats that have weight over 10kg and are older than 10 years.
