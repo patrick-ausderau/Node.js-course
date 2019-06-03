@@ -11,3 +11,5 @@
   * start npm project in the cloned repository
   * do all/most exercises from the link above
   * use git to publish your change to the server (git add/commit/push locally and git pull on the remote server)
+
+Note: you can try [postman](https://www.getpostman.com/) to test your routes (e.g. before you implement html form or ES6 fetch).
