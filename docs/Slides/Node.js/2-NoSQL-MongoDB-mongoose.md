@@ -187,7 +187,7 @@ Blog.create({ hidden: false }).then(post => {
 ```
 
 * To modify existing documents, call the `update` method and the `remove` to delete
-* Documents can be retreived using models' `find`, `findById`, `findOne`, or `where`: 
+* Documents can be retrieved using models' `find`, `findById`, `findOne`, or `where`: 
 
 ```javascript
 // select *
@@ -206,7 +206,8 @@ Blog.find({ hidden: false }).where('date').gt(oneYearAgo).then(data => {
 # Lab/Homework 4
 
 * Create a [static](https://github.com/gofore/node-training/tree/master/express#serving-static-files) (or with [template](https://github.com/gofore/node-training/tree/master/express#template-engines)) html form. Alternative, use postman. On `POST /cats` create a new cat with the data that comes as [body](https://github.com/gofore/node-training/tree/master/express#request-body) argument.
-* Respond to `GET /cats` with JSON containing all the male cats that have weight over 10kg and are older than 10 years.
+* Respond to `GET /cats` with JSON containing all the cats
+* Respond to GET /cats with gender, age and weight query parameters with JSON containing the filtered list of cats. E.g. GET /cats?gender=male&weight=10&age=11 will return the male cats that have weight over 10kg and are older than 11 years.
 
 ---
 
@@ -273,3 +274,4 @@ Blog.find().byTitle('My title').then(
 * [NoSQL (wikipedia)](https://en.wikipedia.org/wiki/NoSQL)
 * [MongoDB](https://www.mongodb.com/)
 * [mongoose](http://mongoosejs.com/index.html)
+* [mongoose NPM package](https://www.npmjs.com/package/mongoose)
