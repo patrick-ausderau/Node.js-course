@@ -98,7 +98,7 @@ const mongoose = require('mongoose');
 // if mongoose < 5.x, force ES6 Promise
 // mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/test').then(() => {
+mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true}).then(() => {
   console.log('Connected successfully.');
 }, err => {
   console.log('Connection to db failed: ' + err);
