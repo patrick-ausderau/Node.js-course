@@ -28,7 +28,7 @@
 
 * [Free & open source](https://github.com/mongodb/mongo) document-oriented database
   * First released in February 2009
-  * Currently v3.x
+  * Currently v4.x
 
 __Lab/Homework 1__
 * [Install](https://docs.mongodb.com/manual/administration/install-community/)
