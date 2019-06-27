@@ -37,7 +37,7 @@ const options = {
 
 const app = express();
 
-https.createServer(options, app).listen(3000);
+https.createServer(options, app).listen(8000);
 
 app.get('/', (req, res) => {
   res.send('Hello Secure World!');
@@ -50,9 +50,9 @@ app.get('/', (req, res) => {
 const http = require('http');
 
 http.createServer((req, res) => {
-      res.writeHead(301, { 'Location': 'https://localhost:3000' + req.url });
+      res.writeHead(301, { 'Location': 'https://localhost:8000' + req.url });
       res.end();
-}).listen(8080);
+}).listen(3000);
 ```
 
 ### express (jelastic)
@@ -155,7 +155,7 @@ app.use(passport.initialize());
 app.post('/login', 
   passport.authenticate('local', { 
     successRedirect: '/', 
-    failureRedirect: '/test', 
+    failureRedirect: '/login.html', 
     session: false })
 );
 
