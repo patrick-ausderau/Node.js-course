@@ -23,6 +23,8 @@ $ openssl x509 -req -in certrequest.csr -signkey ssl-key.pem -out ssl-cert.pem
 * Make sure to add them in .gitignore too!
 
 ```javascript
+'use strict';
+
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
@@ -55,14 +57,15 @@ http.createServer((req, res) => {
 }).listen(3000);
 ```
 
-### express (jelastic)
+### express (production server)
 
-* A valid certificate (courtesy of helpdesk) for jelastic.metropolia.fi can be used for all its subdomains
-  * Make sure you enable SSL (under environment topology)
+* A certificate for yamashita001 server is set and can be used for all its subdomains
   * navigate to your app with https://
 * Eventually, force the redirection from HTTP to HTTPS
 
 ```javascript
+'use strict';
+
 const express = require('express');
 const app = express();
 
