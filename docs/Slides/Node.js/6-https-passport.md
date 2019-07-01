@@ -97,6 +97,7 @@ app.listen(3000);
 
 * create node modules for localhost (development) and remote (production) server
   * cut/paste corresponding code and use node export e.g. for localhost.js
+
  ```javascript
 // cut-pasted code about localhost: require, tls certs, options,...
 
@@ -105,7 +106,9 @@ module.exports = (app, httpsPort, httpPort) => {
   http.createServer(httpsRedirect).listen(httpPort);
 };
 ```
+
 * use .env file to choose which code to load
+
 ```javascript
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
