@@ -60,6 +60,7 @@ http.createServer((req, res) => {
 ### express (production server)
 
 * A certificate for yamashita001 server is set and can be used for all its subdomains
+  * express app need to trust the tls/ssl configuration from the proxy server
   * navigate to your app with https://
 * Eventually, force the redirection from HTTP to HTTPS
 
@@ -80,8 +81,12 @@ app.use ((req, res, next) => {
     // request was via https, so do no special handling
     next();
   } else {
+    // if express app run under proxy with sub path URL
+    // e.g. http://www.myserver.com/nodeapp
+    // then, in your .env, set PROXY_PATH=/nodeapp
+    const proxypath = process.env.PROXY_PASS || '' 
     // request was via http, so redirect to https
-    res.redirect('https://' + req.headers.host + req.url);
+    res.redirect(301, `https://${req.headers.host}${proxypath}${req.url}`);
   }
 });
 
