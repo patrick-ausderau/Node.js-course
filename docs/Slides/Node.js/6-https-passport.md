@@ -19,8 +19,8 @@ $ openssl req -new -key ssl-key.pem -out certrequest.csr
 $ openssl x509 -req -in certrequest.csr -signkey ssl-key.pem -out ssl-cert.pem
 ```
 
-* Put the keys and certificate in the app folder
-* Make sure to add them in .gitignore too!
+* Put the keys and certificate in the app folder and make sure to _add them in .gitignore_ too!
+  * Alternative, put the keys and certificate outside the app folder and use relative (e.g. ../certs/) or absolute (e.g. /etc/pki/tls/certs/) path to them
 
 ```javascript
 'use strict';
