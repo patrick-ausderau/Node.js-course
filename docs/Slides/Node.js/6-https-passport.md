@@ -7,7 +7,7 @@
   * _authentication_ of the visited website 
   * protection of the _privacy_ and _integrity_ of the exchanged data
 
-### express (localhost)
+### express (localhost development)
 
 * Generate keys and certificate with [openssl](https://www.openssl.org/) (in real life, you would need to get certified by a third party, e.g. [Let’s Encrypt](https://letsencrypt.org/))
 * If you target [modern compability](https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility), recommendation is to use elliptic curve algorithm [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) with prime256v1, secp384r1 or secp521r1 TLS curves (e.g. [see](https://msol.io/blog/tech/create-a-self-signed-ecc-certificate/)) instead of [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
@@ -91,6 +91,31 @@ app.use ((req, res, next) => {
 });
 
 app.listen(3000);
+```
+
+### consider separating development and production code
+
+* create node modules for localhost (development) and remote (production) server
+  * cut/paste corresponding code and use node export e.g. for localhost.js
+ ```javascript
+// cut-pasted code about localhost: require, tls certs, options,...
+
+module.exports = (app, httpsPort, httpPort) => {
+  https.createServer(options, app).listen(httpsPort);
+  http.createServer(httpsRedirect).listen(httpPort);
+};
+```
+* use .env file to choose which code to load
+```javascript
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+if (process.env.NODE_ENV === 'production') {
+  const prod = require('./production')(app, process.env.PORT);
+} else {
+  const localhost = require('./localhost')(app, process.env.HTTPS_PORT, process.env.HTTP_PORT);
+}
+app.get('/', (req, res) => {
+  res.send('Hello Secure World!');
+});
 ```
 
 ---
