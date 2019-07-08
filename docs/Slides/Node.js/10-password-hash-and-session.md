@@ -124,6 +124,13 @@ app.post('/login',
     failureRedirect: '/failed' 
   })
 );
+
+app.get('/logout', (req, res) => {
+  // remove the req.user property and clear the login session
+  // http://www.passportjs.org/docs/logout/
+  req.logout();
+  res.redirect('/');
+});
 ```
 
 ---
