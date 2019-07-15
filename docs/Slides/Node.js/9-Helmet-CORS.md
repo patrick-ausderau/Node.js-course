@@ -89,6 +89,8 @@ npm audit
    * Run the ```npm audit fix``` subcommand to automatically install compatible updates to vulnerable dependencies.
    * Run the recommended commands individually to install updates to vulnerable dependencies. (Some updates may be breaking backward compabilities)
 
+Some remote git repository provider (like [gihub](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies), [gitlab](https://docs.gitlab.com/ee/user/application_security/dependency_scanning/), etc.) can check for dependencies vulnerability (e.g. on every commit, at regular intervals,...)
+
 ---
 
 ### Exercise
