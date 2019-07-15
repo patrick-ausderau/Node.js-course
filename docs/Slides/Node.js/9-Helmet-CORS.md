@@ -79,7 +79,7 @@ Implement CORS so that your application only allows CORS for POST on path `/cors
 
 * "Security of your app is only as strong as the “weakest link” in your dependencies."
 * To check your dependencies for known vulnerabilities, run [security audit](https://docs.npmjs.com/auditing-package-dependencies-for-security-vulnerabilities)
-* The npm audit command is available in npm@6. To upgrade, run ```npm install npm@latest -g```
+* The [npm audit](https://docs.npmjs.com/cli/audit) command is available in npm@6. To upgrade, run ```npm install npm@latest -g```
 
 ```shell
 npm audit
